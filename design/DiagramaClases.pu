@@ -112,6 +112,7 @@ package es.etg.programacion.mercadaw{
                 }
 
                 interface IEmpleado{
+                    +calcularNomina():Nomina
                     +toString(): String
                 }
                 enum Trabajador {
@@ -131,17 +132,15 @@ package es.etg.programacion.mercadaw{
             }
             package print{
                 class Impresora{
-                    +imprimirEtiqueta(Producto)
-                    +imprimir(Nomina)
-                    +exportar(doc:Documento,fichero String)
-                    +exportar(docs:List<Documento>,fichero String)
+                    +imprimir(fichero:String)
                 }
             }
             package writer{
-                class FicheroMarkDown{
-                    +escribir(nom:Nomina)
-                    +escribir(doc:Documento)
-                    +escribir(docs:List<Documento>)
+                class WriterMarkDown{
+                    +{static}escribir(contratable:IEmpleado)
+                    +{static}escribir(doc:Documento)
+                    +{static}escribirEtiqueta(Producto)
+                    +{static}escribir(docs:List<Documento>)
                 }
             }
             package reader{

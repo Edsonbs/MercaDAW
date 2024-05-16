@@ -124,15 +124,48 @@ package es.etg.programacion.mercadaw{
             }
         
         package util{
-
-        }
+            interface Documento{
+                +getContenido():Map<String,String>
+                +getTitulo():String
+                +getPie():String
+            }
+            package print{
+                class Impresora{
+                    +imprimirEtiqueta(Producto)
+                    +imprimir(Nomina)
+                    +exportar(doc:Documento,fichero String)
+                    +exportar(docs:List<Documento>,fichero String)
+                }
+            }
+            package writer{
+                class FicheroMarkDown{
+                    +escribir(nom:Nomina)
+                    +escribir(doc:Documento)
+                    +escribir(docs:List<Documento>)
+                }
+            }
+            package reader{
+                interface Lector{
+                    +leer(fichero:String)
+                }
+                class LectorXML{
+                    +leer(fichero:String)
+                }
+                class LectorSQL{
+                    +leer(fichero:String)
+                }
+                Lector <|.. LectorXML
+                Lector <|.. LectorSQL
+            }
+        Documento <|.. Producto
+        Documento <|.. Empleado
         package dao{
              
         }
             
             
 
-        }   
+    }   
 }  
 
 Supermercado o-- Producto

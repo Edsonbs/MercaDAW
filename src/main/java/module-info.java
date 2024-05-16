@@ -1,7 +1,7 @@
-module es.etg.mercadaw {
-    requires transitive javafx.controls;
+module es.etg.programacion.mercadaw {
+    requires javafx.controls;
     requires javafx.fxml;
 
-    opens es.etg.mercadaw to javafx.fxml;
-    exports es.etg.mercadaw;
+    opens es.etg.programacion.mercadaw to javafx.fxml;
+    exports es.etg.programacion.mercadaw;
 }

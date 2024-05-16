@@ -1,0 +1,23 @@
+@startuml Diagrama despliegue MercaDaw
+
+left to right direction
+'top to bottom direction
+
+
+node "PC Usuario" <<device>>   { 
+
+    node "Java Runtime Environment"{
+        artifact "mercaDaw.jar" as app
+    }
+
+    node "Servidor Base de Datos" <<docker>>{
+        node "MariaDB" as db
+    }
+    
+artifact "cargaDatos.sql" as cargdat !!
+
+}
+
+app -- db : "puerto:3306"
+app -- cargdat
+@enduml

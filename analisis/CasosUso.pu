@@ -1,0 +1,30 @@
+@startuml Diagrama casos de uso 
+title Casos de Uso MercaDaw
+left to right direction
+actor "Trabajador" as t
+
+rectangle MercaDaw{
+    usecase "Gestionar" as gp
+    usecase "Productos" as prod
+    usecase "Empleados" as emple
+    usecase "Calcular nomina trabajador" as c
+    usecase "Visualizar informacion" as ed
+    usecase "Exportar datos" as edat
+    usecase "Imprimir etiqueta producto" as ie
+
+}
+
+t -- c
+t -- gp
+gp <|-- prod
+gp <|-- emple
+t -- ed
+ed ..> edat: extends
+t -- ie
+c ..>edat: extends
+ie ..>edat: extends
+
+
+
+
+@enduml

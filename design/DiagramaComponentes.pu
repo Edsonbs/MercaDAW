@@ -1,0 +1,35 @@
+@startuml Modelo-Vista-Controlador
+title Modelo-Vista-Controlador
+left to right direction
+package view{
+    component MenuViewController as mvc
+    component Menu as mv
+}
+
+package controller{
+    component MercaDawController as mdc
+}
+
+package model{
+    component MercaDaw
+    component Data 
+    component LectorImp
+
+    () "MercaDAO" as dao
+    () "Gestionable" as gestion
+    () "Lector" as lectorif
+
+    MercaDaw -() gestion
+    Data -() dao
+    LectorImp -() lectorif
+
+}
+
+mdc ..> gestion : use
+MercaDaw ..> dao : use
+
+    mv ..> mvc : use
+    mv ..> mdc: use
+dao ..> lectorif
+
+@enduml

@@ -1,12 +1,8 @@
 package es.etg.programacion.mercadaw.mercado;
 
 import java.util.List;
-
-import es.etg.programacion.mercadaw.producto.IProducto;
 import es.etg.programacion.mercadaw.producto.Producto;
 import es.etg.programacion.mercadaw.trabajador.Empleado;
-import es.etg.programacion.mercadaw.trabajador.IEmpleado;
-import es.etg.programacion.mercadaw.trabajador.Trabajador;
 
 public class Supermercado implements Gestionable {
     private List<Cliente> clientes;
@@ -69,6 +65,7 @@ public class Supermercado implements Gestionable {
     public void setFechaCompra(String fechaCompra) {
         this.fechaCompra = fechaCompra;
     }
+    
     @Override
     public void darAlta(Empleado empleado) {
        empleados.add(empleado);

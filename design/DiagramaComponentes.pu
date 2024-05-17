@@ -12,15 +12,15 @@ package controller{
 
 package model{
     component MercaDaw
-    component Data 
+    component Dao 
     component LectorImp
 
-    () "MercaDAO" as dao
+    () "MercadoDAO" as dao
     () "Gestionable" as gestion
     () "Lector" as lectorif
 
     MercaDaw -() gestion
-    Data -() dao
+    Dao -() dao
     LectorImp -() lectorif
 
 }

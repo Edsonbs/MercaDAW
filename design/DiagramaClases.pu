@@ -160,9 +160,23 @@ package es.etg.programacion.mercadaw{
         Documento <|.. Empleado
         }
         package dao{
-            interface mercadoDAO{
-                
+            interface MercadoDAO{
+                +listarEmpleados(): list<Empleado>
+                +listarProductos(): list<Producto>
+
             }
+            class MercadoMariadbDAOImp{
+                -connection: Connection
+            }
+            class MercadoMockDAOImp{
+
+            }
+            enum Modo{
+                MOCK, MARIADB
+            }
+        
+        MercadoDAO <|.. MercadoMariadbDAOImp
+        MercadoDAO <|.. MercadoMockDAOImp
         }   
     }
 } 

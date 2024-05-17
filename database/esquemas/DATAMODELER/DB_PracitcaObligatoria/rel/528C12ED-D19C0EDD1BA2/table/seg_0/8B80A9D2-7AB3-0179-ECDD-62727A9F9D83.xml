@@ -1,0 +1,89 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8B80A9D2-7AB3-0179-ECDD-62727A9F9D83" name="CLIENTES">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>CBDCB72D-4A67-300C-FD49-122F59940F07</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="25030489-5D47-EA15-C976-5D83FBC3D32D">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>F12EF5E1-E96B-EDCF-490C-4209FF4E8FBE</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CODIGO_POSTAL" id="552D461E-DB91-6927-EE49-0E0555EA7EFD">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>F3765715-BB1D-5F01-EE4D-ABA8D10DF494</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CORREO_ELECTRONICO" id="E36E0080-E950-C967-62FF-19B235C54A99">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>9817EE51-D64E-7014-8ED0-081C50D2B662</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MERCADAW_MERCADAW_ID" id="A4032515-2DEA-EA4C-A14B-B969C6066CA1">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CB8FBC92-24AB-5CD7-3D57-F3A988F413E5" referredColumn="D7B0BBC2-B539-F200-FE1F-C36E8A56932A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="AAEDAC86-EC36-6EA5-EADD-D15C2C803A18" name="CLIENTES_PK">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>4817564B-A704-4217-6DA3-DBD3011B8951</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="25030489-5D47-EA15-C976-5D83FBC3D32D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3F6E4544-F818-96B1-623A-FC1ACFBBC3E6" name="CLIENTES_MERCADAW_FK">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>04565BCB-7516-FCB4-7E3E-361D861AB9F0</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A4032515-2DEA-EA4C-A14B-B969C6066CA1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

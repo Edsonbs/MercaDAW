@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A530C4B1-502B-3B3A-8C26-85044EDDCCD3" name="COMPRA">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CLIENTES_ID" id="D84F1C24-E07E-3C3C-8D29-BFF2C7508C11">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E5C69ECD-5AE4-6149-DA8A-B564B23650D8" referredColumn="25030489-5D47-EA15-C976-5D83FBC3D32D"/>
+</associations>
+</Column>
+<Column name="PRODUCTOSv1_ID" id="D10CDC29-D270-CD99-795F-A405D47E4686">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8E0F0F33-8277-4E43-D3F1-0E4C9CB457C0" referredColumn="ED2F0768-99AB-BCAD-0685-49C2AB3129D0"/>
+</associations>
+</Column>
+<Column name="ID_COMPRA" id="019D5288-9D1F-B202-3A24-01015728A834">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>A6253637-9403-6243-A76C-045B5F168B69</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isRelationshipColumn>true</isRelationshipColumn>
+</Column>
+<Column name="CANTIDAD" id="B30C7D8E-B544-4D0F-695C-0CC4B68403CE">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>6F02C9E6-FFE5-4404-4669-95B9C9E59500</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isRelationshipColumn>true</isRelationshipColumn>
+</Column>
+<Column name="FECHA_COMPRA" id="671993F1-5930-2E10-5D9F-A06E54DF0DA1">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>4DF0DFCE-D697-4917-5ECF-2C2DBBEF52E8</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isRelationshipColumn>true</isRelationshipColumn>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A67E57D0-3409-D347-D043-662B54EB7597" name="COMPRA_PK">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D84F1C24-E07E-3C3C-8D29-BFF2C7508C11"/>
+<colUsage columnID="D10CDC29-D270-CD99-795F-A405D47E4686"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="58202D63-5171-5CEF-BFAA-3B68FB985E2B" name="COMPRA_CLIENTES_FK">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>1B72CEF5-357B-44EC-DA54-77ECF8FB110A</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D84F1C24-E07E-3C3C-8D29-BFF2C7508C11"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="05F1A356-E412-7087-EBF3-EB4EEAB27379" name="COMPRA_PRODUCTOSv1_FK">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>1B72CEF5-357B-44EC-DA54-77ECF8FB110A</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D10CDC29-D270-CD99-795F-A405D47E4686"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

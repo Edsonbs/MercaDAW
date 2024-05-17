@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7EDFB191-1F06-9919-FD3B-1AA8488AA121" name="STOCK">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:32:57 UTC</createdTime>
+<generatorID>087CF87B-0D11-EE5D-93D0-9BDB242B1A1E</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CANTIDAD" id="C3FCE603-104D-DF98-3100-0B01E2332ADD">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:32:57 UTC</createdTime>
+<generatorID>E2529AA6-B0AC-BB29-53C2-E65E9A5AC2B2</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PRODUCTOS_ID" id="1E9FF717-8E53-CBAF-DC3F-0A153CD4E670">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:32:57 UTC</createdTime>
+<generatorID>66827480-1215-C2E4-F36D-E37C208567D9</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C96D5F16-FED2-ABAD-EFA3-953467BD65AC" referredColumn="ED2F0768-99AB-BCAD-0685-49C2AB3129D0"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E9F4943B-C25C-0D5D-F1EC-F59E1FA52F16" name="STOCK__IDX">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:32:57 UTC</createdTime>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>6C9AE8DD-070C-3EC5-9950-C90F1C6BA0A1</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="1E9FF717-8E53-CBAF-DC3F-0A153CD4E670"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C1CA767C-983A-1BEC-9586-23C812040A51" name="STOCK_PRODUCTOS_FK">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:32:57 UTC</createdTime>
+<generatorID>6C9AE8DD-070C-3EC5-9950-C90F1C6BA0A1</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1E9FF717-8E53-CBAF-DC3F-0A153CD4E670"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

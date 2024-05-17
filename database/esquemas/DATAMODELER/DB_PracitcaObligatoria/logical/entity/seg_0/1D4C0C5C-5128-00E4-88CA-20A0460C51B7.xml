@@ -1,0 +1,33 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="1D4C0C5C-5128-00E4-88CA-20A0460C51B7" name="SUPERMERCADO">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:19:31 UTC</createdTime>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<engineerTo>
+<item key="528C12ED-50AF-9C08-0DF1-D19C0EDD1BA2" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="SEDE" id="81644F4A-2F76-2C3C-5AE6-761DB2C5ED00">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:19:45 UTC</createdTime>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<engineerTo>
+<item key="528C12ED-50AF-9C08-0DF1-D19C0EDD1BA2" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+</Entity>

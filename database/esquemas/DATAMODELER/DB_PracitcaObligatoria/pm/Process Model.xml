@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ProcessModel class="oracle.dbtools.crest.model.design.process.ProcessModel" name="Process Model" id="1E35519B-E908-2E22-D81E-E906288BEEF9">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 14:22:28 UTC</createdTime>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</ProcessModel>

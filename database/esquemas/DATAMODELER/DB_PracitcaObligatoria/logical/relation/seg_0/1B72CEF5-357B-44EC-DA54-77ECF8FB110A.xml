@@ -1,0 +1,57 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="COMPRA" directorySegmentName="seg_0" id="1B72CEF5-357B-44EC-DA54-77ECF8FB110A">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:21:40 UTC</createdTime>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<engineerTo>
+<item key="528C12ED-50AF-9C08-0DF1-D19C0EDD1BA2" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>CBDCB72D-4A67-300C-FD49-122F59940F07</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>F21DC0BC-D7A1-A64C-BCEE-3F2A9ED2248F</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<attribute name="ID COMPRA" id="A6253637-9403-6243-A76C-045B5F168B69">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:21:48 UTC</createdTime>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<engineerTo>
+<item key="528C12ED-50AF-9C08-0DF1-D19C0EDD1BA2" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</attribute>
+<attribute name="CANTIDAD" id="6F02C9E6-FFE5-4404-4669-95B9C9E59500">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:21:54 UTC</createdTime>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<engineerTo>
+<item key="528C12ED-50AF-9C08-0DF1-D19C0EDD1BA2" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</attribute>
+<attribute name="FECHA COMPRA" id="4DF0DFCE-D697-4917-5ECF-2C2DBBEF52E8">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:22:48 UTC</createdTime>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<engineerTo>
+<item key="528C12ED-50AF-9C08-0DF1-D19C0EDD1BA2" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</attribute>
+</attributes>
+</Relation>

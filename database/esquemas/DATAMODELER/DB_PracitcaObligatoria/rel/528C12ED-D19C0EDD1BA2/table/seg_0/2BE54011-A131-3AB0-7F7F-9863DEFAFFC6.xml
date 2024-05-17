@@ -1,0 +1,50 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="2BE54011-A131-3AB0-7F7F-9863DEFAFFC6" name="SUPERMERCADO">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>1D4C0C5C-5128-00E4-88CA-20A0460C51B7</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="MERCADAW_ID" id="D7B0BBC2-B539-F200-FE1F-C36E8A56932A">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isSurrogateColumn>true</isSurrogateColumn>
+</Column>
+<Column name="SEDE" id="3545CBC9-837E-57A9-04F2-FA303A6FF55B">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>81644F4A-2F76-2C3C-5AE6-761DB2C5ED00</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0243AAAD-FF3B-056F-4F54-02D79AD3A8EF" name="SUPERMERCADO_PK">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="D7B0BBC2-B539-F200-FE1F-C36E8A56932A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

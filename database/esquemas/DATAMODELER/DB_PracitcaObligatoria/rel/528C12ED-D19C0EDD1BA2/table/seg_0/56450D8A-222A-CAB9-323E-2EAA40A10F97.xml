@@ -1,0 +1,232 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="56450D8A-222A-CAB9-323E-2EAA40A10F97" name="PRODUCTOS">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>F21DC0BC-D7A1-A64C-BCEE-3F2A9ED2248F</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="ED2F0768-99AB-BCAD-0685-49C2AB3129D0">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>BBC8EB93-460E-ADAB-8E6F-1B638EB53839</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOMBRE" id="2F8C4791-05BF-6CC1-4233-83EA95E3AAE9">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>B1B38815-F63B-4D3F-754E-DFE6BA3F67B0</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LogDes-4BABEC65-108B-2A3C-F7C4-84AC47D292B0@LOGDT10040</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MARCA" id="AE5E0039-F0BF-F91F-CEFF-1EAFCFB19EA8">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>8D43AA08-E377-24B8-E29E-F6D42E0BFDA9</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LogDes-4BABEC65-108B-2A3C-F7C4-84AC47D292B0@LOGDT10040</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CATEGORIA" id="3D152266-6DC1-8B26-3B24-90F689819B0B">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>9B115C6A-DC96-F828-6BA7-DF8196E13F4C</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PRECIO_EN_EUROS" id="F1C97DCD-C075-340A-611A-B67889F391A1">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>8BC0C8BE-8364-4481-DACF-30C31138C742</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IVA" id="E044570A-33FC-8D73-E3E1-E9D3DA25369B">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>DE40EBE8-E638-5EDB-21EF-C10D4DC291AC</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ALTURA_EN_METROS" id="444F3B08-57E6-068E-C772-510CB36D7251">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>E060DD35-F505-40A6-F6C5-DE2447067519</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ANCHURA_EN_METROS" id="284721D5-B890-025C-126A-FB426249D6BB">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>635B25E1-9789-939F-79B3-0DD6AD956EF8</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PESO_EN_KG" id="150B0D27-CEAC-0C46-F5C5-B9D1F243311C">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>B073F642-F53D-B29E-D510-4BCDA2768589</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NUMERO_ELEMENTOS" id="AF5F6684-30F4-BED1-ADEB-3420D36C4B5A">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>AEFC5B20-27EE-375B-F739-DB6D0F0EE1AD</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DESCRIPCION" id="0AABB449-09BF-E155-1DAC-A3C8E2C99E73">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>450F61E9-E619-8B7C-C15B-6287759BD305</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MERCADAW_MERCADAW_ID" id="E8BAB2CB-A024-DE66-5E45-45C8F61A851E">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D72F66E1-DE73-5187-CC9B-B9D32A12779F" referredColumn="D7B0BBC2-B539-F200-FE1F-C36E8A56932A"/>
+</associations>
+</Column>
+<Column name="ID_PRODUCTO" id="C1EB1867-5A9B-F1A0-4FAA-04C91D29E844">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>964B5CDD-19F9-ED31-A221-E0F93D2DDDE5</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,5,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isRelationshipColumn>true</isRelationshipColumn>
+<dependOnForeignKeyID>DB1506BD-BC54-5A7E-524A-A2AE5A085544</dependOnForeignKeyID>
+</Column>
+<Column name="CANTIDAD" id="B6223839-FBC2-0802-15F1-3644754B4044">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>4DA4D5CB-F4D7-BA36-680E-E5C0F1323BE3</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,10,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isRelationshipColumn>true</isRelationshipColumn>
+<dependOnForeignKeyID>DB1506BD-BC54-5A7E-524A-A2AE5A085544</dependOnForeignKeyID>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C96F88EF-1274-B560-D998-A44378F35802" name="PRODUCTOSv1_PK">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>35359E36-BACF-8929-04A0-8817754DD6D9</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="ED2F0768-99AB-BCAD-0685-49C2AB3129D0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6B2A3B5F-FAE0-DA15-C1C7-7C49B3A9D7ED" name="PRODUCTOSv1__IDX">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>DE6AFAD5-EA10-BF51-5EC4-9852B65B3D05</relationGeneratorID>
+</ind_PK_UK>
+<ind_PK_UK id="01383DDD-B71F-DFF8-0547-84C3C07C65AE" name="PRODUCTOS_MERCADAW_FK">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>A94CE3A1-8A9F-3735-7C27-7DBE65EB3D3C</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E8BAB2CB-A024-DE66-5E45-45C8F61A851E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

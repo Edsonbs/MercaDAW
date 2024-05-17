@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="DB_PracitcaObligatoria" id="2B46D693-FAE6-72DE-A3ED-DE54D6085613" version="3.5">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 14:22:27 UTC</createdTime>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>2B46D693-FAE6-72DE-A3ED-DE54D6085613</designId>
+</OSDM_Design>

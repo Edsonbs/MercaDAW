@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="EMPLEADOS MERCADAW FK" directorySegmentName="seg_0" id="5C3BE5AD-7F06-2A8D-ED4A-8A98F9F8B4AA">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:25:56 UTC</createdTime>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<engineerTo>
+<item key="528C12ED-50AF-9C08-0DF1-D19C0EDD1BA2" value="true"/>
+</engineerTo>
+<useSurrogateKey>true</useSurrogateKey>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>1D4C0C5C-5128-00E4-88CA-20A0460C51B7</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>E41C9AFB-BDC8-7D3E-E8DF-8B717A8997E1</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

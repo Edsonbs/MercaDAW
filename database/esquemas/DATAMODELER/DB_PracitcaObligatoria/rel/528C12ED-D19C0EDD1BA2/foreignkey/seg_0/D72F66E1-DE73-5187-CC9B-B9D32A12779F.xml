@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="D72F66E1-DE73-5187-CC9B-B9D32A12779F" containerWithKeyObject="56450D8A-222A-CAB9-323E-2EAA40A10F97" localFKIndex="01383DDD-B71F-DFF8-0547-84C3C07C65AE" name="PRODUCTOS_MERCADAW_FK">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:26:48 UTC</createdTime>
+<generatorID>A94CE3A1-8A9F-3735-7C27-7DBE65EB3D3C</generatorID>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<referredTableLongName>MERCADAW</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>2BE54011-A131-3AB0-7F7F-9863DEFAFFC6</referredTableID>
+<keyObject>0243AAAD-FF3B-056F-4F54-02D79AD3A8EF</keyObject>
+<referredKeyID>0243AAAD-FF3B-056F-4F54-02D79AD3A8EF</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>MERCADAW_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="PRODUCTOS MERCADAW FK" directorySegmentName="seg_0" id="A94CE3A1-8A9F-3735-7C27-7DBE65EB3D3C">
+<createdBy>vespertino</createdBy>
+<createdTime>2024-05-16 15:24:17 UTC</createdTime>
+<ownerDesignName>DB_PracitcaObligatoria</ownerDesignName>
+<engineerTo>
+<item key="528C12ED-50AF-9C08-0DF1-D19C0EDD1BA2" value="true"/>
+</engineerTo>
+<useSurrogateKey>true</useSurrogateKey>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>1D4C0C5C-5128-00E4-88CA-20A0460C51B7</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>F21DC0BC-D7A1-A64C-BCEE-3F2A9ED2248F</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

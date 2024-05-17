@@ -1,5 +1,6 @@
 @startuml Diagrama clases Mercado
 set separator none
+allow_mixing
 left to right direction
 package es.etg.programacion.mercadaw{
     package model{
@@ -161,8 +162,13 @@ package es.etg.programacion.mercadaw{
         }
         package dao{
             interface MercadoDAO{
+                +crearTablaEmpleados(): void
+                +crearTablaProductos(): void
+                +crearTa
+
                 +listarEmpleados(): list<Empleado>
                 +listarProductos(): list<Producto>
+
 
             }
             class MercadoMariadbDAOImp{
@@ -177,9 +183,16 @@ package es.etg.programacion.mercadaw{
         
         MercadoDAO <|.. MercadoMariadbDAOImp
         MercadoDAO <|.. MercadoMockDAOImp
-        }   
+        }
+         
     }
 } 
+component "org.mariadb.jdbc"<<jdbc driver>> 
+
+"org.mariadb.jdbc" <.. MercadoMariadbDAOImp
+
+
+
 
 Supermercado o-- Producto
 Supermercado o-- Empleado

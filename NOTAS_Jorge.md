@@ -1,0 +1,2 @@
+mariadb -u root -p MercaDAW  < ficheroCargaDatos.sql
+- ejecutar este comando en la shell del contenedor, sive para cargar datos inicialmente. el script debe estar en la misma carpeta que el docker, y se puede ejectuar este comando porque hemos mapeado el repositorio crendo el volumen sql (mirar docker-compose.yml, lo ha hecho el profe)

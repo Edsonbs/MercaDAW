@@ -6,7 +6,7 @@ import es.etg.programacion.mercadaw.trabajador.IEmpleado;
 import es.etg.programacion.mercadaw.trabajador.Trabajador;
 
 public class MercadoFactory {
-    public IProducto crearProducto(Categoria c) {
+    public static IProducto crearProducto(Categoria c) {
         if (c == Categoria.ALIMENTACION) {
             return new IProducto() {
             };
@@ -19,7 +19,7 @@ public class MercadoFactory {
         }
     }
 
-    public IEmpleado crearTrabajador(Trabajador trab) {
+    public static IEmpleado crearTrabajador(Trabajador trab) {
         if (trab == Trabajador.CAJERO) {
             return new IEmpleado() {
             };

@@ -2,8 +2,13 @@
 title Modelo-Vista-Controlador
 left to right direction
 package view{
-    component MenuViewController as mvc
-    component Menu as mv
+    component InicioViewController <<java>> as inicioController
+    component GestionProductoViewController <<java>> as gestionProdController
+    component GestionEmpleadoViewController <<java>> as gestionEmpController
+
+    component inicioView <<FXML file>> as inicioView
+    component gestionProductoView <<FXML file>> as gestionProdView
+    component gestionEmpleadoView <<FXML file>> as gestionEmpView
 }
 
 package controller{
@@ -28,8 +33,14 @@ package model{
 mdc ..> gestion : use
 MercaDaw ..> dao : use
 
-    mv ..> mvc : use
-    mv ..> mdc: use
+    inicioController ..> inicioView: use
+    gestionProdController ..> gestionProdView: use
+    gestionEmpController ..> gestionEmpView: use
+
+    gestionProdController ..> mdc: use
+    gestionEmpController ..> mdc: use
+    inicioController ..> mdc: use
+
 dao ..> lectorif
 
 @enduml

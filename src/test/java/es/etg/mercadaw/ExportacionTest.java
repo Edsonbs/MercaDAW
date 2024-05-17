@@ -25,12 +25,11 @@ public class ExportacionTest {
     sd.darAlta(emp2);
     sd.darAlta(emp3);
     sd.darAlta(p1);
-    sd.darAlta(p2);
     }
     @Test
     public void escribirDocumentoTest(){
         WriterMarkdown mk = new WriterMarkdown();
-        mk.escribir(p2);
+        mk.escribir(p1);
     }
 
     @Test
@@ -49,13 +48,13 @@ public class ExportacionTest {
     @Test
     public void exportarDatos(){
         Impresora a = new Impresora();
-        WriterMarkDown wm = new WriterMarkDown();
+        WriterMarkdown mk = new WriterMarkdown();
         List<Documento> docs = mk.transformarEmpleados(sd.getEmpleados());
-        wm.escribir(docs);
+        mk.escribir(docs);
         a.imprimir("Empleados");
-        wm.escribirEtiqueta(p1);
+        mk.escribirEtiqueta(p1);
         a.imprimir("Etiqueta");
-        wm.escribir(p1);
+        mk.escribir(p1);
         a.imprimir("Datos");
     }
 }

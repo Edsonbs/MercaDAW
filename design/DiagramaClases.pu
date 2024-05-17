@@ -19,8 +19,8 @@ package es.etg.programacion.mercadaw{
             
             
             class MercadoFactory{
-                +obtenerProducto(c: Categoria): IProducto
-                +obtenerTrabajador(trab: Trabajador): IEmpleado
+                +{static}crearProducto(c: Categoria): IProducto
+                +{static}crearTrabajador(trab: Trabajador): IEmpleado
             }
             interface Gestionable{
                 +darAltaEmpleado(nombre: String, apellido:String, categoria: Trabajador): IEmpleado

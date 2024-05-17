@@ -30,46 +30,46 @@ package es.etg.programacion.mercadaw{
 
             }
         }
-            package producto{
-                abstract Producto{
-                    -nombre: String
-                    -marca: String
-                    -precioEnEuros: double
-                    -alturaEnMetros: double
-                    -anchuraEnMetros: double
-                    -pesoEnKg: double
-                    -numElementos: int
-                    -descripcion: String
-                    -iva: Categoria = STANDARD
-                    -categoria: String
-                    +toString(): String
-                    +imprimirEtiqueta(): String
-                    +build(): ProductoBuilder
-                }
+        package producto{
+            abstract Producto{
+                -nombre: String
+                -marca: String
+                -precioEnEuros: double
+                -alturaEnMetros: double
+                -anchuraEnMetros: double
+                -pesoEnKg: double
+                -numElementos: int
+                -descripcion: String
+                -iva: Categoria = STANDARD
+                -categoria: String
+                +toString(): String
+                +imprimirEtiqueta(): String
+                +build(): ProductoBuilder
+            }
 
-                interface IProducto{
-                    +calcularPrecio(): Double[]
-                    +imprimirInfoPrecio(p: Double[])
-                }
+            interface IProducto{
+                +calcularPrecio(): Double[]
+                +imprimirInfoPrecio(p: Double[])
+            }
                 
-                class Alimentacion{
-                    -iva: IVA = ALIMENTACION
-                }
-                class Drogueria{
-                    -iva: IVA = DROGUERIA
-                }
+            class Alimentacion{
+                -iva: IVA = ALIMENTACION
+            }
+            class Drogueria{
+                -iva: IVA = DROGUERIA
+            }
 
-                class Cosmetica{
-                    -iva: IVA = STANDARD
-                }
-                enum Categoria{
+            class Cosmetica{
+                -iva: IVA = STANDARD
+            }
+            enum Categoria{
                 ALIMENTACION(0.04)
                 DROGUERIA(0.10)tipo
                 STANDARD(0.21)
                 COSMETICA(0.21)
 
-                }
-                class ProductoBuilder{
+            }
+            class ProductoBuilder{
                 -nombre: String
                 -marca: String
                 -precioEnEuros: double
@@ -91,37 +91,37 @@ package es.etg.programacion.mercadaw{
                 +setIVA(iva:Trabajador): ProductoBuilder
                 +setCategoria(categoria:Trabajador): ProductoBuilder
                 +build(): Producto
-                }
             }
-            package trabajador{
-                class Empleado{
-                    -{static} id: int
-                    -nombre: String
-                    -apellido: String
-                    -salario: Salario = STANDARD
-                    -categoria: Trabajador
-                }
-                class Reponedor{
-                    -salario: Salario = REPONEDOR
-                }
-                class Cajero{
-                    -salario: Salario = CAJERO
-                }
-                class Encargado{
-                    -salario: Salario = Encargado
-                }
+        }
+        package trabajador{
+            class Empleado{
+                -{static} id: int
+                -nombre: String
+                -apellido: String
+                -salario: Salario = STANDARD
+                -categoria: Trabajador
+            }
+            class Reponedor{
+                -salario: Salario = REPONEDOR
+            }
+            class Cajero{
+                -salario: Salario = CAJERO
+            }
+            class Encargado{
+                -salario: Salario = Encargado
+            }
 
-                interface IEmpleado{
-                    +calcularNomina():Nomina
-                    +toString(): String
-                }
-                enum Trabajador {
-                    REPONEDOR(1200)
-                    CAJERO(1300)
-                    ENCARGADO(1500)
-                    STANDARD(1000)
-                    +getSalario()
-                }
+            interface IEmpleado{
+                +calcularNomina():Nomina
+                +toString(): String
+            }
+            enum Trabajador {
+                REPONEDOR(1200)
+                CAJERO(1300)
+                ENCARGADO(1500)
+                STANDARD(1000)
+                +getSalario()
+            }
             }
         
         package util{
@@ -130,42 +130,42 @@ package es.etg.programacion.mercadaw{
                 +getTitulo():String
                 +getPie():String
             }
-            package print{
-                class Impresora{
-                    +imprimir(fichero:String)
+        package print{
+            class Impresora{
+                +imprimir(fichero:String)
+            }
+            }
+        package writer{
+            class WriterMarkDown{
+                +{static}escribir(contratable:IEmpleado)
+                +{static}escribir(doc:Documento)
+                +{static}escribirEtiqueta(Producto)
+                +{static}escribir(docs:List<Documento>)
                 }
             }
-            package writer{
-                class WriterMarkDown{
-                    +{static}escribir(contratable:IEmpleado)
-                    +{static}escribir(doc:Documento)
-                    +{static}escribirEtiqueta(Producto)
-                    +{static}escribir(docs:List<Documento>)
-                }
+        package reader{
+            interface Lector{
+                +leer(fichero:String)
             }
-            package reader{
-                interface Lector{
-                    +leer(fichero:String)
-                }
-                class LectorXML{
-                    +leer(fichero:String)
-                }
-                class LectorSQL{
-                    +leer(fichero:String)
-                }
+            class LectorXML{
+                +leer(fichero:String)
+            }
+            class LectorSQL{
+                +leer(fichero:String)
+            }
                 Lector <|.. LectorXML
                 Lector <|.. LectorSQL
             }
         Documento <|.. Producto
         Documento <|.. Empleado
-        package dao{
-             
         }
-            
-            
-
-    }   
-}  
+        package dao{
+            interface mercadoDAO{
+                
+            }
+        }   
+    }
+} 
 
 Supermercado o-- Producto
 Supermercado o-- Empleado

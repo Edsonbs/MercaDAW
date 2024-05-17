@@ -161,12 +161,13 @@ package es.etg.programacion.mercadaw{
         }
         package dao{
             interface MercadoDAO{
-                +crearTablaEmpleados(): void
-                +crearTablaProductos(): void
-                +crearTa
 
                 +listarEmpleados(): list<Empleado>
                 +listarProductos(): list<Producto>
+                +anadir(producto: Producto): int
+                +anadir(empleado: Empleado): int 
+                +eliminar(empleado: Empleado): int
+                +eliminar(producto: Producto): int
 
 
             }

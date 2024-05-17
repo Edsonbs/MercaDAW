@@ -26,7 +26,7 @@ package es.etg.programacion.mercadaw{
                 +darAltaEmpleado(nombre: String, apellido:String, categoria: Trabajador): IEmpleado
                 +darAltaProducto(producto: Producto): IProducto
                 +obtenerEmpleados(): List<Empleado>
-                +obtenerProducto(): Producto "añadir parametro si ahce falta"
+                +obtenerProducto(): List<Producto>
 
             }
         }
@@ -60,7 +60,7 @@ package es.etg.programacion.mercadaw{
             }
 
             class Cosmetica{
-                -iva: IVA = STANDARD
+                -iva: IVA = COSMETICA
             }
             enum Categoria{
                 ALIMENTACION(0.04)

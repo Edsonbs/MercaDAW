@@ -5,20 +5,18 @@
     <artifactId>mercadaw</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.release>21</maven.compiler.release>
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>13</version>
+            <version>21.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>13</version>
+            <version>21.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.mariadb.jdbc</groupId>
@@ -36,9 +34,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.12.1</version>
                 <configuration>
-                    <release>11</release>
+                    <release>21</release>
                 </configuration>
             </plugin>
             <plugin>

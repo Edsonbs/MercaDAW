@@ -9,16 +9,7 @@ package es.etg.programacion.mercadaw{
                     -provincia: String
                     -municipio: String
             }       
-
-            
-            class Cliente{
-                -codigoPostal: int
-                -correoElectronico: String
-                -nombre: String
-                -fechaCompra: String
-            }
-            
-            
+             
             class MercadoFactory{
                 +{static}crearProducto(c: Categoria): IProducto
                 +{static}crearTrabajador(trab: Trabajador): IEmpleado
@@ -195,7 +186,6 @@ component "org.mariadb.jdbc"<<jdbc driver>>
 
 Supermercado o-- Producto
 Supermercado o-- Empleado
-Supermercado o-- Cliente
 IProducto <|.. Producto
 Producto <|-- Alimentacion
 Producto <|-- Drogueria

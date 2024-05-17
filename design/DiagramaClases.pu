@@ -20,14 +20,14 @@ package es.etg.programacion.mercadaw{
             
             
             class MercadoFactory{
-                +obtenerProducto(c: Categoria): IProducto
-                +obtenerTrabajador(trab: Trabajador): IEmpleado
+                +{static}crearProducto(c: Categoria): IProducto
+                +{static}crearTrabajador(trab: Trabajador): IEmpleado
             }
             interface Gestionable{
                 +darAltaEmpleado(nombre: String, apellido:String, categoria: Trabajador): IEmpleado
                 +darAltaProducto(producto: Producto): IProducto
                 +obtenerEmpleados(): List<Empleado>
-                +obtenerProducto(): Producto "añadir parametro si ahce falta"
+                +obtenerProducto(): List<Producto>
 
             }
         }
@@ -41,7 +41,7 @@ package es.etg.programacion.mercadaw{
                 -pesoEnKg: double
                 -numElementos: int
                 -descripcion: String
-                -iva: Categoria = STANDARD
+                -iva: Categoria
                 -categoria: String
                 +toString(): String
                 +imprimirEtiqueta(): String
@@ -61,12 +61,11 @@ package es.etg.programacion.mercadaw{
             }
 
             class Cosmetica{
-                -iva: IVA = STANDARD
+                -iva: IVA = COSMETICA
             }
             enum Categoria{
                 ALIMENTACION(0.04)
                 DROGUERIA(0.10)tipo
-                STANDARD(0.21)
                 COSMETICA(0.21)
 
             }
@@ -79,7 +78,7 @@ package es.etg.programacion.mercadaw{
                 -pesoEnKg: double
                 -numElementos: int
                 -descripcion: String
-                -iva: Categoria = STANDARD
+                -iva: Categoria
                 -categoria: String
                 +setNombre(nombre:String): ProductoBuilder
                 +setMarca(marca:String): ProductoBuilder
@@ -100,7 +99,7 @@ package es.etg.programacion.mercadaw{
                 -nombre: String
                 -apellido: String
                 -salario: Salario = STANDARD
-                -categoria: Trabajador
+                -categoria: String
             }
             class Reponedor{
                 -salario: Salario = REPONEDOR

@@ -24,6 +24,7 @@ package es.etg.programacion.mercadaw{
         }
         package producto{
             abstract Producto{
+                +IVA: double 
                 -nombre: String
                 -marca: String
                 -precioEnEuros: double
@@ -32,7 +33,6 @@ package es.etg.programacion.mercadaw{
                 -pesoEnKg: double
                 -numElementos: int
                 -descripcion: String
-                -iva: Categoria
                 -categoria: String
                 +toString(): String
                 +imprimirEtiqueta(): String
@@ -58,10 +58,10 @@ package es.etg.programacion.mercadaw{
         }
         package trabajador{
             class Empleado{
+                +SALARIO: double = 1000
                 -{static} id: int
                 -nombre: String
                 -apellido: String
-                -SALARIO: double = 1000
                 -categoria: String
             }
             class Reponedor{

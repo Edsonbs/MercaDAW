@@ -70,24 +70,11 @@ public class Supermercado implements Gestionable {
         this.fechaCompra = fechaCompra;
     }
     @Override
-    public IEmpleado darAltaEmpleado(String nombre, String apellido, Trabajador categoria) {
-        return new IEmpleado() {
-        };
+    public void darAlta(Empleado empleado) {
+       empleados.add(empleado);
     }
     @Override
-    public IProducto darAltaProducto(Producto producto) {
-        return new IProducto() {
-        };
+    public void darAlta(Producto producto) {
+      productos.add(producto);
     }
-    @Override
-    public List<Empleado> obtenerEmpleado() {
-        return empleados;
-    }
-    @Override
-    public List<Producto> obtenerProducto() {
-        return productos;
-    }
-    
-    
-
 }

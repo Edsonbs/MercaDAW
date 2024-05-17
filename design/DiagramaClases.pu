@@ -24,6 +24,7 @@ package es.etg.programacion.mercadaw{
         }
         package producto{
             abstract Producto{
+                +IVA: double 
                 -nombre: String
                 -marca: String
                 -precioEnEuros: double
@@ -32,7 +33,6 @@ package es.etg.programacion.mercadaw{
                 -pesoEnKg: double
                 -numElementos: int
                 -descripcion: String
-                -iva: Categoria
                 -categoria: String
                 +toString(): String
                 +imprimirEtiqueta(): String
@@ -45,73 +45,38 @@ package es.etg.programacion.mercadaw{
             }
                 
             class Alimentacion{
-                -iva: IVA = ALIMENTACION
+                +IVA:double = 0.04
             }
             class Drogueria{
-                -iva: IVA = DROGUERIA
+                +IVA:double = 0.10
             }
 
             class Cosmetica{
-                -iva: IVA = COSMETICA
+                +IVA:double = 0.21
             }
-            enum Categoria{
-                ALIMENTACION(0.04)
-                DROGUERIA(0.10)tipo
-                COSMETICA(0.21)
-
-            }
-            class ProductoBuilder{
-                -nombre: String
-                -marca: String
-                -precioEnEuros: double
-                -alturaEnMetros: double
-                -anchuraEnMetros: double
-                -pesoEnKg: double
-                -numElementos: int
-                -descripcion: String
-                -iva: Categoria
-                -categoria: String
-                +setNombre(nombre:String): ProductoBuilder
-                +setMarca(marca:String): ProductoBuilder
-                +setPrecioEnEuros(precio: double): ProductoBuilder
-                +setAlturaEnMetros(altura: double): ProductoBuilder
-                +setA nchuraEnMetros(anchura: double): ProductoBuilder
-                +setPesoEnKg(peso: double): ProductoBuilder
-                +setNumElementos(elementos:int): ProductoBuilder
-                +setDescripcion(descripcion: String): ProductoBuilder
-                +setIVA(iva:Trabajador): ProductoBuilder
-                +setCategoria(categoria:Trabajador): ProductoBuilder
-                +build(): Producto
-            }
+        
         }
         package trabajador{
             class Empleado{
+                +SALARIO: double = 1000
                 -{static} id: int
                 -nombre: String
                 -apellido: String
-                -salario: Salario = STANDARD
                 -categoria: String
             }
             class Reponedor{
-                -salario: Salario = REPONEDOR
+                +SALARIO: double = 1200
             }
             class Cajero{
-                -salario: Salario = CAJERO
+                +SALARIO: double = 1300
             }
             class Encargado{
-                -salario: Salario = Encargado
+                +SALARIO: double = 1500
             }
 
             interface IEmpleado{
                 +calcularNomina():Nomina
                 +toString(): String
-            }
-            enum Trabajador {
-                REPONEDOR(1200)
-                CAJERO(1300)
-                ENCARGADO(1500)
-                STANDARD(1000)
-                +getSalario()
             }
             }
         

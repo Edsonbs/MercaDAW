@@ -1,6 +1,7 @@
 package es.etg.programacion.mercadaw.dao;
 
 import java.io.File;
+import java.sql.Connection;
 import java.util.List;
 
 import es.etg.programacion.mercadaw.producto.Producto;
@@ -14,7 +15,7 @@ public class MercadoMariadbDAOImp implements MercadoDAO{
     public MercadoMariadbDAOImp(){
         
         }
-    }
+    
     @Override
     public List<Empleado> listarEmpleados() {
         // TODO Auto-generated method stub

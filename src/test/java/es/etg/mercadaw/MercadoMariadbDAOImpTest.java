@@ -73,7 +73,7 @@ public class MercadoMariadbDAOImpTest {
 
     } 
     @Test
-    @Order(50)
+    @Order(60)
     public void eliminarEmpleadoTest() throws Exception{
         Empleado empleado = new Cajero("cajero", "apellido", "CAJERO");
         MercadoMariadbDAOImp prueba = new MercadoMariadbDAOImp();

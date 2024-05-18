@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<TabPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<TabPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.etg.programacion.mercadaw.view.GestionProductoViewController">
    <tabs>
       <Tab closable="false" text="Alta producto">
          <content>
@@ -291,7 +291,7 @@
                         <Insets />
                      </opaqueInsets>
                   </HBox>
-                  <TableView prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                  <TableView fx:id="tablaProducto" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                     <columns>
                       <TableColumn fx:id="colNombre" prefWidth="90.0" text="NOMBRE" />
                       <TableColumn fx:id="colMarca" prefWidth="90.0" text="MARCA" />

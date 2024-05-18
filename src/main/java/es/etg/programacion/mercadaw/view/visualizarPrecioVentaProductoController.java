@@ -1,12 +1,18 @@
 package es.etg.programacion.mercadaw.view;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import es.etg.programacion.mercadaw.App;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
-public class visualizarPrecioVentaProductoController {
+public class VisualizarPrecioVentaProductoController implements Initializable {
 
     @FXML
     private ImageView imgVolver;
@@ -56,9 +62,31 @@ public class visualizarPrecioVentaProductoController {
     @FXML
     private TextField txfRecargoPeso;
 
-    @FXML
-    void volverVistaAnterior(MouseEvent event) {
+    // Métodos:
+    
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        txfNombre.setDisable(true);
+        txfMarca.setDisable(true);
 
+        txfPrecio.setDisable(true);
+        txfRecargoPeso.setDisable(true);
+        txfRecargoAltura.setDisable(true);
+        txfRecargoAnchura.setDisable(true);
+        txfRecargoNumPiezas.setDisable(true);
+        txfPrecioTotal.setDisable(true);
+        txfIva.setDisable(true);
+
+        txfAlturaMetros.setDisable(true);
+        txfAnchuraMetros.setDisable(true);
+        txfPesoKg.setDisable(true);
+        txfNumElementos.setDisable(true);
+
+        txfDescripcion.setDisable(true);
     }
 
+    @FXML
+    void volverVistaAnterior(MouseEvent event) throws IOException {
+        App.setRoot("view/gestionProductoView");
+    }
 }

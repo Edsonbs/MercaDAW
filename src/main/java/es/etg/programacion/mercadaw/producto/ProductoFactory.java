@@ -1,31 +1,21 @@
 package es.etg.programacion.mercadaw.producto;
 
-import es.etg.programacion.mercadaw.trabajador.Cajero;
-import es.etg.programacion.mercadaw.trabajador.Empleado;
-import es.etg.programacion.mercadaw.trabajador.Encargado;
-import es.etg.programacion.mercadaw.trabajador.Reponedor;
-import es.etg.programacion.mercadaw.trabajador.Trabajador;
-
 public class ProductoFactory {
-    
-    public static Empleado crearEmpleado(String nombreEmpleado, String apellidoEmpleado, String categoriaEmpleado){
-        final String CATEGORIA_REPONEDOR = Trabajador.REPONEDOR.name();
-        final String CATEGORIA_CAJERO = Trabajador.CAJERO.name();
-        final String CATEGORIA_ENCARGADO = Trabajador.ENCARGADO.name();
-        final String CATEGORIA_OTRO = Trabajador.OTRO.name();
+    public static Producto crearProducto(String nombreProducto, String marcaProducto, String categoriaProducto, double precioEurosProducto, double alturaMetrosProducto, double anchuraMetrosProducto, double pesoKgProducto, int cantidadElementosProducto, String descripcionProducto){
+        final String CATEGORIA_ALIMENTACION = Categoria.ALIMENTACION.name();
+        final String CATEGORIA_DROGUERIA = Categoria.DROGUERIA.name();
+        final String CATEGORIA_COSMETICA = Categoria.COSMETICA.name();
 
-        Empleado miEmpleado = null;
-
-        if (CATEGORIA_REPONEDOR == categoriaEmpleado){
-            miEmpleado = new Reponedor(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
-        }else if (CATEGORIA_CAJERO == categoriaEmpleado){
-            miEmpleado = new Cajero(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
-        }else if (CATEGORIA_ENCARGADO == categoriaEmpleado){
-            miEmpleado = new Encargado(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
-        }else if (CATEGORIA_OTRO == categoriaEmpleado){
-            miEmpleado = new Empleado(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
+        // Añadiremos un producto lista de producto:
+        Producto miProducto = null;
+        if (CATEGORIA_ALIMENTACION == categoriaProducto){
+            miProducto = new Alimentacion(nombreProducto, marcaProducto, categoriaProducto, precioEurosProducto, alturaMetrosProducto, anchuraMetrosProducto, pesoKgProducto, cantidadElementosProducto, descripcionProducto);
+        } else if (CATEGORIA_DROGUERIA == categoriaProducto){
+            miProducto = new Drogueria(nombreProducto, marcaProducto, categoriaProducto, precioEurosProducto, alturaMetrosProducto, anchuraMetrosProducto, pesoKgProducto, cantidadElementosProducto, descripcionProducto);
+        } else if (CATEGORIA_COSMETICA == categoriaProducto){
+            miProducto = new Cosmetica(nombreProducto, marcaProducto, categoriaProducto, precioEurosProducto, alturaMetrosProducto, anchuraMetrosProducto, pesoKgProducto, cantidadElementosProducto, descripcionProducto);
         }
 
-        return miEmpleado;
+        return miProducto;
     }
 }

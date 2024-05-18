@@ -2,23 +2,24 @@ package es.etg.programacion.mercadaw.trabajador;
 
 import java.util.LinkedHashMap;
 
+import es.etg.programacion.mercadaw.trabajador.fol.Nomina;
 import es.etg.programacion.mercadaw.util.Documento;
 
 public class Empleado implements Documento  {
 
     public final double STANDARD = 1000;
-    private static int id;
+    private static int id = 1;
     private String nombre;
     private String apellido;
     private String categoria;
     private int idUsuario;
     protected double salario = STANDARD;
     
-    public Empleado(int idUsuario, String nombre, String apellido, String categoria) {
+    public Empleado(String nombre, String apellido, String categoria) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.categoria = categoria;
-        this.idUsuario = idUsuario;
+        this.idUsuario = id;
         id++;
     }
     public double getSTANDARD() {
@@ -63,12 +64,12 @@ public class Empleado implements Documento  {
 
     @Override
     public LinkedHashMap<String, String> getContenido() {
-        LinkedHashMap  empleados = new LinkedHashMap<>();
-        empleados.put(id, getIdUsuario());
-        empleados.put(nombre, getNombre());
-        empleados.put(apellido, getApellido());
-        empleados.put(categoria, getCategoria());
-        empleados.put(salario, getSalario());
+        LinkedHashMap<String,String>  empleados = new LinkedHashMap<>();
+        empleados.put("Id", getIdUsuario()+"");
+        empleados.put("Nombre", getNombre());
+        empleados.put("Apellido", getApellido());
+        empleados.put("Puesto", getCategoria());
+        empleados.put("Salario", getSalario()+"");
         return empleados;
     }
     @Override
@@ -81,6 +82,9 @@ public class Empleado implements Documento  {
     @Override
     public String getPie() {
         return "";
+    }
+    public Nomina calcularNomina(){
+        return new Nomina(nombre, salario);
     }
     
 }

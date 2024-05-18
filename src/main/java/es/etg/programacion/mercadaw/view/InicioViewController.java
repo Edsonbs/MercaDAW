@@ -24,17 +24,21 @@ public class InicioViewController {
 
     @FXML
     void abrirVistaGestionEmpleados(MouseEvent event) throws IOException {
-        App.setRoot("view/gestionEmpleadoView");
+        final String RUTA_VISTA_GESTION_EMPLEADOS = "view/gestionEmpleadoView";
+
+        App.setRoot(RUTA_VISTA_GESTION_EMPLEADOS);
     }
 
     @FXML
     void abrirVistaGestionProductos(MouseEvent event) throws IOException {
-        App.setRoot("view/gestionProductoView");
+        final String RUTA_VISTA_GESTION_PRODUCTOS = "view/gestionProductoView";
+
+        App.setRoot(RUTA_VISTA_GESTION_PRODUCTOS);
     }
 
     @FXML
     void importarDatos(MouseEvent event) {
-        // Esto abrirá una ventana para seleccionar un fichero:
+        // Abrimos una ventana para seleccionar un fichero:
         Window window = ((Node) (event.getSource())).getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showOpenDialog(window);

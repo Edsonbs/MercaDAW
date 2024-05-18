@@ -3,7 +3,9 @@ import static es.etg.programacion.mercadaw.trabajador.fol.Deducciones.*;
 
 import java.util.LinkedHashMap;
 import es.etg.programacion.mercadaw.util.Documento;
-
+/**
+ * Clase rellenada con la informacion del empleado que la calcula y las deducciones
+ */
 public class Nomina implements Documento{
     public final double DIAS_ANYO = 365;
     public final double ANYOS_ANTIG = 2;

@@ -13,11 +13,11 @@ public abstract class Producto implements Documento, IProducto {
     private double pesoEnKg;
     private int numElementos;
     private String descripcion;
-    private Categoria iva;
+    protected double iva;
     private String categoria;
 
-    public Producto(String nombre, String marca, double precioEnEuros, double alturaEnMetros, double anchuraEnMetros,
-            double pesoEnKg, int numElementos, String descripcion, Categoria iva, String categoria) {
+    public Producto(String nombre, String marca,String categoria, double precioEnEuros, double alturaEnMetros, double anchuraEnMetros,
+            double pesoEnKg, int numElementos, String descripcion) {
         this.nombre = nombre;
         this.marca = marca;
         this.precioEnEuros = precioEnEuros;
@@ -26,7 +26,6 @@ public abstract class Producto implements Documento, IProducto {
         this.pesoEnKg = pesoEnKg;
         this.numElementos = numElementos;
         this.descripcion = descripcion;
-        this.iva = iva;
         this.categoria = categoria;
     }
 
@@ -94,11 +93,11 @@ public abstract class Producto implements Documento, IProducto {
         this.descripcion = descripcion;
     }
 
-    public Categoria getIva() {
+    public double getIva() {
         return iva;
     }
 
-    public void setIva(Categoria iva) {
+    public void setIva(double iva) {
         this.iva = iva;
     }
 

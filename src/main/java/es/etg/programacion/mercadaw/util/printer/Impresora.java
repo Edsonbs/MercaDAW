@@ -11,7 +11,7 @@ public class Impresora {
      * @return un mensaje Success si funciona y otro si se interrumpe
      */
     public String imprimir(String nombreImprimido){
-        try{    Process process = Runtime.getRuntime().exec("bash ./docker/exportar.sh "+nombreImprimido);
+        try{    Process process = Runtime.getRuntime().exec("bash exportar.sh "+nombreImprimido);
             int exitVal = process.waitFor();
             if (exitVal == 0) {
                 return"Success!";

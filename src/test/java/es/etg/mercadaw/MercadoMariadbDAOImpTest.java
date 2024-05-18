@@ -26,10 +26,11 @@ public class MercadoMariadbDAOImpTest {
         MercadoMariadbDAOImp prueba = new MercadoMariadbDAOImp();
         empleados.addAll(prueba.listarEmpleados());
 
+        
         int tamanyoEmpleados = empleados.size();
         int tamanyoListaEmpleadosBd = prueba.listarEmpleados().size();
         assertEquals(tamanyoEmpleados, tamanyoListaEmpleadosBd);
-
+        
     
     }
 
@@ -41,7 +42,7 @@ public class MercadoMariadbDAOImpTest {
         productos.addAll(prueba.listarProductos());
 
         int tamanyoEmpleados = productos.size();
-        int tamanyoListaEmpleadosBd = prueba.listarEmpleados().size();
+        int tamanyoListaEmpleadosBd = prueba.listarProductos().size();
         assertEquals(tamanyoEmpleados, tamanyoListaEmpleadosBd);
 
     

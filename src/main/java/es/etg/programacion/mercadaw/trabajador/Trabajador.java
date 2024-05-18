@@ -4,7 +4,7 @@ public enum Trabajador {
     REPONEDOR(1200),
     CAJERO(1300),
     ENCARGADO(1500),
-    STANDARD(1000);
+    OTRO(1000);
 
     private double salario;
 

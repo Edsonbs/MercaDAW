@@ -32,7 +32,7 @@ public class MercadoMariadbDAOImp implements MercadoDAO{
     @Override
     public List<Empleado> listarEmpleados() throws SQLException{
 
-        final String query = "SELECT id, nombre, apellidos, categoria FROM empleados_view";
+        final String query = "SELECT id, nombre, apellidos, categoria FROM EMPLEADOS_VIEW";
 
         List<Empleado> empleados = new ArrayList<Empleado>();
         PreparedStatement ps = conn.prepareStatement(query);
@@ -54,20 +54,20 @@ public class MercadoMariadbDAOImp implements MercadoDAO{
                 Empleado empleado = new Reponedor(nombre, apellidos, categoria);
                 empleados.add(empleado);
 
-            }else if(categoria.equals(Trabajador.STANDARD.name())){
+            }else if(categoria.equals(Trabajador.OTRO.name())){
                 Empleado empleado = new Empleado(nombre, apellidos, categoria);
-
+                empleados.add(empleado);
             }
+           
+
         }
         rs.close();
         ps.close();
-
         return empleados;
     }
-
     @Override
     public List<Producto> listarProductos() throws SQLException{
-        final String query = "SELECT nombre, marca, categoria, precio_en_euros, iva, altura_en_metros, anchura_en_metros, peso_en_kg, numero_elementos, descripcion FROM productos_view";
+        final String query = "SELECT nombre, marca, categoria, precio_en_euros, iva, altura_en_metros, anchura_en_metros, peso_en_kg, numero_elementos, descripcion FROM PRODUCTOS_VIEW";
 
         List<Producto> productos = new ArrayList<Producto>();
         PreparedStatement ps = conn.prepareStatement(query);
@@ -75,9 +75,9 @@ public class MercadoMariadbDAOImp implements MercadoDAO{
 
         while(rs.next()){
             String nombre = rs.getString("nombre");
-            String marca= rs.getString("marca");
+            String marca = rs.getString("marca");
             String categoria = rs.getString("categoria");
-            double precio = rs.getDouble("precio");
+            double precio = rs.getDouble("precio_en_euros");
             double altura = rs.getDouble("altura_en_metros");
             double anchura = rs.getDouble("anchura_en_metros");
             double peso = rs.getDouble("peso_en_kg");
@@ -105,20 +105,20 @@ public class MercadoMariadbDAOImp implements MercadoDAO{
     @Override
     public int anadir(Producto producto) throws SQLException{
         int numRegistrosActualizados = 0;
-        final String sql = "INSERT INTO productos VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        final String sql = "INSERT INTO productos VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement ps = conn.prepareStatement(sql);
         
         ps.setInt(1, producto.getId());
-        ps.setString(1, producto.getNombre());
-        ps.setString(2, producto.getMarca());
-        ps.setString(3, producto.getCategoria());
-        ps.setDouble(3, producto.getPrecioEnEuros());
-        ps.setDouble(3, producto.getIva());
-        ps.setDouble(3, producto.getAlturaEnMetros());
-        ps.setDouble(3, producto.getAnchuraEnMetros());
-        ps.setDouble(3, producto.getPesoEnKg());
-        ps.setInt(3, producto.getNumElementos());
-        ps.setString(3, producto.getDescripcion());
+        ps.setString(2, producto.getNombre());
+        ps.setString(3, producto.getMarca());
+        ps.setString(4, producto.getCategoria());
+        ps.setDouble(5, producto.getPrecioEnEuros());
+        ps.setDouble(6, producto.getIva());
+        ps.setDouble(7, producto.getAlturaEnMetros());
+        ps.setDouble(8, producto.getAnchuraEnMetros());
+        ps.setDouble(9, producto.getPesoEnKg());
+        ps.setInt(10, producto.getNumElementos());
+        ps.setString(11, producto.getDescripcion());
 
         numRegistrosActualizados = ps.executeUpdate();
         ps.close();
@@ -129,13 +129,13 @@ public class MercadoMariadbDAOImp implements MercadoDAO{
     @Override
     public int anadir(Empleado empleado) throws SQLException{
         int numRegistrosActualizados = 0;
-        final String sql = "INSERT INTO productos VALUES (?, ?, ?, ?)";
+        final String sql = "INSERT INTO empleados VALUES (?, ?, ?, ?)";
         PreparedStatement ps = conn.prepareStatement(sql);
         
         ps.setInt(1, empleado.getIdUsuario());
-        ps.setString(1, empleado.getNombre());
-        ps.setString(2, empleado.getApellido());
-        ps.setString(3, empleado.getCategoria());
+        ps.setString(2, empleado.getNombre());
+        ps.setString(3, empleado.getApellido());
+        ps.setString(4, empleado.getCategoria());
 
         numRegistrosActualizados = ps.executeUpdate();
         ps.close();
@@ -160,7 +160,7 @@ public class MercadoMariadbDAOImp implements MercadoDAO{
     @Override
     public int eliminar(Empleado empleado) throws SQLException{
         int numRegistrosActualizados = 0;
-        final String SQL = "DELETE FROM productos where id = ?";
+        final String SQL = "DELETE FROM empleados where id = ?";
 
         PreparedStatement ps = conn.prepareStatement(SQL);
         ps.setInt(1, empleado.getIdUsuario());

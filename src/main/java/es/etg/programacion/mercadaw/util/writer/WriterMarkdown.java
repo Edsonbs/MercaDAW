@@ -21,6 +21,7 @@ public class WriterMarkdown {
      * @throws IOException
      */
     public void escribirEtiqueta(Documento doc) throws IOException{
+        
         BufferedWriter bw = new BufferedWriter(new FileWriter(fichero));
         bw.write("# Etiqueta de "+doc.getTitulo());
         bw.newLine();

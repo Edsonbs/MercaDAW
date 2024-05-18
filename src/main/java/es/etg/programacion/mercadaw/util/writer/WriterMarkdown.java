@@ -23,14 +23,15 @@ public class WriterMarkdown {
     public void escribirEtiqueta(Documento doc) throws IOException{
         
         BufferedWriter bw = new BufferedWriter(new FileWriter(fichero));
-        bw.write("# Etiqueta de "+doc.getTitulo());
+        bw.write("Etiqueta de "+doc.getTitulo());
         bw.newLine();
         bw.write("---");
         bw.newLine();
         bw.write(doc.toString());
 
 
-        bw.flush();  
+        bw.flush(); 
+        bw.close();  
     }
     /**
      * Genera un documento markdown Exportacion y lo rellena con Documento
@@ -40,7 +41,7 @@ public class WriterMarkdown {
     public void escribir(Documento doc) throws IOException{
         BufferedWriter bw = new BufferedWriter(new FileWriter(fichero));
         LinkedHashMap<String,String> cont = doc.getContenido();
-        bw.write("# "+doc.getTitulo());
+        bw.write(doc.getTitulo());
         bw.newLine();
         bw.write("---");
         bw.newLine();
@@ -50,7 +51,8 @@ public class WriterMarkdown {
         }
         bw.newLine();
         bw.write(doc.getPie());
-        bw.flush();        
+        bw.flush();  
+        bw.close();      
     }
     /**
      * Genera un documento markdown Exportacion y lo rellena con los contenidos de Documentos
@@ -59,7 +61,7 @@ public class WriterMarkdown {
     public void escribir(List<Documento> docs) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(fichero));
         LinkedHashMap<String,String> cont = new LinkedHashMap<>();
-        bw.write("# Lista de "+docs.get(0).getTitulo());
+        bw.write("Lista de "+docs.get(0).getTitulo());
         bw.newLine();
         bw.write("---");
         bw.newLine();
@@ -74,6 +76,7 @@ public class WriterMarkdown {
         bw.newLine();
         bw.write(docs.get(0).getPie());
         bw.flush(); 
+        bw.close(); 
     }
     /**
      * Transfoma una lista de Empleado a Documento

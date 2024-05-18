@@ -65,7 +65,6 @@ public class ExportacionTest{
         String esperado = "Success!";
         String real;
         Impresora a = new Impresora();
-        List<Documento> docs = mk.transformarEmpleados(sd.getEmpleados());
         mk.escribirEtiqueta(p1);
         real = a.imprimir("EtiquetaPrueba");
         assertEquals(esperado, real);
@@ -75,7 +74,6 @@ public class ExportacionTest{
         String esperado = "Success!";
         String real;
         Impresora a = new Impresora();
-        List<Documento> docs = mk.transformarEmpleados(sd.getEmpleados());
         mk.escribir(p1);
         real = a.imprimir("DatosPrueba");
         assertEquals(esperado, real);
@@ -85,7 +83,6 @@ public class ExportacionTest{
         String esperado = "Success!";
         String real;
         Impresora a = new Impresora();
-        List<Documento> docs = mk.transformarEmpleados(sd.getEmpleados());
         mk.escribir(nom);
         real = a.imprimir("NominaPrueba");
         assertEquals(esperado, real);

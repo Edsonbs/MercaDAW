@@ -133,7 +133,8 @@ public abstract class Producto implements Documento, IProducto {
 
     @Override
     public String getPie(){
-        return "";
+        String PIE = "Precio Total: "+String.format("%.2f",calcularPrecioTotal())+" / "+String.format("%.2f",calcularPrecioDolar())+" IVA: "+getIva()*100+"%";
+        return PIE;
     }
     public int getId() {
         return id;

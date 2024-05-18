@@ -4,8 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import es.etg.programacion.mercadaw.App;
-import es.etg.programacion.mercadaw.producto.Producto;
+import es.etg.programacion.mercadaw.controller.SupermercadoController;
 import es.etg.programacion.mercadaw.trabajador.Cajero;
 import es.etg.programacion.mercadaw.trabajador.Empleado;
 import es.etg.programacion.mercadaw.trabajador.Encargado;
@@ -142,7 +141,7 @@ public class GestionEmpleadoViewController implements Initializable{
     void volverVistaAnterior(MouseEvent event) throws IOException {
         final String RUTA_VISTA_INICIO = "view/inicioView";
 
-        App.setRoot(RUTA_VISTA_INICIO);
+        SupermercadoController.setRoot(RUTA_VISTA_INICIO);
     }
 
     private void mostrarAviso(String msg, AlertType tipo){

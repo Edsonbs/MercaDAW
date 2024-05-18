@@ -84,7 +84,7 @@ public class Empleado implements Documento  {
         return "";
     }
     public Nomina calcularNomina(){
-        return new Nomina(nombre, salario);
+        return new Nomina(nombre+", "+apellido,salario);
     }
     
 }

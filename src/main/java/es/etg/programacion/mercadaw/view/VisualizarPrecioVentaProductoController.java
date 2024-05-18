@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import es.etg.programacion.mercadaw.App;
+import es.etg.programacion.mercadaw.controller.SupermercadoController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
@@ -86,6 +86,6 @@ public class VisualizarPrecioVentaProductoController implements Initializable {
     void volverVistaAnterior(MouseEvent event) throws IOException {
         final String RUTA_VISTA_GESTION_PRODUCTO = "view/gestionProductoView";
 
-        App.setRoot(RUTA_VISTA_GESTION_PRODUCTO);
+        SupermercadoController.setRoot(RUTA_VISTA_GESTION_PRODUCTO);
     }
 }

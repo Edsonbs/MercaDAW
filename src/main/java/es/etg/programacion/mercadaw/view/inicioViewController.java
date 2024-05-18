@@ -34,7 +34,7 @@ public class InicioViewController {
 
     @FXML
     void importarDatos(MouseEvent event) {
-        // Esto abrirá una ventana para seleccionar un fichero.
+        // Esto abrirá una ventana para seleccionar un fichero:
         Window window = ((Node) (event.getSource())).getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showOpenDialog(window);

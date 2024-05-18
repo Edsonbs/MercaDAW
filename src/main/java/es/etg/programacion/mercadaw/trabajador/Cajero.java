@@ -5,7 +5,7 @@ public class Cajero extends Empleado{
     private final double SALARIO = 1300;
 
     public Cajero(int idUsuario, String nombre, String apellido, String categoria) {
-        super(idUsuario, nombre, apellido, categoria);
+        super(nombre, apellido, categoria);
         
     }
 

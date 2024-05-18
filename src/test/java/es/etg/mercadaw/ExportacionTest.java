@@ -11,6 +11,7 @@ import es.etg.programacion.mercadaw.producto.Cosmetica;
 import es.etg.programacion.mercadaw.producto.Producto;
 import es.etg.programacion.mercadaw.trabajador.Empleado;
 import es.etg.programacion.mercadaw.util.Documento;
+import es.etg.programacion.mercadaw.util.printer.Impresora;
 import es.etg.programacion.mercadaw.util.writer.WriterMarkdown;
 
 public class ExportacionTest {

@@ -112,6 +112,8 @@ public class GestionProductoViewController implements Initializable{
         // Con este método, al iniciar la ventana, se harán las siguientes cosas:
 
         // Añadimos todas las opciones de la lista "categoriasProducto".
+        txfIva.setDisable(true);
+        txfIva.setText("OBTENER IVA SEGÚN TIPO");
         seleccionCategoriaProducto.getItems().addAll(categoriasProducto);
     }
 
@@ -134,8 +136,6 @@ public class GestionProductoViewController implements Initializable{
         String marcaProducto = txfMarca.getText();
         String categoriaProducto = seleccionCategoriaProducto.getSelectionModel().getSelectedItem();
         String precioEurosProducto = txfPrecioEuros.getText();
-        txfIva.setDisable(true);
-        txfIva.setText("OBTENER IVA SEGÚN TIPO");
         String alturaMetrosProducto = txfAlturaMetros.getText();
         String anchuraMetrosProducto = txfAnchuraMetros.getText();
         String pesoKgProducto = txfPesoKg.getText();
@@ -144,6 +144,7 @@ public class GestionProductoViewController implements Initializable{
 
         // Aquí tendremos una lista con los trabajadores creados por el usuario:
         //productos = FXCollections.observableArrayList(new Producto(nombreProducto, marcaProducto, precioEurosProducto, alturaMetrosProducto, anchuraMetrosProducto, pesoKgProducto, cantidadElementosProducto, descripcionProducto, iva?, categoriaProducto));
+
         productos = FXCollections.observableArrayList(new Alimentacion(nombreProducto, marcaProducto, categoriaProducto, Double.valueOf(precioEurosProducto), Double.valueOf(alturaMetrosProducto), Double.valueOf(anchuraMetrosProducto), Double.valueOf(pesoKgProducto), Integer.parseInt(cantidadElementosProducto), descripcionProducto));
 
         // Aquí representaremos en cada columna de la tabla cada dato:

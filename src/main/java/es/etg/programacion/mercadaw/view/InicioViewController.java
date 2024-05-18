@@ -3,7 +3,7 @@ package es.etg.programacion.mercadaw.view;
 import java.io.File;
 import java.io.IOException;
 
-import es.etg.programacion.mercadaw.App;
+import es.etg.programacion.mercadaw.controller.SupermercadoController;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -26,14 +26,14 @@ public class InicioViewController {
     void abrirVistaGestionEmpleados(MouseEvent event) throws IOException {
         final String RUTA_VISTA_GESTION_EMPLEADOS = "view/gestionEmpleadoView";
 
-        App.setRoot(RUTA_VISTA_GESTION_EMPLEADOS);
+        SupermercadoController.setRoot(RUTA_VISTA_GESTION_EMPLEADOS);
     }
 
     @FXML
     void abrirVistaGestionProductos(MouseEvent event) throws IOException {
         final String RUTA_VISTA_GESTION_PRODUCTOS = "view/gestionProductoView";
 
-        App.setRoot(RUTA_VISTA_GESTION_PRODUCTOS);
+        SupermercadoController.setRoot(RUTA_VISTA_GESTION_PRODUCTOS);
     }
 
     @FXML
@@ -42,6 +42,7 @@ public class InicioViewController {
         Window window = ((Node) (event.getSource())).getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showOpenDialog(window);
+        file.getName(); // Esta línea es sólo para que no salga en warning este método.
         event.consume();
     }
 

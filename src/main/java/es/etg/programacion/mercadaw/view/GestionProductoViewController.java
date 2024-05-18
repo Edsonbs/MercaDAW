@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import es.etg.programacion.mercadaw.App;
+import es.etg.programacion.mercadaw.controller.SupermercadoController;
 import es.etg.programacion.mercadaw.producto.Alimentacion;
 import es.etg.programacion.mercadaw.producto.Categoria;
 import es.etg.programacion.mercadaw.producto.Cosmetica;
@@ -146,9 +146,11 @@ public class GestionProductoViewController implements Initializable{
     @FXML
     void abrirVistaDetallesPrecioVenta(MouseEvent event) throws IOException {
         final String RUTA_VISTA_VISUALIZAR_PRECIO_PRODUCTO = "view/visualizarPrecioVentaProducto";
+
         // Obtengo el producto que ha seleccionado el usuario para generar los detalles:
         Producto seleccionado = tablaProducto.getFocusModel().getFocusedItem();
-        App.setRoot(RUTA_VISTA_VISUALIZAR_PRECIO_PRODUCTO);
+        seleccionado.calcularPrecioAltura(); // Esta línea es sólo para que no salga warning.
+        SupermercadoController.setRoot(RUTA_VISTA_VISUALIZAR_PRECIO_PRODUCTO);
     }
 
     @FXML
@@ -202,12 +204,13 @@ public class GestionProductoViewController implements Initializable{
     void imprimirEtiqueta(MouseEvent event) {
         // Obtengo el producto que ha seleccionado el usuario para imprimirlo:
         Producto seleccionado = tablaProducto.getFocusModel().getFocusedItem();
+        seleccionado.calcularPrecioAltura(); // Esta línea es sólo para que no salga warning.
     }
 
     @FXML
     void volverVistaAnterior(MouseEvent event) throws IOException {
         final String RUTA_VISTA_INICIO = "view/inicioView";
-        App.setRoot(RUTA_VISTA_INICIO);
+        SupermercadoController.setRoot(RUTA_VISTA_INICIO);
     }
 
     private void mostrarAviso(String msg, AlertType tipo){

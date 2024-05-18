@@ -4,7 +4,8 @@ import java.util.LinkedHashMap;
 import es.etg.programacion.mercadaw.util.Documento;
 
 public abstract class Producto implements Documento, IProducto {
-
+    private static int numInstancias = 1;
+    private int id;
     private String nombre;
     private String marca;
     private double precioEnEuros;
@@ -18,6 +19,7 @@ public abstract class Producto implements Documento, IProducto {
 
     public Producto(String nombre, String marca,String categoria, double precioEnEuros, double alturaEnMetros, double anchuraEnMetros,
             double pesoEnKg, int numElementos, String descripcion) {
+        this.id = numInstancias;
         this.nombre = nombre;
         this.marca = marca;
         this.precioEnEuros = precioEnEuros;
@@ -27,6 +29,15 @@ public abstract class Producto implements Documento, IProducto {
         this.numElementos = numElementos;
         this.descripcion = descripcion;
         this.categoria = categoria;
+        numInstancias++;
+    }
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {

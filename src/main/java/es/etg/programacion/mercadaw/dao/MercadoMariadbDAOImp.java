@@ -15,7 +15,7 @@ import es.etg.programacion.mercadaw.trabajador.Empleado;
 
 public class MercadoMariadbDAOImp implements MercadoDAO{
     private Connection conn;
-    private final String URL = "jdbc:mariadb://localhost:3306/MercaDAW";
+    private final String URL = "jdbc:mariadb://localhost:3306/%s?user=%s&password=%s";
     private final String DATABASE_NAME = "MercaDAW";
     private final String DATABASE_USER = "SYSTEM";
     private final String DATABASE_PASS = "secret";
@@ -60,7 +60,6 @@ public class MercadoMariadbDAOImp implements MercadoDAO{
             String marca= rs.getString("marca");
             String categoria = rs.getString("categoria");
             double precio = rs.getDouble("precio");
-            double iva = rs.getDouble("iva");
             double altura = rs.getDouble("altura_en_metros");
             double anchura = rs.getDouble("anchura_en_metros");
             double peso = rs.getDouble("peso_en_kg");
@@ -80,27 +79,72 @@ public class MercadoMariadbDAOImp implements MercadoDAO{
     }
 
     @Override
-    public int anadir(Producto producto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'anadir'");
+    public int anadir(Producto producto) throws SQLException{
+        int numRegistrosActualizados = 0;
+        final String sql = "INSERT INTO productos VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        
+        ps.setInt(1, producto.getId());
+        ps.setString(1, producto.getNombre());
+        ps.setString(2, producto.getMarca());
+        ps.setString(3, producto.getCategoria());
+        ps.setDouble(3, producto.getPrecioEnEuros());
+        ps.setDouble(3, producto.getIva());
+        ps.setDouble(3, producto.getAlturaEnMetros());
+        ps.setDouble(3, producto.getAnchuraEnMetros());
+        ps.setDouble(3, producto.getPesoEnKg());
+        ps.setInt(3, producto.getNumElementos());
+        ps.setString(3, producto.getDescripcion());
+
+        numRegistrosActualizados = ps.executeUpdate();
+        ps.close();
+
+        return numRegistrosActualizados;
     }
 
     @Override
-    public int anadir(Empleado empleado) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'anadir'");
+    public int anadir(Empleado empleado) throws SQLException{
+        int numRegistrosActualizados = 0;
+        final String sql = "INSERT INTO productos VALUES (?, ?, ?, ?)";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        
+        ps.setInt(1, empleado.getIdUsuario());
+        ps.setString(1, empleado.getNombre());
+        ps.setString(2, empleado.getApellido());
+        ps.setString(3, empleado.getCategoria());
+
+        numRegistrosActualizados = ps.executeUpdate();
+        ps.close();
+
+        return numRegistrosActualizados;
     }
 
     @Override
-    public int eliminar(Producto producto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'eliminar'");
+    public int eliminar(Producto producto) throws SQLException{
+        int numRegistrosActualizados = 0;
+        final String SQL = "DELETE FROM productos where id = ?";
+
+        PreparedStatement ps = conn.prepareStatement(SQL);
+        ps.setInt(1, producto.getId());
+
+        numRegistrosActualizados = ps.executeUpdate();
+
+        ps.close();
+        return numRegistrosActualizados;
     }
 
     @Override
-    public int eliminar(Empleado empleado) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'eliminar'");
+    public int eliminar(Empleado empleado) throws SQLException{
+        int numRegistrosActualizados = 0;
+        final String SQL = "DELETE FROM productos where id = ?";
+
+        PreparedStatement ps = conn.prepareStatement(SQL);
+        ps.setInt(1, empleado.getIdUsuario());
+
+        numRegistrosActualizados = ps.executeUpdate();
+
+        ps.close();
+        return numRegistrosActualizados;
     }
     
 }

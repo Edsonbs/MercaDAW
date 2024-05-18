@@ -5,7 +5,7 @@ package es.etg.programacion.mercadaw.trabajador;
     private final double SALARIO = 1500;
 
     public Encargado(int idUsuario, String nombre, String apellido, String categoria) {
-        super(idUsuario, nombre, apellido, categoria);
+        super(nombre, apellido, categoria);
         
     }
 

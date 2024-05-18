@@ -22,7 +22,6 @@ public class WriterMarkdown {
      */
     public void escribirEtiqueta(Documento doc) throws IOException{
         BufferedWriter bw = new BufferedWriter(new FileWriter(fichero));
-        LinkedHashMap<String,String> cont = doc.getContenido();
         bw.write("# Etiqueta de "+doc.getTitulo());
         bw.newLine();
         bw.write("---");

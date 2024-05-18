@@ -13,15 +13,11 @@ public class Supermercado implements Gestionable {
     private String nombre;
     private String fechaCompra;
     
-    public Supermercado(List<Cliente> clientes, List<Producto> productos, List<Empleado> empleados, String provincia,
-            String municipio, String nombre, String fechaCompra) {
-        this.clientes = clientes;
-        this.productos = productos;
-        this.empleados = empleados;
+    public Supermercado(String provincia,
+        String municipio, String nombre) {
         this.provincia = provincia;
         this.municipio = municipio;
         this.nombre = nombre;
-        this.fechaCompra = fechaCompra;
     }
     public List<Cliente> getClientes() {
         return clientes;

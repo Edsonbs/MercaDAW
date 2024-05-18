@@ -16,6 +16,7 @@ public abstract class Producto implements Documento, IProducto {
     private String descripcion;
     protected double iva;
     private String categoria;
+    private double precioVenta;
 
     public Producto(String nombre, String marca,String categoria, double precioEnEuros, double alturaEnMetros, double anchuraEnMetros,
             double pesoEnKg, int numElementos, String descripcion) {
@@ -29,9 +30,106 @@ public abstract class Producto implements Documento, IProducto {
         this.numElementos = numElementos;
         this.descripcion = descripcion;
         this.categoria = categoria;
+        this.precioVenta = calcularPrecioVenta();
         numInstancias++;
     }
-    
+
+    @Override
+    public double calcularPrecioTotal(){
+        return getPrecioVenta() + calcularPrecioAltura()+ calcularPrecioAnchura()+calcularPrecioPeso();
+
+    }
+    @Override
+    public double calcularPrecioDolar() {
+        return calcularPrecioTotal() * DOLAR;
+    }
+    @Override
+    public double calcularPrecioVenta() {
+        double prec = getPrecioEnEuros();
+        prec = prec + (prec * AUMENTO_VENTA);
+        return prec;
+    }
+    public double calcularPrecioNumElementos(){
+        final int MAX_ELEMENTOS = 2;
+        final double SUPLEMENTO = 0.1;
+        double prec = getPrecioVenta();
+        if (numElementos > MAX_ELEMENTOS) {
+            prec = prec * (SUPLEMENTO * numElementos);
+            return prec;
+        }
+        return 0;
+        
+    }
+
+    public double calcularPrecioAltura(){
+        double prec = getPrecioVenta();
+            if (alturaEnMetros < MAX_ALTURA_ANCHURA) {
+                prec = prec * PORCENTAJE_5;
+            }else{
+                prec = prec * PORCENTAJE_10;
+            }
+        return prec;
+    }
+
+    public double calcularPrecioAnchura() {
+        double prec = getPrecioVenta();
+            if (anchuraEnMetros < MAX_ALTURA_ANCHURA) {
+                prec = prec * PORCENTAJE_5;
+            }else{
+                prec = prec * PORCENTAJE_10;
+            }
+        return prec;
+    }
+
+    public double calcularPrecioPeso() {
+        final double PORCENTAJE_15 = 0.15;
+        final double MAX_PESO = 5;
+        final double MIN_PESO = 1;
+        double prec = getPrecioVenta();
+        if (pesoEnKg < MIN_PESO) {
+            prec = prec * PORCENTAJE_5;
+        }else if (pesoEnKg > MIN_PESO && pesoEnKg < MAX_PESO) {
+            prec = prec * PORCENTAJE_10;
+        }else if (pesoEnKg > MAX_PESO) {
+            prec = prec * PORCENTAJE_15;
+        }
+        return prec;
+    }
+    @Override
+    public String toString() {
+        return "Nombre: "+getNombre()+" Descripcion: "+getDescripcion()+" Marca: "+getMarca()+" Categoria: "+getCategoria();
+    }
+    @Override
+    public LinkedHashMap<String, String> getContenido(){
+       LinkedHashMap<String, String> productos = new LinkedHashMap<>();
+       productos.put("Producto", getNombre());
+       productos.put("Marca", getMarca());
+       productos.put("Precio", getPrecioEnEuros()+"€");
+       productos.put("Altura", getAlturaEnMetros()+" m");
+       productos.put("Anchura", getAnchuraEnMetros()+" m");
+       productos.put("Peso", getPesoEnKg()+" kg");
+       productos.put("Elementos", getNumElementos()+"");
+       productos.put("Descripcion", getDescripcion());
+       productos.put("IVA", getIva()+"");
+       productos.put("Categoria", getCategoria());
+       productos.put("Precio de venta", getPrecioVenta()+"");
+       productos.put("Recargo por peso", calcularPrecioPeso()+"");
+       productos.put("Recargo por altura", calcularPrecioAltura()+"");
+       productos.put("Recargo por anchura", calcularPrecioAnchura()+"");
+       productos.put("Recargo por número de piezas ("+getNumElementos()+")", calcularPrecioNumElementos()+"");
+       return productos;
+    }
+
+    @Override
+    public String getTitulo(){
+        final String DATOSPROD = "DATOS DEL PRODUCTO";
+        return DATOSPROD;
+    }
+
+    @Override
+    public String getPie(){
+        return "";
+    }
     public int getId() {
         return id;
     }
@@ -119,35 +217,41 @@ public abstract class Producto implements Documento, IProducto {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-    public double[] calcularPrecioVenta(){
 
-
+    public static double getPorcentaje5() {
+        return PORCENTAJE_5;
     }
 
-    @Override
-    public LinkedHashMap<String, String> getContenido(){
-       LinkedHashMap<String, String> productos = new LinkedHashMap<>();
-       productos.put("Producto", getNombre());
-       productos.put("Marca", getMarca());
-       productos.put("Precio", getPrecioEnEuros()+"€");
-       productos.put("Altura", getAlturaEnMetros()+" m");
-       productos.put("Anchura", getAnchuraEnMetros()+" m");
-       productos.put("Peso", getPesoEnKg()+" kg");
-       productos.put("Elementos", getNumElementos()+"");
-       productos.put("Descripcion", getDescripcion());
-       productos.put("IVA", getIva()+"");
-       productos.put("Categoria", getCategoria());
-       return productos;
+    public static double getPorcentaje10() {
+        return PORCENTAJE_10;
     }
 
-    @Override
-    public String getTitulo(){
-        final String DATOSPROD = "DATOS DEL PRODUCTO";
-        return DATOSPROD;
+    public static double getAumentoVenta() {
+        return AUMENTO_VENTA;
     }
 
-    @Override
-    public String getPie(){
-        return "";
+    public static double getDolar() {
+        return DOLAR;
     }
+
+    public static double getMaxAlturaAnchura() {
+        return MAX_ALTURA_ANCHURA;
+    }
+
+    public static int getNumInstancias() {
+        return numInstancias;
+    }
+
+    public static void setNumInstancias(int numInstancias) {
+        Producto.numInstancias = numInstancias;
+    }
+
+    public double getPrecioVenta() {
+        return precioVenta;
+    }
+
+    public void setPrecioVenta(double precioVenta) {
+        this.precioVenta = precioVenta;
+    }
+    
 }

@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import es.etg.programacion.mercadaw.App;
+import es.etg.programacion.mercadaw.producto.Alimentacion;
 import es.etg.programacion.mercadaw.producto.Producto;
 import es.etg.programacion.mercadaw.trabajador.Empleado;
 import es.etg.programacion.mercadaw.trabajador.Trabajador;
@@ -142,7 +143,8 @@ public class GestionProductoViewController implements Initializable{
         String descripcionProducto = txfDescripcion.getText();
 
         // Aquí tendremos una lista con los trabajadores creados por el usuario:
-        productos = FXCollections.observableArrayList(new Producto(nombreProducto, marcaProducto, precioEurosProducto, alturaMetrosProducto, anchuraMetrosProducto, pesoKgProducto, cantidadElementosProducto, descripcionProducto, iva?, categoriaProducto));
+        //productos = FXCollections.observableArrayList(new Producto(nombreProducto, marcaProducto, precioEurosProducto, alturaMetrosProducto, anchuraMetrosProducto, pesoKgProducto, cantidadElementosProducto, descripcionProducto, iva?, categoriaProducto));
+        productos = FXCollections.observableArrayList(new Alimentacion(nombreProducto, marcaProducto, categoriaProducto, Double.valueOf(precioEurosProducto), Double.valueOf(alturaMetrosProducto), Double.valueOf(anchuraMetrosProducto), Double.valueOf(pesoKgProducto), Integer.parseInt(cantidadElementosProducto), descripcionProducto));
 
         // Aquí representaremos en cada columna de la tabla cada dato:
         colNombre.setCellValueFactory(new PropertyValueFactory<Producto, String>("nombre"));

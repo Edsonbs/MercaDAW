@@ -5,11 +5,17 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import es.etg.programacion.mercadaw.App;
+import es.etg.programacion.mercadaw.trabajador.Cajero;
 import es.etg.programacion.mercadaw.trabajador.Empleado;
+import es.etg.programacion.mercadaw.trabajador.Encargado;
+import es.etg.programacion.mercadaw.trabajador.Reponedor;
+import es.etg.programacion.mercadaw.trabajador.Trabajador;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
@@ -54,38 +60,58 @@ public class GestionEmpleadoViewController implements Initializable{
     @FXML
     private TextField txfNombre;
 
-    // Métodos:
-    private String[] tipoEmpleados = {"Reponedor", "Cajero", "Encargado", "Otro"};
     private ObservableList<Empleado> empleados;
+
+    final String CATEGORIA_REPONEDOR = Trabajador.REPONEDOR.name();
+    final String CATEGORIA_CAJERO = Trabajador.CAJERO.name();
+    final String CATEGORIA_ENCARGADO = Trabajador.ENCARGADO.name();
+    final String CATEGORIA_OTRO = Trabajador.STANDARD.name();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Con este método, al iniciar la ventana, se harán las siguientes cosas:
+        final String ATRIBUTO_ID = "id";
+        final String ATRIBUTO_NOMBRE = "nombre";
+        final String ATRIBUTO_APELLIDO = "apellido";
+        final String ATRIBUTO_CATEGORIA = "categoria";
 
-        // Deshabilito el campo de texto.
-        txfApellido.setDisable(true);
-        // Le doy un valor al campo de texto.
-        txfApellido.setText("Impuesto :)");
-
+        String[] categoriasEmpleado = {CATEGORIA_REPONEDOR, CATEGORIA_CAJERO, CATEGORIA_ENCARGADO, CATEGORIA_OTRO};
+        empleados = FXCollections.observableArrayList();
         // Con la siguiente línea añadimos todas las opciones de la lista "tipoEmpleados".
-        seleccionCategoriaEmpleado.getItems().addAll(tipoEmpleados);
+        seleccionCategoriaEmpleado.getItems().addAll(categoriasEmpleado);
+
+        // Aquí representaremos en cada columna de la tabla cada dato:
+        colID.setCellValueFactory(new PropertyValueFactory<Empleado, String>(ATRIBUTO_ID));
+        colNombre.setCellValueFactory(new PropertyValueFactory<Empleado, String>(ATRIBUTO_NOMBRE));
+        colApellido.setCellValueFactory(new PropertyValueFactory<Empleado, String>(ATRIBUTO_APELLIDO));
+        colCategoria.setCellValueFactory(new PropertyValueFactory<Empleado, String>(ATRIBUTO_CATEGORIA));
     }
 
     @FXML
     void darAltaEmpleado(MouseEvent event) {
+        final String MSG_AVISO_CATEGORIA = "Tienes que especificar una categoría.";
+
         // Con la siguiente línea obtendremos los datos introducidos por el usuario:
         String nombreEmpleado = txfNombre.getText();
         String apellidoEmpleado = txfApellido.getText();
         String categoriaEmpleado = seleccionCategoriaEmpleado.getSelectionModel().getSelectedItem();
 
         // Aquí tendremos una lista con los trabajadores creados por el usuario:
-        empleados = FXCollections.observableArrayList(new Empleado(nombreEmpleado, apellidoEmpleado, categoriaEmpleado));
-
-        // Aquí representaremos en cada columna de la tabla cada dato:
-        colID.setCellValueFactory(new PropertyValueFactory<Empleado, String>("id"));
-        colNombre.setCellValueFactory(new PropertyValueFactory<Empleado, String>("nombre"));
-        colApellido.setCellValueFactory(new PropertyValueFactory<Empleado, String>("apellido"));
-        colCategoria.setCellValueFactory(new PropertyValueFactory<Empleado, String>("categoria"));
+        Empleado miEmpleado = null;
+        if (CATEGORIA_REPONEDOR == categoriaEmpleado){
+            miEmpleado = new Reponedor(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
+            empleados.add(miEmpleado);
+        } else if (CATEGORIA_CAJERO == categoriaEmpleado){
+            miEmpleado = new Cajero(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
+            empleados.add(miEmpleado);
+        } else if (CATEGORIA_ENCARGADO == categoriaEmpleado){
+            miEmpleado = new Encargado(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
+            empleados.add(miEmpleado);
+        } else if (CATEGORIA_OTRO == categoriaEmpleado){
+            miEmpleado = new Empleado(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
+            empleados.add(miEmpleado);
+        } else{
+            mostrarAviso(MSG_AVISO_CATEGORIA, AlertType.ERROR);
+        }
 
         // Con la siguiente línea añadiremos a la tabla los nuevos trabajadores:
         tablaEmpleado.getItems().addAll(empleados);
@@ -103,6 +129,18 @@ public class GestionEmpleadoViewController implements Initializable{
 
     @FXML
     void volverVistaAnterior(MouseEvent event) throws IOException {
-        App.setRoot("view/inicioView");
+        final String RUTA_VISTA_INICIO = "view/inicioView";
+
+        App.setRoot(RUTA_VISTA_INICIO);
+    }
+
+    private void mostrarAviso(String msg, AlertType tipo){
+        final String TITULO = "Importante";
+
+        Alert alerta = new Alert(tipo);
+        alerta.setHeaderText(null);
+        alerta.setTitle(TITULO);
+        alerta.setContentText(msg);
+        alerta.showAndWait();
     }
 }

@@ -119,6 +119,10 @@ public abstract class Producto implements Documento, IProducto {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
+    public double[] calcularPrecioVenta(){
+
+
+    }
 
     @Override
     public LinkedHashMap<String, String> getContenido(){

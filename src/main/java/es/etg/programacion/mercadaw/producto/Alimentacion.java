@@ -6,7 +6,7 @@ public class Alimentacion extends Producto{
             double anchuraEnMetros, double pesoEnKg, int numElementos, String descripcion) {
         super(nombre, marca, categoria, precioEnEuros, alturaEnMetros, anchuraEnMetros, pesoEnKg, numElementos, descripcion);
         this.iva = Categoria.ALIMENTACION.getIva();
-        //TODO Auto-generated constructor stub
+       
     }
 
     

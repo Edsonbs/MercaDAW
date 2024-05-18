@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import es.etg.programacion.mercadaw.App;
+import es.etg.programacion.mercadaw.producto.Producto;
 import es.etg.programacion.mercadaw.trabajador.Cajero;
 import es.etg.programacion.mercadaw.trabajador.Empleado;
 import es.etg.programacion.mercadaw.trabajador.Encargado;
@@ -26,6 +27,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 public class GestionEmpleadoViewController implements Initializable{
+
+    @FXML
+    private Button btnBorrarEmpleado1;
 
     @FXML
     private Button btnDarAltaEmpleado;
@@ -84,6 +88,12 @@ public class GestionEmpleadoViewController implements Initializable{
         colNombre.setCellValueFactory(new PropertyValueFactory<Empleado, String>(ATRIBUTO_NOMBRE));
         colApellido.setCellValueFactory(new PropertyValueFactory<Empleado, String>(ATRIBUTO_APELLIDO));
         colCategoria.setCellValueFactory(new PropertyValueFactory<Empleado, String>(ATRIBUTO_CATEGORIA));
+    }
+
+    @FXML
+    void borrarEmpleado(MouseEvent event) {
+        Empleado seleccionado = tablaEmpleado.getFocusModel().getFocusedItem();
+        empleados.remove(seleccionado);
     }
 
     @FXML

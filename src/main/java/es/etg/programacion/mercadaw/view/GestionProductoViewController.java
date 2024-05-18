@@ -153,7 +153,8 @@ public class GestionProductoViewController implements Initializable{
 
     @FXML
     void borrarProducto(MouseEvent event) {
-
+        Producto seleccionado = tablaProducto.getFocusModel().getFocusedItem();
+        productos.remove(seleccionado);
     }
 
     @FXML

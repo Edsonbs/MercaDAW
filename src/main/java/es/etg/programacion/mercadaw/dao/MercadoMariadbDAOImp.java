@@ -10,8 +10,14 @@ import java.util.List;
 
 import es.etg.programacion.mercadaw.producto.Alimentacion;
 import es.etg.programacion.mercadaw.producto.Categoria;
+import es.etg.programacion.mercadaw.producto.Cosmetica;
+import es.etg.programacion.mercadaw.producto.Drogueria;
 import es.etg.programacion.mercadaw.producto.Producto;
+import es.etg.programacion.mercadaw.trabajador.Cajero;
 import es.etg.programacion.mercadaw.trabajador.Empleado;
+import es.etg.programacion.mercadaw.trabajador.Encargado;
+import es.etg.programacion.mercadaw.trabajador.Reponedor;
+import es.etg.programacion.mercadaw.trabajador.Trabajador;
 
 public class MercadoMariadbDAOImp implements MercadoDAO{
     private Connection conn;
@@ -38,8 +44,20 @@ public class MercadoMariadbDAOImp implements MercadoDAO{
             String apellidos = rs.getString("apellidos");
             String categoria = rs.getString("categoria");
 
-            Empleado a = new Empleado(id, nombre, apellidos, categoria);
-            empleados.add(a);
+            if(categoria.equals(Trabajador.CAJERO.name())){
+                Empleado empleado = new Cajero(nombre, apellidos, categoria);
+                empleados.add(empleado);
+            }else if(categoria.equals(Trabajador.ENCARGADO.name())){
+                Empleado empleado = new Encargado(nombre, apellidos, categoria);
+                empleados.add(empleado);
+            }else if(categoria.equals(Trabajador.REPONEDOR.name())){
+                Empleado empleado = new Reponedor(nombre, apellidos, categoria);
+                empleados.add(empleado);
+
+            }else if(categoria.equals(Trabajador.STANDARD.name())){
+                Empleado empleado = new Empleado(nombre, apellidos, categoria);
+
+            }
         }
         rs.close();
         ps.close();
@@ -68,6 +86,12 @@ public class MercadoMariadbDAOImp implements MercadoDAO{
 
             if(categoria.equals(Categoria.ALIMENTACION.name())){
                 Producto prod =  new Alimentacion(nombre, marca, categoria, precio, altura, anchura, peso, numElementos, descripcion);
+                productos.add(prod);
+            }else if(categoria.equals(Categoria.COSMETICA.name())){
+                Producto prod = new Cosmetica(nombre, marca, categoria, precio, altura, anchura, peso, numElementos, descripcion);
+                productos.add(prod);
+            }else if(categoria.equals(Categoria.DROGUERIA.name())){
+                Producto prod = new Drogueria(nombre, marca, categoria, precio, altura, anchura, peso, numElementos, descripcion);
                 productos.add(prod);
             }
            

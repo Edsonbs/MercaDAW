@@ -68,8 +68,6 @@ public class VisualizarPrecioVentaProductoController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         txfNombre.setDisable(true);
         txfMarca.setDisable(true);
-
-
         txfPrecio.setDisable(true);
         txfRecargoPeso.setDisable(true);
         txfRecargoAltura.setDisable(true);
@@ -77,17 +75,17 @@ public class VisualizarPrecioVentaProductoController implements Initializable {
         txfRecargoNumPiezas.setDisable(true);
         txfPrecioTotal.setDisable(true);
         txfIva.setDisable(true);
-
         txfAlturaMetros.setDisable(true);
         txfAnchuraMetros.setDisable(true);
         txfPesoKg.setDisable(true);
         txfNumElementos.setDisable(true);
-
         txfDescripcion.setDisable(true);
     }
 
     @FXML
     void volverVistaAnterior(MouseEvent event) throws IOException {
-        App.setRoot("view/gestionProductoView");
+        final String RUTA_VISTA_GESTION_PRODUCTO = "view/gestionProductoView";
+
+        App.setRoot(RUTA_VISTA_GESTION_PRODUCTO);
     }
 }

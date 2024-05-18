@@ -122,17 +122,17 @@ public abstract class Producto implements Documento, IProducto {
 
     @Override
     public LinkedHashMap<String, String> getContenido(){
-       LinkedHashMap productos = new LinkedHashMap<>();
-       productos.put(nombre, getNombre());
-       productos.put(marca, getMarca());
-       productos.put(precioEnEuros, getPrecioEnEuros());
-       productos.put(alturaEnMetros, getAlturaEnMetros());
-       productos.put(anchuraEnMetros, getAnchuraEnMetros());
-       productos.put(pesoEnKg, getPesoEnKg());
-       productos.put(numElementos, getNumElementos());
-       productos.put(descripcion, getDescripcion());
-       productos.put(iva, getIva());
-       productos.put(categoria, getCategoria());
+       LinkedHashMap<String, String> productos = new LinkedHashMap<>();
+       productos.put("Producto", getNombre());
+       productos.put("Marca", getMarca());
+       productos.put("Precio", getPrecioEnEuros()+"€");
+       productos.put("Altura", getAlturaEnMetros()+" m");
+       productos.put("Anchura", getAnchuraEnMetros()+" m");
+       productos.put("Peso", getPesoEnKg()+" kg");
+       productos.put("Elementos", getNumElementos()+"");
+       productos.put("Descripcion", getDescripcion());
+       productos.put("IVA", getIva()+"");
+       productos.put("Categoria", getCategoria());
        return productos;
     }
 

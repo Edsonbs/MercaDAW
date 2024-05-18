@@ -5,13 +5,14 @@ import java.util.LinkedHashMap;
 import es.etg.programacion.mercadaw.util.Documento;
 
 public class Empleado implements Documento  {
+
     public final double STANDARD = 1000;
     private static int id;
     private String nombre;
     private String apellido;
     private String categoria;
     private int idUsuario;
-    private double salario = STANDARD;
+    protected double salario = STANDARD;
     
     public Empleado(int idUsuario, String nombre, String apellido, String categoria) {
         this.nombre = nombre;
@@ -62,18 +63,24 @@ public class Empleado implements Documento  {
 
     @Override
     public LinkedHashMap<String, String> getContenido() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getContenido'");
+        LinkedHashMap  empleados = new LinkedHashMap<>();
+        empleados.put(id, getIdUsuario());
+        empleados.put(nombre, getNombre());
+        empleados.put(apellido, getApellido());
+        empleados.put(categoria, getCategoria());
+        empleados.put(salario, getSalario());
+        return empleados;
     }
     @Override
     public String getTitulo() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getTitulo'");
+
+        final String DATOSEMP = "DATOS DEL EMPLEADO";
+        return DATOSEMP;
+        
     }
     @Override
     public String getPie() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPie'");
+        return "";
     }
     
 }

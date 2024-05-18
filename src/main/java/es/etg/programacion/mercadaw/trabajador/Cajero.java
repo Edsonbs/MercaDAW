@@ -1,5 +1,16 @@
 package es.etg.programacion.mercadaw.trabajador;
 
-public class Cajero {
+public class Cajero extends Empleado{
+
+    private final double SALARIO = 1300;
+
+    public Cajero(int idUsuario, String nombre, String apellido, String categoria) {
+        super(idUsuario, nombre, apellido, categoria);
+        
+    }
+
+    public double getSALARIO() {
+        return SALARIO;
+    }
     
 }

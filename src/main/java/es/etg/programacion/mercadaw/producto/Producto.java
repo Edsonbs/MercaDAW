@@ -1,7 +1,9 @@
 package es.etg.programacion.mercadaw.producto;
+import java.util.LinkedHashMap;
+
 import es.etg.programacion.mercadaw.util.Documento;
 
-public abstract class Producto implements Documento {
+public abstract class Producto implements Documento, IProducto {
 
     private String nombre;
     private String marca;
@@ -106,5 +108,32 @@ public abstract class Producto implements Documento {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+
+    @Override
+    public LinkedHashMap<String, String> getContenido(){
+       LinkedHashMap productos = new LinkedHashMap<>();
+       productos.put(nombre, getNombre());
+       productos.put(marca, getMarca());
+       productos.put(precioEnEuros, getPrecioEnEuros());
+       productos.put(alturaEnMetros, getAlturaEnMetros());
+       productos.put(anchuraEnMetros, getAnchuraEnMetros());
+       productos.put(pesoEnKg, getPesoEnKg());
+       productos.put(numElementos, getNumElementos());
+       productos.put(descripcion, getDescripcion());
+       productos.put(iva, getIva());
+       productos.put(categoria, getCategoria());
+       return productos;
+    }
+
+    @Override
+    public String getTitulo(){
+        final String DATOSPROD = "DATOS DEL PRODUCTO";
+        return DATOSPROD;
+    }
+
+    @Override
+    public String getPie(){
+        return "";
     }
 }

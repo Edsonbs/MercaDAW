@@ -23,7 +23,7 @@ public class MercadoMariadbDAOImp implements MercadoDAO{
     private Connection conn;
     private final String URL = "jdbc:mariadb://localhost:3306/%s?user=%s&password=%s";
     private final String DATABASE_NAME = "MercaDAW";
-    private final String DATABASE_USER = "SYSTEM";
+    private final String DATABASE_USER = "root";
     private final String DATABASE_PASS = "secret";
     public MercadoMariadbDAOImp() throws Exception{
         conn = DriverManager.getConnection(String.format(URL, DATABASE_NAME, DATABASE_USER, DATABASE_PASS));

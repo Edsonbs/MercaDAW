@@ -1,7 +1,5 @@
 package es.etg.programacion.mercadaw;
 
-import java.io.IOException;
-
 import javafx.application.Application;
 
 import es.etg.programacion.mercadaw.controller.SupermercadoController;

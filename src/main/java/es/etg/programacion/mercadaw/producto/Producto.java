@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 import es.etg.programacion.mercadaw.util.Documento;
 
 public abstract class Producto implements Documento, IProducto {
-    private static int numInstancias = 1;
+    private static int numInstancias = 61;
     private int id;
     private String nombre;
     private String marca;

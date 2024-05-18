@@ -62,8 +62,9 @@ public class GestionEmpleadoViewController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         // Con este método, al iniciar la ventana, se harán las siguientes cosas:
 
-        // Con estas dos líneas, primero deshabilito el campo de texto, y luego le doy un valor.
+        // Deshabilito el campo de texto.
         txfApellido.setDisable(true);
+        // Le doy un valor al campo de texto.
         txfApellido.setText("Impuesto :)");
 
         // Con la siguiente línea añadimos todas las opciones de la lista "tipoEmpleados".

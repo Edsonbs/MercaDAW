@@ -110,7 +110,7 @@ public class GestionProductoViewController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         // Con este método, al iniciar la ventana, se harán las siguientes cosas:
 
-        // Con la siguiente línea añadimos todas las opciones de la lista "categoriasProducto".
+        // Añadimos todas las opciones de la lista "categoriasProducto".
         seleccionCategoriaProducto.getItems().addAll(categoriasProducto);
     }
 

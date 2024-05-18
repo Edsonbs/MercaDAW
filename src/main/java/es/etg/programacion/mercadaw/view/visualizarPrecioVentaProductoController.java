@@ -63,11 +63,12 @@ public class VisualizarPrecioVentaProductoController implements Initializable {
     private TextField txfRecargoPeso;
 
     // Métodos:
-    
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         txfNombre.setDisable(true);
         txfMarca.setDisable(true);
+
 
         txfPrecio.setDisable(true);
         txfRecargoPeso.setDisable(true);

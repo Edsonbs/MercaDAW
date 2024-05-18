@@ -1,29 +1,22 @@
 package es.etg.programacion.mercadaw.mercado;
 
+import java.util.ArrayList;
 import java.util.List;
 import es.etg.programacion.mercadaw.producto.Producto;
 import es.etg.programacion.mercadaw.trabajador.Empleado;
 
 public class Supermercado implements Gestionable {
-    private List<Cliente> clientes;
-    private List<Producto> productos;
-    private List<Empleado> empleados;
+    private List<Producto> productos = new ArrayList<>();
+    private List<Empleado> empleados = new ArrayList<>();
     private String provincia;
     private String municipio;
     private String nombre;
-    private String fechaCompra;
     
     public Supermercado(String provincia,
         String municipio, String nombre) {
         this.provincia = provincia;
         this.municipio = municipio;
         this.nombre = nombre;
-    }
-    public List<Cliente> getClientes() {
-        return clientes;
-    }
-    public void setClientes(List<Cliente> clientes) {
-        this.clientes = clientes;
     }
     public List<Producto> getProductos() {
         return productos;
@@ -54,14 +47,7 @@ public class Supermercado implements Gestionable {
     }
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-    public String getFechaCompra() {
-        return fechaCompra;
-    }
-    public void setFechaCompra(String fechaCompra) {
-        this.fechaCompra = fechaCompra;
-    }
-    
+    }  
     @Override
     public void darAlta(Empleado empleado) {
        empleados.add(empleado);

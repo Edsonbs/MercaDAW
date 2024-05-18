@@ -66,7 +66,7 @@ public class Nomina implements Documento{
 
     @Override
     public String getPie() {
-        final String PIE = "La Indemnizacion que recibiría el Trabajador sería de "+indemnizacion+"€";
+        final String PIE = "La Indemnizacion que recibiría el Trabajador sería de "+String.format("%.2f",indemnizacion)+"€";
         return PIE;
     }
 
@@ -74,10 +74,10 @@ public class Nomina implements Documento{
     public LinkedHashMap<String, String> getContenido() {
         LinkedHashMap<String, String> map = new LinkedHashMap<>();
         map.put("Nombre del Empleado", nombreEmpleado);
-        map.put("Salario Anual", getSalarioAnualBruto()+"€");
-        map.put("Total devengado",getSalarioBruto()+"€");
-        map.put("Salario Neto", getSalarioNeto()+"€");
-        map.put("Coste Laboral", getCosteLaboral()+"€");
+        map.put("Salario Anual", String.format("%.2f",getSalarioAnualBruto())+"€");
+        map.put("Total devengado",String.format("%.2f",getSalarioBruto())+"€");
+        map.put("Salario Neto", String.format("%.2f",getSalarioNeto())+"€");
+        map.put("Coste Laboral", String.format("%.2f",getCosteLaboral())+"€");
         return map;
     }
 

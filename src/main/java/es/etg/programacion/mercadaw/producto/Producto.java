@@ -4,6 +4,11 @@ import java.util.LinkedHashMap;
 import es.etg.programacion.mercadaw.util.Documento;
 
 public abstract class Producto implements Documento, IProducto {
+    public final static double PORCENTAJE_5 = 0.05;
+    public final static double PORCENTAJE_10 = 0.10;
+    public final static double AUMENTO_VENTA = 0.25;
+    public final static double DOLAR = 1.11;
+    public final static double MAX_ALTURA_ANCHURA = 0.5;
     private static int numInstancias = 61;
     private int id;
     private String nombre;

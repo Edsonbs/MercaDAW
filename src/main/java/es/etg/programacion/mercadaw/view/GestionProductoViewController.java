@@ -10,7 +10,6 @@ import es.etg.programacion.mercadaw.producto.Categoria;
 import es.etg.programacion.mercadaw.producto.Cosmetica;
 import es.etg.programacion.mercadaw.producto.Drogueria;
 import es.etg.programacion.mercadaw.producto.Producto;
-import es.etg.programacion.mercadaw.trabajador.Empleado;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -107,10 +106,6 @@ public class GestionProductoViewController implements Initializable{
     @FXML
     private TextField txfPrecioEuros;
 
-    final String CATEGORIA_ALIMENTACION = Categoria.ALIMENTACION.name();
-    final String CATEGORIA_DROGUERIA = Categoria.DROGUERIA.name();
-    final String CATEGORIA_COSMETICA = Categoria.COSMETICA.name();
-
     private ObservableList <Producto> productos;
 
     @Override
@@ -127,9 +122,10 @@ public class GestionProductoViewController implements Initializable{
         final String ATRIBUTO_DESCIPCION = "descripcion";
         final String MSG_TXF_IVA = "IVA SEGÚN CATEGORÍA.";
 
-        String[] categoriasProducto = {CATEGORIA_ALIMENTACION, CATEGORIA_DROGUERIA, CATEGORIA_COSMETICA}; // Lista categorías utilizables:
+        String[] categoriasProducto = {Categoria.ALIMENTACION.name(), Categoria.DROGUERIA.name(), Categoria.COSMETICA.name()}; // Lista categorías utilizables:
         productos = FXCollections.observableArrayList(); // Lista de productos a representar:
 
+        // Añadimos todas las opciones de la lista "categoriasProducto".
         txfIva.setDisable(true);
         txfIva.setText(MSG_TXF_IVA);
         seleccionCategoriaProducto.getItems().addAll(categoriasProducto);
@@ -150,7 +146,6 @@ public class GestionProductoViewController implements Initializable{
     @FXML
     void abrirVistaDetallesPrecioVenta(MouseEvent event) throws IOException {
         final String RUTA_VISTA_VISUALIZAR_PRECIO_PRODUCTO = "view/visualizarPrecioVentaProducto";
-
         // Obtengo el producto que ha seleccionado el usuario para generar los detalles:
         Producto seleccionado = tablaProducto.getFocusModel().getFocusedItem();
         App.setRoot(RUTA_VISTA_VISUALIZAR_PRECIO_PRODUCTO);
@@ -158,14 +153,7 @@ public class GestionProductoViewController implements Initializable{
 
     @FXML
     void borrarProducto(MouseEvent event) {
-        // Con estas líneas obtendré el objeto que haya seleccionado el usuario con el click en la tabla:
-        Producto seleccionado = tablaProducto.getFocusModel().getFocusedItem();
-        if (seleccionado != null){
-            // Siempre que el usuario haya seleccionado algo, se realizará la función indicada.
-            productos.remove(seleccionado);
-            // Representaremos en la tabla la lista de productos:
-            tablaProducto.setItems(productos);
-        }
+
     }
 
     @FXML
@@ -187,13 +175,13 @@ public class GestionProductoViewController implements Initializable{
 
         // Añadiremos un producto lista de producto:
         Producto miProducto = null;
-        if (CATEGORIA_ALIMENTACION == categoriaProducto){
+        if (Categoria.ALIMENTACION.name() == categoriaProducto){
             miProducto = new Alimentacion(nombreProducto, marcaProducto, categoriaProducto, precioEurosProducto, alturaMetrosProducto, anchuraMetrosProducto, pesoKgProducto, cantidadElementosProducto, descripcionProducto);
             productos.add(miProducto);
-        } else if (CATEGORIA_DROGUERIA == categoriaProducto){
+        } else if (Categoria.DROGUERIA.name() == categoriaProducto){
             miProducto = new Drogueria(nombreProducto, marcaProducto, categoriaProducto, precioEurosProducto, alturaMetrosProducto, anchuraMetrosProducto, pesoKgProducto, cantidadElementosProducto, descripcionProducto);
             productos.add(miProducto);
-        } else if (CATEGORIA_COSMETICA == categoriaProducto){
+        } else if (Categoria.COSMETICA.name() == categoriaProducto){
             miProducto = new Cosmetica(nombreProducto, marcaProducto, categoriaProducto, precioEurosProducto, alturaMetrosProducto, anchuraMetrosProducto, pesoKgProducto, cantidadElementosProducto, descripcionProducto);
             productos.add(miProducto);
         } else{

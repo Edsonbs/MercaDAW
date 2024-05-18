@@ -65,7 +65,7 @@ public class GestionEmpleadoViewController implements Initializable{
     final String CATEGORIA_REPONEDOR = Trabajador.REPONEDOR.name();
     final String CATEGORIA_CAJERO = Trabajador.CAJERO.name();
     final String CATEGORIA_ENCARGADO = Trabajador.ENCARGADO.name();
-    final String CATEGORIA_OTRO = Trabajador.STANDARD.name();
+    final String CATEGORIA_OTRO = Trabajador.OTRO.name();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

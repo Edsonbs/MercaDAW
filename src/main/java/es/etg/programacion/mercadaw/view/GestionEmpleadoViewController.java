@@ -74,13 +74,12 @@ public class GestionEmpleadoViewController implements Initializable{
     @FXML
     void darAltaEmpleado(MouseEvent event) {
         // Con la siguiente línea obtendremos los datos introducidos por el usuario:
-        int idEmpleado = 1234; // Esta línea la tendré que borrar, yo no tendría que pasar el id.
         String nombreEmpleado = txfNombre.getText();
         String apellidoEmpleado = txfApellido.getText();
         String categoriaEmpleado = seleccionCategoriaEmpleado.getSelectionModel().getSelectedItem();
 
         // Aquí tendremos una lista con los trabajadores creados por el usuario:
-        empleados = FXCollections.observableArrayList(new Empleado(idEmpleado, nombreEmpleado, apellidoEmpleado, categoriaEmpleado));
+        empleados = FXCollections.observableArrayList(new Empleado(nombreEmpleado, apellidoEmpleado, categoriaEmpleado));
 
         // Aquí representaremos en cada columna de la tabla cada dato:
         colID.setCellValueFactory(new PropertyValueFactory<Empleado, String>("id"));

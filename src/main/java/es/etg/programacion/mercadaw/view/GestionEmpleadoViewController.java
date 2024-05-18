@@ -94,6 +94,7 @@ public class GestionEmpleadoViewController implements Initializable{
     void borrarEmpleado(MouseEvent event) {
         Empleado seleccionado = tablaEmpleado.getFocusModel().getFocusedItem();
         empleados.remove(seleccionado);
+        tablaEmpleado.setItems(empleados);
     }
 
     @FXML
@@ -124,7 +125,7 @@ public class GestionEmpleadoViewController implements Initializable{
         }
 
         // Con la siguiente línea añadiremos a la tabla los nuevos trabajadores:
-        tablaEmpleado.getItems().addAll(empleados);
+        tablaEmpleado.setItems(empleados);
     }
 
     @FXML

@@ -54,6 +54,7 @@ public abstract class Producto implements Documento, IProducto {
         prec = prec + (prec * AUMENTO_VENTA);
         return prec;
     }
+
     public double calcularPrecioNumElementos(){
         final int MAX_ELEMENTOS = 2;
         final double SUPLEMENTO = 0.1;
@@ -63,7 +64,6 @@ public abstract class Producto implements Documento, IProducto {
             return prec;
         }
         return 0;
-        
     }
 
     public double calcularPrecioAltura(){
@@ -100,6 +100,7 @@ public abstract class Producto implements Documento, IProducto {
         }
         return prec;
     }
+
     @Override
     public String toString() {
         final String PLANTILLA_STRING = "* Nombre: %s\n* Descripción: %s\n* Marca: %s\n* Categoría: %s";
@@ -126,18 +127,17 @@ public abstract class Producto implements Documento, IProducto {
        productos.put("Recargo por número de piezas ("+getNumElementos()+")", calcularPrecioNumElementos()+"");
        return productos;
     }
-
     @Override
     public String getTitulo(){
         final String DATOSPROD = "DATOS DEL PRODUCTO";
         return DATOSPROD;
     }
-
     @Override
     public String getPie(){
         String PIE = "Precio Total: "+String.format("%.2f",calcularPrecioTotal())+" / "+String.format("%.2f",calcularPrecioDolar())+" IVA: "+getIva()*100+"%";
         return PIE;
     }
+
     public int getId() {
         return id;
     }
@@ -257,5 +257,4 @@ public abstract class Producto implements Documento, IProducto {
     public void setPrecioVenta(double precioVenta) {
         this.precioVenta = precioVenta;
     }
-    
 }

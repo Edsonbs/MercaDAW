@@ -9,6 +9,8 @@ import es.etg.programacion.mercadaw.controller.SupermercadoController;
 import es.etg.programacion.mercadaw.producto.Categoria;
 import es.etg.programacion.mercadaw.producto.Producto;
 import es.etg.programacion.mercadaw.producto.ProductoFactory;
+import es.etg.programacion.mercadaw.util.printer.Impresora;
+import es.etg.programacion.mercadaw.util.writer.WriterMarkdown;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -106,6 +108,7 @@ public class GestionProductoViewController implements Initializable, IViewContro
     private TextField txfPrecioEuros;
 
     final String MSG_ALERTA_FALLO_CONEXION = "Algo ha fallado durante la conexión a base de datos.";
+    final String MSG_ALERTA_FALLO_ETIQUETA = "Algo ha fallado durante la creación de la etiqueta.";
 
     private ObservableList <Producto> productos;
     private SupermercadoController supermercadoController;
@@ -181,6 +184,7 @@ public class GestionProductoViewController implements Initializable, IViewContro
     
                 tablaProducto.setItems(productos);
             }catch(Exception excepcion){
+                System.out.println(excepcion);
                 mostrarAviso(MSG_ALERTA_FALLO_CONEXION, AlertType.ERROR);
             }
         }
@@ -224,7 +228,6 @@ public class GestionProductoViewController implements Initializable, IViewContro
 
                         tablaProducto.setItems(productos);
                     }catch(Exception excepcion){
-                        System.out.println(excepcion);
                         mostrarAviso(MSG_ALERTA_FALLO_CONEXION, AlertType.ERROR);
                     }
                 }
@@ -238,9 +241,22 @@ public class GestionProductoViewController implements Initializable, IViewContro
 
     @FXML
     void imprimirEtiqueta(MouseEvent event) {
+        final String MSG_ALERTA_EXITOSO = "Procesado exitosamente.";
         Producto productoSeleccionado = tablaProducto.getFocusModel().getFocusedItem();
 
-        productoSeleccionado.calcularPrecioAltura(); // Esta línea es sólo para que no salga warning.
+        if (productoSeleccionado != null){
+            try{
+                final String ESTRUCTURA_NOMBRE = "Etiqueta_%s_%s";
+                WriterMarkdown creador = new WriterMarkdown();
+                Impresora impresora = new Impresora();
+
+                creador.escribirEtiqueta(productoSeleccionado);
+                impresora.imprimir(ESTRUCTURA_NOMBRE.formatted(productoSeleccionado.getNombre(), productoSeleccionado.getMarca()));
+                mostrarAviso(MSG_ALERTA_EXITOSO, AlertType.CONFIRMATION);
+            }catch(IOException excepcion){
+                mostrarAviso(MSG_ALERTA_FALLO_ETIQUETA, AlertType.ERROR);
+            }
+        }
     }
 
     @FXML

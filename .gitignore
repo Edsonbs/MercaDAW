@@ -25,3 +25,6 @@ replay_pid*
 
 #Para las clases compiladas
 target/
+
+# PDFs
+*.pdf

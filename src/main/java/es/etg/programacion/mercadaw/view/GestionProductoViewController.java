@@ -134,7 +134,6 @@ public class GestionProductoViewController implements Initializable, IViewContro
         txfDescripcion.setWrapText(true);
         seleccionCategoriaProducto.getItems().addAll(categoriasProducto);
 
-        // Asignamos el valor de cada columna a un atributo.
         colNombre     .setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_NOMBRE        ));
         colMarca      .setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_MARCA         ));
         colCategoria  .setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_CATEGORIA     ));
@@ -154,6 +153,12 @@ public class GestionProductoViewController implements Initializable, IViewContro
         }
     }
 
+    /**
+     * Este método abre la vista en la que se mostrará con más detalle la información relacionada con un producto seleccionado.
+     * Este método se ejecuta cuando el usuario pulsa el botón destinado a ello.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void abrirVistaDetallesPrecioVenta(MouseEvent event) throws IOException {
         Producto productoSeleccionado = tablaProducto.getFocusModel().getFocusedItem();
@@ -164,6 +169,11 @@ public class GestionProductoViewController implements Initializable, IViewContro
         }
     }
 
+    /**
+     * Método para dar de baja un producto en las base de datos.
+     * Este método se ejecuta cuando el usuario pulsa el botón destinado a ello.
+     * @param event
+     */
     @FXML
     void borrarProducto(MouseEvent event) {
         Producto productoSeleccionado = tablaProducto.getFocusModel().getFocusedItem();
@@ -180,14 +190,17 @@ public class GestionProductoViewController implements Initializable, IViewContro
         }
     }
 
+    /**
+     * Método para dar de alta un producto en la base de datos.
+     * Este método se ejecuta cuando el usuario pulsa el botón destinado a ello.
+     * @param event
+     */
     @FXML
     void darAltaProducto(MouseEvent event) {
         final int ENTERO_PARA_REPRESENTAR_IVA = 100;
         final String SIMBOLO_PORCENTAJE = " %";
 
-        // Comprobaremos que el usuario haya introducido los datos numéricos con el formato correspondiente.
         try{
-            // Obtendremos los datos introducidos por el usuario:
             String nombreProducto = txfNombre.getText();
             String marcaProducto = txfMarca.getText();
             String categoriaProducto = seleccionCategoriaProducto.getSelectionModel().getSelectedItem();
@@ -200,15 +213,11 @@ public class GestionProductoViewController implements Initializable, IViewContro
 
             Producto unProducto = SupermercadoController.crearProducto(nombreProducto, marcaProducto, categoriaProducto, precioEurosProducto, alturaMetrosProducto, anchuraMetrosProducto, pesoKgProducto, cantidadElementosProducto, descripcionProducto);
 
-            // Comprobaremos que el usuario no haya dejado ningún campo vacío (salvo Descripción).
             if (unProducto != null){
                 txfIva.setText(String.valueOf(unProducto.getIva()*ENTERO_PARA_REPRESENTAR_IVA)+SIMBOLO_PORCENTAJE);
-
-                // Comprobaremos que el producto no se duplique.
                 if (productos.contains(unProducto)){
                     mostrarAviso(MensajeAlerta.MSG_ALERTA_DUPLICADO.getMensaje(), AlertType.ERROR);
                 }else{
-                    // Usamos el controlador para eliminar el producto seleccionado de la base de datos.
                     try{
                         SupermercadoController.darAltaProducto(unProducto);
                         productos.setAll(SupermercadoController.getProductos());
@@ -225,6 +234,11 @@ public class GestionProductoViewController implements Initializable, IViewContro
         }
     }
 
+    /**
+     * Método para imprimir la etiqueta de un producto seleccionado por el usuario.
+     * Este método se ejecuta cuando el usuario pulsa el botón destinado a ello.
+     * @param event
+     */
     @FXML
     void imprimirEtiqueta(MouseEvent event) {
         Producto productoSeleccionado = tablaProducto.getFocusModel().getFocusedItem();
@@ -239,11 +253,22 @@ public class GestionProductoViewController implements Initializable, IViewContro
         }
     }
 
+    /**
+     * Este método llama al controlador para representar la vista previa a ésta.
+     * Este método se ejecuta cuando el usuario pulsa el botón destinado a ello.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void volverVistaAnterior(MouseEvent event) throws IOException {
         supermercadoController.cambiarVista(RutaVista.VISTA_INICIO.getRuta());
     }
 
+    /**
+     * Este método se encarga de mostrar una ventana con información contextual.
+     * @param msg -> Es el mensaje que mostrará la ventana.
+     * @param tipo -> Especifica el tipo de ventana que se está mostrando.
+     */
     private void mostrarAviso(String msg, AlertType tipo){
         final String TITULO = "Importante";
 

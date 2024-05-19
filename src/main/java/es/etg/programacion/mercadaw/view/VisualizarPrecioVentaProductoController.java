@@ -133,6 +133,12 @@ public class VisualizarPrecioVentaProductoController implements Initializable, I
         }
     }
 
+    /**
+     * Este método llama al controlador para representar la vista previa a ésta.
+     * Este método se ejecuta cuando el usuario pulsa el botón destinado a ello.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void volverVistaAnterior(MouseEvent event) throws IOException {
         supermercadoController.cambiarVista(RutaVista.VISTA_GESTION_PRODUCTO.getRuta());
@@ -152,6 +158,11 @@ public class VisualizarPrecioVentaProductoController implements Initializable, I
         return formatoRepresentacion.format(numero);
     }
 
+    /**
+     * Este método se encarga de mostrar una ventana con información contextual.
+     * @param msg -> Es el mensaje que mostrará la ventana.
+     * @param tipo -> Especifica el tipo de ventana que se está mostrando.
+     */
     private void mostrarAviso(String msg, AlertType tipo){
         final String TITULO = "Importante";
 

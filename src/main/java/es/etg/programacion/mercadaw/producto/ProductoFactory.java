@@ -1,6 +1,19 @@
 package es.etg.programacion.mercadaw.producto;
 
 public class ProductoFactory {
+    /**
+     * Devuelve un objeto del tipo Producto. Según la categoría se generará un tipo específico u otro.
+     * @param nombreProducto
+     * @param marcaProducto
+     * @param categoriaProducto
+     * @param precioEurosProducto
+     * @param alturaMetrosProducto
+     * @param anchuraMetrosProducto
+     * @param pesoKgProducto
+     * @param cantidadElementosProducto
+     * @param descripcionProducto
+     * @return Producto
+     */
     public static Producto crearProducto(String nombreProducto, String marcaProducto, String categoriaProducto, double precioEurosProducto, double alturaMetrosProducto, double anchuraMetrosProducto, double pesoKgProducto, int cantidadElementosProducto, String descripcionProducto){
         final String CATEGORIA_ALIMENTACION = Categoria.ALIMENTACION.name();
         final String CATEGORIA_DROGUERIA = Categoria.DROGUERIA.name();

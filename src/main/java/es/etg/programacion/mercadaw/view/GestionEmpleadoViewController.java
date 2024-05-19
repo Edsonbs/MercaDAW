@@ -76,24 +76,23 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        final String ATRIBUTO_ID = "idUsuario";
-        final String ATRIBUTO_NOMBRE = "nombre";
-        final String ATRIBUTO_APELLIDO = "apellido";
+        final String ATRIBUTO_ID        = "idUsuario";
+        final String ATRIBUTO_NOMBRE    = "nombre"   ;
+        final String ATRIBUTO_APELLIDO  = "apellido" ;
         final String ATRIBUTO_CATEGORIA = "categoria";
 
         String[] categoriasEmpleado = {CATEGORIA_REPONEDOR, CATEGORIA_CAJERO, CATEGORIA_ENCARGADO, CATEGORIA_OTRO};
         empleados = FXCollections.observableArrayList();
 
-        // Con la siguiente línea añadimos todas las opciones de la lista "tipoEmpleados".
+        // Con la siguiente línea añadimos todas las opciones de la categoría.
         seleccionCategoriaEmpleado.getItems().addAll(categoriasEmpleado);
 
         // Aquí representaremos en cada columna de la tabla cada dato:
-        colID.setCellValueFactory(new PropertyValueFactory<Empleado, String>(ATRIBUTO_ID));
-        colNombre.setCellValueFactory(new PropertyValueFactory<Empleado, String>(ATRIBUTO_NOMBRE));
-        colApellido.setCellValueFactory(new PropertyValueFactory<Empleado, String>(ATRIBUTO_APELLIDO));
+        colID       .setCellValueFactory(new PropertyValueFactory<Empleado, String>(ATRIBUTO_ID       ));
+        colNombre   .setCellValueFactory(new PropertyValueFactory<Empleado, String>(ATRIBUTO_NOMBRE   ));
+        colApellido .setCellValueFactory(new PropertyValueFactory<Empleado, String>(ATRIBUTO_APELLIDO ));
         colCategoria.setCellValueFactory(new PropertyValueFactory<Empleado, String>(ATRIBUTO_CATEGORIA));
 
-        // Leemos los datos de la base de datos:
         try{
             empleados.setAll(SupermercadoController.getEmpleados());
             tablaEmpleado.setItems(empleados);
@@ -102,11 +101,15 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
         }
     }
 
+    /**
+     * Clase que borra un empleado de la base de datos.
+     * Este método se ejecuta cuando el usuario pulsa el botón destinado a ello.
+     * @param event
+     */
     @FXML
     void borrarEmpleado(MouseEvent event) {
         Empleado empleadoSeleccionado = tablaEmpleado.getFocusModel().getFocusedItem();
 
-        // Comprobamos que se haya seleccionado un empleado.
         if (empleadoSeleccionado != null){
             try{
                 SupermercadoController.darBajaEmpleado(empleadoSeleccionado);
@@ -119,17 +122,18 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
         }
     }
 
+    /**
+     * Clase que da de alta un empleado en la base de datos.
+     * Este método se ejecuta cuando el usuario pulsa el botón destinado a ello.
+     * @param event
+     */
     @FXML
     void darAltaEmpleado(MouseEvent event) {
-        // Con la siguiente línea obtendremos los datos introducidos por el usuario:
         String nombreEmpleado = txfNombre.getText();
         String apellidoEmpleado = txfApellido.getText();
         String categoriaEmpleado = seleccionCategoriaEmpleado.getSelectionModel().getSelectedItem();
-
-        // Aquí tendremos una lista con los trabajadores creados por el usuario:
         Empleado unEmpleado = SupermercadoController.crearEmpleado(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
 
-        // Comprobamos que se ha creado un empleado correctamente.
         if (unEmpleado != null){
             // Comprobamos que no sea un empleado duplicado.
             if (empleados.contains(unEmpleado)){
@@ -148,10 +152,15 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
         }
     }
 
+    /**
+     * Este método se encarga de crear un fichero.md, y empleándolo genera un fichero.pdf.
+     * Este método se ejecuta cuando el usuario pulsa el botón destinado a ello.
+     * @param event
+     */
     @FXML
     void generarNomina(MouseEvent event) {
-        // Con estas líneas obtendré el objeto que haya seleccionado el usuario con el click en la tabla:
         Empleado empleadoSeleccionado = tablaEmpleado.getFocusModel().getFocusedItem();
+
         if (empleadoSeleccionado != null){
             try{
                 SupermercadoController.generarNomina(empleadoSeleccionado);
@@ -162,11 +171,22 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
         }
     }
 
+    /**
+     * Este método llama al controlador para representar la vista previa a ésta.
+     * Este método se ejecuta cuando el usuario pulsa el botón destinado a ello.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void volverVistaAnterior(MouseEvent event) throws IOException {
         supermercadoController.cambiarVista(RutaVista.VISTA_INICIO.getRuta());
     }
 
+    /**
+     * Este método se encarga de mostrar una ventana con información contextual.
+     * @param msg -> Es el mensaje que mostrará la ventana.
+     * @param tipo -> Especifica el tipo de ventana que se está mostrando.
+     */
     private void mostrarAviso(String msg, AlertType tipo){
         final String TITULO = "Importante";
 

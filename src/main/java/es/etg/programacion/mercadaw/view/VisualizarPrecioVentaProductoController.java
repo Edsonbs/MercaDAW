@@ -72,40 +72,45 @@ public class VisualizarPrecioVentaProductoController implements Initializable, I
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        final String PLANTILLA_PRECIO_DOLAR = "%s $";
+        final String PLANTILLA_SEPARADOR = "%s / %s";
+
         Producto productoSeleccionado = SupermercadoController.getProductoSeleccionado();
 
-        txfNombre.setDisable(true);
-        txfMarca.setDisable(true);
-        txfPrecio.setDisable(true);
-        txfPrecioVenta.setDisable(true);
-        txfRecargoPeso.setDisable(true);
-        txfRecargoAltura.setDisable(true);
-        txfRecargoAnchura.setDisable(true);
-        txfRecargoNumPiezas.setDisable(true);
-        txfPrecioTotal.setDisable(true);
-        txfIva.setDisable(true);
-        txfAlturaMetros.setDisable(true);
-        txfAnchuraMetros.setDisable(true);
-        txfPesoKg.setDisable(true);
-        txfNumElementos.setDisable(true);
-        txfDescripcion.setDisable(true);
-        txfDescripcion.setWrapText(true);
+        txfNombre          .setDisable (true);
+        txfMarca           .setDisable (true);
+        txfPrecio          .setDisable (true);
+        txfPrecioVenta     .setDisable (true);
+        txfRecargoPeso     .setDisable (true);
+        txfRecargoAltura   .setDisable (true);
+        txfRecargoAnchura  .setDisable (true);
+        txfRecargoNumPiezas.setDisable (true);
+        txfPrecioTotal     .setDisable (true);
+        txfIva             .setDisable (true);
+        txfAlturaMetros    .setDisable (true);
+        txfAnchuraMetros   .setDisable (true);
+        txfPesoKg          .setDisable (true);
+        txfNumElementos    .setDisable (true);
+        txfDescripcion     .setDisable (true);
+        txfDescripcion     .setWrapText(true);
 
-        txfNombre.setText(productoSeleccionado.getNombre());
-        txfMarca.setText(productoSeleccionado.getMarca());
-        txfPrecio.setText(String.valueOf(productoSeleccionado.getPrecioEnEuros()));
-        txfPrecioVenta.setText(String.valueOf(productoSeleccionado.getPrecioVenta()));
-        txfRecargoPeso.setText(String.valueOf(productoSeleccionado.calcularPrecioPeso()));
-        txfRecargoAltura.setText(String.valueOf(productoSeleccionado.calcularPrecioAltura()));
-        txfRecargoAnchura.setText(String.valueOf(productoSeleccionado.calcularPrecioAnchura()));
-        txfRecargoNumPiezas.setText(String.valueOf(productoSeleccionado.calcularPrecioNumElementos()));
-        txfPrecioTotal.setText(String.valueOf(productoSeleccionado.calcularPrecioTotal() + productoSeleccionado.calcularPrecioDolar()));
-        txfIva.setText(String.valueOf(productoSeleccionado.getIva()));
-        txfAlturaMetros.setText(String.valueOf(productoSeleccionado.getAlturaEnMetros()));
-        txfAnchuraMetros.setText(String.valueOf(productoSeleccionado.getAnchuraEnMetros()));
-        txfPesoKg.setText(String.valueOf(productoSeleccionado.getPesoEnKg()));
-        txfNumElementos.setText(String.valueOf(productoSeleccionado.getNumElementos()));
-        txfDescripcion.setText(productoSeleccionado.getDescripcion());
+        txfNombre          .setText(                       productoSeleccionado.getNombre                 ( ));
+        txfMarca           .setText(                       productoSeleccionado.getMarca                  ( ));
+        txfPrecio          .setText(formatearPrecioAString(productoSeleccionado.getPrecioEnEuros          ()));
+        txfPrecioVenta     .setText(formatearPrecioAString(productoSeleccionado.getPrecioVenta            ()));
+        txfRecargoPeso     .setText(formatearPrecioAString(productoSeleccionado.calcularPrecioPeso        ()));
+        txfRecargoAltura   .setText(formatearPrecioAString(productoSeleccionado.calcularPrecioAltura      ()));
+        txfRecargoAnchura  .setText(formatearPrecioAString(productoSeleccionado.calcularPrecioAnchura     ()));
+        txfRecargoNumPiezas.setText(formatearPrecioAString(productoSeleccionado.calcularPrecioNumElementos()));
+        txfIva             .setText(convertirNumeroAString(productoSeleccionado.getIva                    ()));
+        txfAlturaMetros    .setText(convertirNumeroAString(productoSeleccionado.getAlturaEnMetros         ()));
+        txfAnchuraMetros   .setText(convertirNumeroAString(productoSeleccionado.getAnchuraEnMetros        ()));
+        txfPesoKg          .setText(convertirNumeroAString(productoSeleccionado.getPesoEnKg               ()));
+        txfNumElementos    .setText(convertirNumeroAString(productoSeleccionado.getNumElementos           ()));
+        txfDescripcion     .setText(                       productoSeleccionado.getDescripcion            ( ));
+
+        txfPrecioTotal.setText(PLANTILLA_SEPARADOR.formatted(formatearPrecioAString(productoSeleccionado.calcularPrecioTotal()),
+                            PLANTILLA_PRECIO_DOLAR.formatted(convertirNumeroAString(productoSeleccionado.calcularPrecioDolar()))));
     }
 
     @FXML
@@ -113,5 +118,15 @@ public class VisualizarPrecioVentaProductoController implements Initializable, I
         final String RUTA_VISTA_GESTION_PRODUCTO = "view/gestionProductoView";
 
         supermercadoController.cambiarVista(RUTA_VISTA_GESTION_PRODUCTO);
+    }
+
+    private String formatearPrecioAString(double numero){
+        final String PLANTILLA_PRECIO_EURO = "%s €";
+
+        return PLANTILLA_PRECIO_EURO.formatted(convertirNumeroAString(numero));
+    }
+
+    private String convertirNumeroAString(Number numero){
+        return String.valueOf(numero);
     }
 }

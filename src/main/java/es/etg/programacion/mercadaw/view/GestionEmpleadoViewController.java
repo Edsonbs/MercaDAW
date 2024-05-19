@@ -5,11 +5,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import es.etg.programacion.mercadaw.controller.SupermercadoController;
-import es.etg.programacion.mercadaw.trabajador.Cajero;
 import es.etg.programacion.mercadaw.trabajador.Empleado;
 import es.etg.programacion.mercadaw.trabajador.EmpleadoFactory;
-import es.etg.programacion.mercadaw.trabajador.Encargado;
-import es.etg.programacion.mercadaw.trabajador.Reponedor;
 import es.etg.programacion.mercadaw.trabajador.Trabajador;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

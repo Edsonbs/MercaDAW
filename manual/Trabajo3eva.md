@@ -3,7 +3,7 @@
 
 ## ENTORNOS DE DESARROLLO
 ### DIAGRAMA DE CASOS DE USO
-![DIAGRAMA DE CASOS DE USO](DiagramaDeCasosDeUsos.png)
+![DIAGRAMA DE CASOS DE USO](imagenes/DiagramaDeCasosDeUsos.png)
 
 Este diagrama ha sido realizado mediante los siguientes requisitos funcionales y no funcionales:
 

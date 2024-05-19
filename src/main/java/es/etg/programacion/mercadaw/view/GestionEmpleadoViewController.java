@@ -70,8 +70,6 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
     final String CATEGORIA_CAJERO = Trabajador.CAJERO.name();
     final String CATEGORIA_ENCARGADO = Trabajador.ENCARGADO.name();
     final String CATEGORIA_OTRO = Trabajador.OTRO.name();
-    final String MSG_ALERTA_FALLO_CONEXION = "Algo ha fallado durante la conexión a base de datos.";
-    final String MSG_ALERTA_FALLO_NOMINA = "Algo ha fallado durante la creación de la nómina.";
 
     private SupermercadoController supermercadoController = null;
 
@@ -106,7 +104,7 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
             empleados.addAll(empleadosBaseDatos);
             tablaEmpleado.setItems(empleados);
         }catch(Exception excepcion){
-            mostrarAviso(MSG_ALERTA_FALLO_CONEXION, AlertType.ERROR);
+            mostrarAviso(MensajeAlerta.MSG_ALERTA_FALLO_CONEXION.getMensaje(), AlertType.ERROR);
         }
     }
 
@@ -122,16 +120,13 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
     
                 tablaEmpleado.setItems(empleados);
             }catch(Exception excepcion){
-                mostrarAviso(MSG_ALERTA_FALLO_CONEXION, AlertType.ERROR);
+                mostrarAviso(MensajeAlerta.MSG_ALERTA_FALLO_CONEXION.getMensaje(), AlertType.ERROR);
             }
         }
     }
 
     @FXML
     void darAltaEmpleado(MouseEvent event) {
-        final String MSG_ALERTA_CAMPOS = "Todos los campos deben estar rellenados.";
-        final String MSG_ALERTA_DUPLICADO = "Este empleado ya existe.";
-
         // Con la siguiente línea obtendremos los datos introducidos por el usuario:
         String nombreEmpleado = txfNombre.getText();
         String apellidoEmpleado = txfApellido.getText();
@@ -144,7 +139,7 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
         if (unEmpleado != null){
             // Comprobamos que no sea un empleado duplicado.
             if (empleados.contains(unEmpleado)){
-                mostrarAviso(MSG_ALERTA_DUPLICADO, AlertType.ERROR);
+                mostrarAviso(MensajeAlerta.MSG_ALERTA_DUPLICADO.getMensaje(), AlertType.ERROR);
             }else{
                 try{
                     SupermercadoController.anadirEmpleado(unEmpleado);
@@ -152,11 +147,11 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
 
                     tablaEmpleado.setItems(empleados);
                 }catch(Exception excepcion){
-                    mostrarAviso(MSG_ALERTA_FALLO_CONEXION, AlertType.ERROR);
+                    mostrarAviso(MensajeAlerta.MSG_ALERTA_FALLO_CONEXION.getMensaje(), AlertType.ERROR);
                 }
             }
         }else{
-            mostrarAviso(MSG_ALERTA_CAMPOS, AlertType.ERROR);
+            mostrarAviso(MensajeAlerta.MSG_ALERTA_CAMPOS_EMPLEADO.getMensaje(), AlertType.ERROR);
         }
     }
 
@@ -172,8 +167,9 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
 
                 creador.escribir(empleadoSeleccionado.calcularNomina());
                 impresora.imprimir(ESTRUCTURA_NOMBRE.formatted(empleadoSeleccionado.getNombre(), empleadoSeleccionado.getApellido()));
+                mostrarAviso(MensajeAlerta.MSG_ALERTA_EXITOSO.getMensaje(), AlertType.INFORMATION);
             }catch(IOException excepcion){
-                mostrarAviso(MSG_ALERTA_FALLO_NOMINA, AlertType.ERROR);
+                mostrarAviso(MensajeAlerta.MSG_ALERTA_FALLO_NOMINA.getMensaje(), AlertType.ERROR);
             }
         }
     }

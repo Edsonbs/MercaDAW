@@ -107,9 +107,6 @@ public class GestionProductoViewController implements Initializable, IViewContro
     @FXML
     private TextField txfPrecioEuros;
 
-    final String MSG_ALERTA_FALLO_CONEXION = "Algo ha fallado durante la conexión a base de datos.";
-    final String MSG_ALERTA_FALLO_ETIQUETA = "Algo ha fallado durante la creación de la etiqueta.";
-
     private ObservableList <Producto> productos;
     private SupermercadoController supermercadoController;
 
@@ -159,7 +156,7 @@ public class GestionProductoViewController implements Initializable, IViewContro
             productos.addAll(productosBaseDatos);
             tablaProducto.setItems(productos);
         }catch(Exception excepcion){
-            mostrarAviso(MSG_ALERTA_FALLO_CONEXION, AlertType.ERROR);
+            mostrarAviso(MensajeAlerta.MSG_ALERTA_FALLO_CONEXION.getMensaje(), AlertType.ERROR);
         }
     }
 
@@ -185,16 +182,13 @@ public class GestionProductoViewController implements Initializable, IViewContro
                 tablaProducto.setItems(productos);
             }catch(Exception excepcion){
                 System.out.println(excepcion);
-                mostrarAviso(MSG_ALERTA_FALLO_CONEXION, AlertType.ERROR);
+                mostrarAviso(MensajeAlerta.MSG_ALERTA_FALLO_CONEXION.getMensaje(), AlertType.ERROR);
             }
         }
     }
 
     @FXML
     void darAltaProducto(MouseEvent event) {
-        final String MSG_ALERTA_CAMPOS = "Todos los campos deben estar rellenados (exepto descripción).";
-        final String MSG_ALERTA_DUPLICADO = "Este producto ya existe.";
-        final String MSG_ALERTA_TIPO_DATO = "Hay bloques numéricos en los que has introducido no numéricos. Recuerda que los decimales son con '.' y no con ','.";
         final int ENTERO_PARA_REPRESENTAR_IVA = 100;
         final String SIMBOLO_PORCENTAJE = " %";
 
@@ -219,7 +213,7 @@ public class GestionProductoViewController implements Initializable, IViewContro
 
                 // Comprobaremos que el producto no se duplique.
                 if (productos.contains(unProducto)){
-                    mostrarAviso(MSG_ALERTA_DUPLICADO, AlertType.ERROR);
+                    mostrarAviso(MensajeAlerta.MSG_ALERTA_DUPLICADO.getMensaje(), AlertType.ERROR);
                 }else{
                     // Usamos el controlador para eliminar el producto seleccionado de la base de datos.
                     try{
@@ -228,20 +222,19 @@ public class GestionProductoViewController implements Initializable, IViewContro
 
                         tablaProducto.setItems(productos);
                     }catch(Exception excepcion){
-                        mostrarAviso(MSG_ALERTA_FALLO_CONEXION, AlertType.ERROR);
+                        mostrarAviso(MensajeAlerta.MSG_ALERTA_FALLO_CONEXION.getMensaje(), AlertType.ERROR);
                     }
                 }
             }else{
-                mostrarAviso(MSG_ALERTA_CAMPOS, AlertType.ERROR);
+                mostrarAviso(MensajeAlerta.MSG_ALERTA_CAMPOS_PRODUCTO.getMensaje(), AlertType.ERROR);
             }
         }catch(NumberFormatException excepcion){
-            mostrarAviso(MSG_ALERTA_TIPO_DATO, AlertType.ERROR);
+            mostrarAviso(MensajeAlerta.MSG_ALERTA_TIPO_DATO.getMensaje(), AlertType.ERROR);
         }
     }
 
     @FXML
     void imprimirEtiqueta(MouseEvent event) {
-        final String MSG_ALERTA_EXITOSO = "Procesado exitosamente.";
         Producto productoSeleccionado = tablaProducto.getFocusModel().getFocusedItem();
 
         if (productoSeleccionado != null){
@@ -252,9 +245,9 @@ public class GestionProductoViewController implements Initializable, IViewContro
 
                 creador.escribirEtiqueta(productoSeleccionado);
                 impresora.imprimir(ESTRUCTURA_NOMBRE.formatted(productoSeleccionado.getNombre(), productoSeleccionado.getMarca()));
-                mostrarAviso(MSG_ALERTA_EXITOSO, AlertType.CONFIRMATION);
+                mostrarAviso(MensajeAlerta.MSG_ALERTA_EXITOSO.getMensaje(), AlertType.INFORMATION);
             }catch(IOException excepcion){
-                mostrarAviso(MSG_ALERTA_FALLO_ETIQUETA, AlertType.ERROR);
+                mostrarAviso(MensajeAlerta.MSG_ALERTA_FALLO_ETIQUETA.getMensaje(), AlertType.ERROR);
             }
         }
     }

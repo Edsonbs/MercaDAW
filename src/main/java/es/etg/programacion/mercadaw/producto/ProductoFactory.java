@@ -8,7 +8,7 @@ public class ProductoFactory {
 
         // Comprobaremos que no hayan strings vacíos. Los numéricos lanzarán una excepción, por eso no los manejo.
         Producto miProducto = null;
-        if (!(nombreProducto.isBlank() || marcaProducto.isBlank() || categoriaProducto.isBlank())){
+        if (!(nombreProducto.isBlank() || marcaProducto.isBlank() || categoriaProducto == null)){
             if (CATEGORIA_ALIMENTACION == categoriaProducto){
                 miProducto = new Alimentacion(nombreProducto, marcaProducto, categoriaProducto, precioEurosProducto, alturaMetrosProducto, anchuraMetrosProducto, pesoKgProducto, cantidadElementosProducto, descripcionProducto);
             } else if (CATEGORIA_DROGUERIA == categoriaProducto){

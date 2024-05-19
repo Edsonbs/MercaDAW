@@ -9,7 +9,7 @@ public abstract class Producto implements Documento, IProducto {
     public final static double AUMENTO_VENTA = 0.25;
     public final static double DOLAR = 1.11;
     public final static double MAX_ALTURA_ANCHURA = 0.5;
-    private static int numInstancias = 61;
+    private static int numInstancias = 1;
     private int id;
     private String nombre;
     private String marca;
@@ -138,10 +138,6 @@ public abstract class Producto implements Documento, IProducto {
     }
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNombre() {

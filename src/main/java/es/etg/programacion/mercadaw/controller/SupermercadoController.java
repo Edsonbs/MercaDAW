@@ -42,6 +42,26 @@ public class SupermercadoController extends Application {
         baseDatos.eliminar(unEmpleado);
     }
 
+    public static List<Producto> obtenerListaProductos() throws Exception{
+        MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
+
+        List<Producto> productos = baseDatos.listarProductos();
+
+        return productos;
+    }
+
+    public static void anadirProducto(Producto unProducto) throws Exception{
+        MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
+
+        baseDatos.anadir(unProducto);
+    }
+
+    public static void eliminarProducto(Producto unProducto) throws Exception{
+        MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
+
+        baseDatos.eliminar(unProducto);
+    }
+
     public static Producto getProductoSeleccionado() {
         return productoSeleccionado;
     }

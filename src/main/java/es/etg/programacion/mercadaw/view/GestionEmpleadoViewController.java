@@ -119,7 +119,6 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
     
                 tablaEmpleado.setItems(empleados);
             }catch(Exception excepcion){
-                System.out.println(excepcion);
                 mostrarAviso(MSG_ALERTA_FALLO_CONEXION, AlertType.ERROR);
             }
         }
@@ -150,7 +149,6 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
 
                     tablaEmpleado.setItems(empleados);
                 }catch(Exception excepcion){
-                    System.out.println(excepcion);
                     mostrarAviso(MSG_ALERTA_FALLO_CONEXION, AlertType.ERROR);
                 }
             }
@@ -165,7 +163,6 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
         Empleado seleccionado = tablaEmpleado.getFocusModel().getFocusedItem();
         if (seleccionado != null){
             // Siempre que el usuario haya seleccionado algo, se realizará la función indicada.
-            //System.out.println(seleccionado.getNombre());
         }
     }
 

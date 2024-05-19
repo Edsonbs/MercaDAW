@@ -29,19 +29,19 @@ Con todo esto hemos llegado a la solucion correspondiente que se va a usar para 
 
 
 ### DIAGRAMA DE COMPONENTES
-![DIAGRAMA DE COMPONENTES](DiagramaDeComponentes.png)
+![DIAGRAMA DE COMPONENTES](imagenes/DiagramaDeCasosDeUsos.png)
 
 Este diagrama ha sido efectuado mediante el enunciado aportado, los controladores, interfaces y componentes que van a ser requeridos para su implementacion codificada en java.
 
 
 ### DIAGRAMA DE DESPLIEGUE  
-![DIAGRAMA DE DESPLIEGUE](DiagramaDeDespliegue.png)
+![DIAGRAMA DE DESPLIEGUE](imagenes/DiagramaDeDespliegue.png)
 
 En este diagrama muestra como funciona nuestra carga de datos del proyecto, todo en local y estando conectado a un servidor de base de datos que en este caso es MariaDB atraves del puerto: 3306.
 ### DIAGRAMA DE CLASES
-![DIAGRAMA DE CLASES MERCADO Y TRABAJADOR](DiagramaDeClasesMercadoYTrabajador.png)  
-![DIAGRAMA DE CLASES PRODUCTO](DiagramaDeClasesProducto.png)  
-![DIAGRAMA DE CLASES DAO Y UTIL](DiagramaDeClasesDaoYUtil.png)  
+![DIAGRAMA DE CLASES MERCADO Y TRABAJADOR](imagenes/DiagramaDeClasesMercadoYTrabajador.png)  
+![DIAGRAMA DE CLASES PRODUCTO](imagenes/DiagramaDeClasesProducto.png)  
+![DIAGRAMA DE CLASES DAO Y UTIL](imagenes/DiagramaDeClasesDaoYUtil.png)  
 
 Este diagrama es el mas largo, y el que mas nos ha costado, pero hemos llegado a su solucion tras mucho trabajo, se compone de las carpetas mercado, trabajador, producto y DAO donde estaran dentro sus diferentes clases, interfaces y enumeraciones, tambien podemos observar arriba del todo que esta conectada a la base de datos MariaDB.  
 

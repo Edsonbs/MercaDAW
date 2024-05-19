@@ -1,6 +1,6 @@
-DATOS DEL PRODUCTO
+Etiqueta de DATOS DEL PRODUCTO
 ---
-* Nombre: Aceite de Oliva
-* Descripción: Aceite de oliva 1L
-* Marca: Carbonell
-* Categoría: ALIMENTACION
+* Nombre: Insecticida
+* Descripción: Insecticida 400ml
+* Marca: Bloom
+* Categoría: DROGUERIA

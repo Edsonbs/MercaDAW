@@ -137,11 +137,6 @@ package es.etg.programacion.mercadaw{
         class Encargado{
 
         }
-
-        interface IEmpleado{
-            +calcularNomina():Nomina
-            +toString(): String
-        }
     }
     
     package util{
@@ -199,9 +194,6 @@ package es.etg.programacion.mercadaw{
             -DATABASE_PASS = "secret"
             -connection: Connection
             +MercadoMariadbDAOImp()
-        }
-        class MercadoMockDAOImp{
-
         }
     
     MercadoDAO <|.. MercadoMariadbDAOImp
@@ -276,7 +268,6 @@ Empleado <|-- Reponedor
 Empleado <|-- Cajero
 Empleado <|-- Encargado
 Gestionable <|.. Supermercado
-IEmpleado <|.. Empleado
 Documento <|.. Nomina
 
 @enduml

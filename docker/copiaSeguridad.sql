@@ -83,19 +83,6 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
--- Temporary table structure for view `STOCK_VIEW`
---
-
-DROP TABLE IF EXISTS `STOCK_VIEW`;
-/*!50001 DROP VIEW IF EXISTS `STOCK_VIEW`*/;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-/*!50001 CREATE VIEW `STOCK_VIEW` AS SELECT
- 1 AS `PRODUCTOS_ID`,
-  1 AS `CANTIDAD` */;
-SET character_set_client = @saved_cs_client;
-
---
 -- Table structure for table `clientes`
 --
 
@@ -216,7 +203,8 @@ INSERT INTO `empleados` VALUES
 (17,'Adrian','Ramirez','OTRO'),
 (18,'Paula','Torres','OTRO'),
 (19,'Alberto','Flores','OTRO'),
-(20,'Isabel','Navarro','OTRO');
+(20,'Isabel','Navarro','OTRO'),
+(122,'ejempo','ejemplo','ENCARGADO');
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -314,91 +302,6 @@ INSERT INTO `productos` VALUES
 UNLOCK TABLES;
 
 --
--- Table structure for table `stock`
---
-
-DROP TABLE IF EXISTS `stock`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `stock` (
-  `productos_id` int(5) NOT NULL,
-  `cantidad` int(10) DEFAULT NULL,
-  PRIMARY KEY (`productos_id`),
-  CONSTRAINT `stock_productos_fk` FOREIGN KEY (`productos_id`) REFERENCES `productos` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `stock`
---
-
-LOCK TABLES `stock` WRITE;
-/*!40000 ALTER TABLE `stock` DISABLE KEYS */;
-INSERT INTO `stock` VALUES
-(1,1),
-(2,6),
-(3,30),
-(4,41),
-(5,15),
-(6,26),
-(7,47),
-(8,58),
-(9,9),
-(10,10),
-(11,1),
-(12,22),
-(13,13),
-(14,14),
-(15,15),
-(16,16),
-(17,17),
-(18,18),
-(19,39),
-(20,20),
-(21,21),
-(22,22),
-(23,23),
-(24,24),
-(25,25),
-(26,26),
-(27,57),
-(28,28),
-(29,26),
-(30,30),
-(31,31),
-(32,32),
-(33,13),
-(34,34),
-(35,35),
-(36,36),
-(37,35),
-(38,38),
-(39,39),
-(40,40),
-(41,41),
-(42,42),
-(43,43),
-(44,44),
-(45,15),
-(46,46),
-(47,47),
-(48,48),
-(49,42),
-(50,50),
-(51,1),
-(52,2),
-(53,3),
-(54,42),
-(55,35),
-(56,56),
-(57,77),
-(58,18),
-(59,39),
-(60,10);
-/*!40000 ALTER TABLE `stock` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Final view structure for view `CLIENTES_VIEW`
 --
 
@@ -469,24 +372,6 @@ UNLOCK TABLES;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
-
---
--- Final view structure for view `STOCK_VIEW`
---
-
-/*!50001 DROP VIEW IF EXISTS `STOCK_VIEW`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8mb3 */;
-/*!50001 SET character_set_results     = utf8mb3 */;
-/*!50001 SET collation_connection      = utf8mb3_general_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `STOCK_VIEW` AS select `stock`.`productos_id` AS `PRODUCTOS_ID`,`stock`.`cantidad` AS `CANTIDAD` from `stock` */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -497,4 +382,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-19 16:39:01
+-- Dump completed on 2024-05-19 16:54:01

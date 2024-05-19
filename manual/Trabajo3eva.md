@@ -62,7 +62,3 @@ Para la parte de FOL hemos creado 2 clases una donde estara la Nomina con los da
 
 Al hacer los calculos aparecera en la aplicacion el empleado con su correspondiente nomina.
 ## BASE DE DATOS
-=======
-## BASE DE DATOS
-
->>>>>>> 8d68c5ef2daa6b6b5e584c2bc932b1da2b21bc99

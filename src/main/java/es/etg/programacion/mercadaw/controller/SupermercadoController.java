@@ -1,9 +1,12 @@
 package es.etg.programacion.mercadaw.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import es.etg.programacion.mercadaw.App;
+import es.etg.programacion.mercadaw.dao.MercadoMariadbDAOImp;
 import es.etg.programacion.mercadaw.producto.Producto;
+import es.etg.programacion.mercadaw.trabajador.Empleado;
 import es.etg.programacion.mercadaw.view.IViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,12 +14,53 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class SupermercadoController extends Application{
+public class SupermercadoController extends Application {
     private final String VISTA_INICIAL = "view/inicioView";
 
     private Stage stagePrincipal;
     //private static Scene scene;
     private static Producto productoSeleccionado; // Producto para que se pueda mostrar infor detallada.
+
+    // Base de datos:
+    public static List<Empleado> obtenerListaEmpleados() throws Exception{
+        MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
+
+        List<Empleado> empleados = baseDatos.listarEmpleados();
+
+        return empleados;
+    }
+
+    public static void anadirEmpleado(Empleado unEmpleado) throws Exception{
+        MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
+
+        baseDatos.anadir(unEmpleado);
+    }
+
+    public static void eliminarEmpleado(Empleado unEmpleado) throws Exception{
+        MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
+
+        baseDatos.eliminar(unEmpleado);
+    }
+
+    public static List<Producto> obtenerListaProductos() throws Exception{
+        MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
+
+        List<Producto> productos = baseDatos.listarProductos();
+
+        return productos;
+    }
+
+    public static void anadirProducto(Producto unProducto) throws Exception{
+        MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
+
+        baseDatos.anadir(unProducto);
+    }
+
+    public static void eliminarProducto(Producto unProducto) throws Exception{
+        MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
+
+        baseDatos.eliminar(unProducto);
+    }
 
     public static Producto getProductoSeleccionado() {
         return productoSeleccionado;

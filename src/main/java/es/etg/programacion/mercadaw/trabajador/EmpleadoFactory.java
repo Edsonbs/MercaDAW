@@ -10,7 +10,7 @@ public class EmpleadoFactory {
         Empleado miEmpleado = null;
 
         // Comprobaremos que no nos lleguen datos vacíos.
-        if (!(nombreEmpleado.isBlank() || apellidoEmpleado.isBlank() || categoriaEmpleado.isBlank())){
+        if (!(nombreEmpleado.isBlank() || apellidoEmpleado.isBlank() || categoriaEmpleado == null)){
             if (CATEGORIA_REPONEDOR == categoriaEmpleado){
                 miEmpleado = new Reponedor(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
             }else if (CATEGORIA_CAJERO == categoriaEmpleado){

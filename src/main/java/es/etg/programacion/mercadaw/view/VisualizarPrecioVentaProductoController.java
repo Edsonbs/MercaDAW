@@ -2,6 +2,7 @@ package es.etg.programacion.mercadaw.view;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 import es.etg.programacion.mercadaw.controller.SupermercadoController;
@@ -127,6 +128,10 @@ public class VisualizarPrecioVentaProductoController implements Initializable, I
     }
 
     private String convertirNumeroAString(Number numero){
-        return String.valueOf(numero);
+        final String PLANTILLA_FORMATO = "#.##";
+
+        DecimalFormat formatoRepresentacion = new DecimalFormat(PLANTILLA_FORMATO);
+
+        return formatoRepresentacion.format(numero);
     }
 }

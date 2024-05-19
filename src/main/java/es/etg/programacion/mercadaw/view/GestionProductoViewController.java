@@ -2,12 +2,15 @@ package es.etg.programacion.mercadaw.view;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import es.etg.programacion.mercadaw.controller.SupermercadoController;
 import es.etg.programacion.mercadaw.producto.Categoria;
 import es.etg.programacion.mercadaw.producto.Producto;
 import es.etg.programacion.mercadaw.producto.ProductoFactory;
+import es.etg.programacion.mercadaw.util.printer.Impresora;
+import es.etg.programacion.mercadaw.util.writer.WriterMarkdown;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -104,6 +107,9 @@ public class GestionProductoViewController implements Initializable, IViewContro
     @FXML
     private TextField txfPrecioEuros;
 
+    final String MSG_ALERTA_FALLO_CONEXION = "Algo ha fallado durante la conexión a base de datos.";
+    final String MSG_ALERTA_FALLO_ETIQUETA = "Algo ha fallado durante la creación de la etiqueta.";
+
     private ObservableList <Producto> productos;
     private SupermercadoController supermercadoController;
 
@@ -146,6 +152,15 @@ public class GestionProductoViewController implements Initializable, IViewContro
         colPeso       .setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_PESO_KG       ));
         colElementos  .setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_NUM_ELEMENTOS ));
         colDescripcion.setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_DESCIPCION    ));
+
+        try{
+            List<Producto> productosBaseDatos = SupermercadoController.obtenerListaProductos();
+
+            productos.addAll(productosBaseDatos);
+            tablaProducto.setItems(productos);
+        }catch(Exception excepcion){
+            mostrarAviso(MSG_ALERTA_FALLO_CONEXION, AlertType.ERROR);
+        }
     }
 
     @FXML
@@ -163,8 +178,15 @@ public class GestionProductoViewController implements Initializable, IViewContro
         Producto productoSeleccionado = tablaProducto.getFocusModel().getFocusedItem();
 
         if (productoSeleccionado != null){
-            productos.remove(productoSeleccionado);
-            tablaProducto.setItems(productos);
+            try{
+                SupermercadoController.eliminarProducto(productoSeleccionado);
+                productos.remove(productoSeleccionado);
+    
+                tablaProducto.setItems(productos);
+            }catch(Exception excepcion){
+                System.out.println(excepcion);
+                mostrarAviso(MSG_ALERTA_FALLO_CONEXION, AlertType.ERROR);
+            }
         }
     }
 
@@ -176,8 +198,9 @@ public class GestionProductoViewController implements Initializable, IViewContro
         final int ENTERO_PARA_REPRESENTAR_IVA = 100;
         final String SIMBOLO_PORCENTAJE = " %";
 
-        // Obtendremos los datos introducidos por el usuario:
+        // Comprobaremos que el usuario haya introducido los datos numéricos con el formato correspondiente.
         try{
+            // Obtendremos los datos introducidos por el usuario:
             String nombreProducto = txfNombre.getText();
             String marcaProducto = txfMarca.getText();
             String categoriaProducto = seleccionCategoriaProducto.getSelectionModel().getSelectedItem();
@@ -190,19 +213,27 @@ public class GestionProductoViewController implements Initializable, IViewContro
 
             Producto unProducto = ProductoFactory.crearProducto(nombreProducto, marcaProducto, categoriaProducto, precioEurosProducto, alturaMetrosProducto, anchuraMetrosProducto, pesoKgProducto, cantidadElementosProducto, descripcionProducto);
 
+            // Comprobaremos que el usuario no haya dejado ningún campo vacío (salvo Descripción).
             if (unProducto != null){
                 txfIva.setText(String.valueOf(unProducto.getIva()*ENTERO_PARA_REPRESENTAR_IVA)+SIMBOLO_PORCENTAJE);
 
+                // Comprobaremos que el producto no se duplique.
                 if (productos.contains(unProducto)){
                     mostrarAviso(MSG_ALERTA_DUPLICADO, AlertType.ERROR);
                 }else{
-                    productos.add(unProducto);
-                    tablaProducto.setItems(productos);
+                    // Usamos el controlador para eliminar el producto seleccionado de la base de datos.
+                    try{
+                        SupermercadoController.anadirProducto(unProducto);
+                        productos.add(unProducto);
+
+                        tablaProducto.setItems(productos);
+                    }catch(Exception excepcion){
+                        mostrarAviso(MSG_ALERTA_FALLO_CONEXION, AlertType.ERROR);
+                    }
                 }
             }else{
                 mostrarAviso(MSG_ALERTA_CAMPOS, AlertType.ERROR);
             }
-
         }catch(NumberFormatException excepcion){
             mostrarAviso(MSG_ALERTA_TIPO_DATO, AlertType.ERROR);
         }
@@ -210,9 +241,22 @@ public class GestionProductoViewController implements Initializable, IViewContro
 
     @FXML
     void imprimirEtiqueta(MouseEvent event) {
+        final String MSG_ALERTA_EXITOSO = "Procesado exitosamente.";
         Producto productoSeleccionado = tablaProducto.getFocusModel().getFocusedItem();
 
-        productoSeleccionado.calcularPrecioAltura(); // Esta línea es sólo para que no salga warning.
+        if (productoSeleccionado != null){
+            try{
+                final String ESTRUCTURA_NOMBRE = "Etiqueta_%s_%s";
+                WriterMarkdown creador = new WriterMarkdown();
+                Impresora impresora = new Impresora();
+
+                creador.escribirEtiqueta(productoSeleccionado);
+                impresora.imprimir(ESTRUCTURA_NOMBRE.formatted(productoSeleccionado.getNombre(), productoSeleccionado.getMarca()));
+                mostrarAviso(MSG_ALERTA_EXITOSO, AlertType.CONFIRMATION);
+            }catch(IOException excepcion){
+                mostrarAviso(MSG_ALERTA_FALLO_ETIQUETA, AlertType.ERROR);
+            }
+        }
     }
 
     @FXML

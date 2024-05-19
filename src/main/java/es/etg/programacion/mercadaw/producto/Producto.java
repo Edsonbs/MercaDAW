@@ -9,7 +9,7 @@ public abstract class Producto implements Documento, IProducto {
     public final static double AUMENTO_VENTA = 0.25;
     public final static double DOLAR = 1.11;
     public final static double MAX_ALTURA_ANCHURA = 0.5;
-    private static int numInstancias = 61;
+    private static int numInstancias = 1;
     private int id;
     private String nombre;
     private String marca;
@@ -102,7 +102,9 @@ public abstract class Producto implements Documento, IProducto {
     }
     @Override
     public String toString() {
-        return "Nombre: "+getNombre()+" Descripcion: "+getDescripcion()+" Marca: "+getMarca()+" Categoria: "+getCategoria();
+        final String PLANTILLA_STRING = "* Nombre: %s\n* Descripción: %s\n* Marca: %s\n* Categoría: %s";
+
+        return PLANTILLA_STRING.formatted(nombre, descripcion, marca, categoria);
     }
     @Override
     public LinkedHashMap<String, String> getContenido(){
@@ -138,10 +140,6 @@ public abstract class Producto implements Documento, IProducto {
     }
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNombre() {

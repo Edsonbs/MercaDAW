@@ -89,6 +89,7 @@ public class VisualizarPrecioVentaProductoController implements Initializable, I
         txfPesoKg.setDisable(true);
         txfNumElementos.setDisable(true);
         txfDescripcion.setDisable(true);
+        txfDescripcion.setWrapText(true);
 
         txfNombre.setText(productoSeleccionado.getNombre());
         txfMarca.setText(productoSeleccionado.getMarca());

@@ -5,11 +5,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import es.etg.programacion.mercadaw.controller.SupermercadoController;
-import es.etg.programacion.mercadaw.producto.Alimentacion;
 import es.etg.programacion.mercadaw.producto.Categoria;
-import es.etg.programacion.mercadaw.producto.Cosmetica;
-import es.etg.programacion.mercadaw.producto.Drogueria;
 import es.etg.programacion.mercadaw.producto.Producto;
+import es.etg.programacion.mercadaw.producto.ProductoFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -116,43 +114,44 @@ public class GestionProductoViewController implements Initializable, IViewContro
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        final String ATRIBUTO_NOMBRE = "nombre";
-        final String ATRIBUTO_MARCA = "marca";
-        final String ATRIBUTO_CATEGORIA = "categoria";
-        final String ATRIBUTO_PRECIO_EUROS = "precioEnEuros";
-        final String ATRIBUTO_IVA = "iva";
-        final String ATRIBUTO_ALTURA_METROS = "alturaEnMetros";
-        final String ATRIBUTO_ANCHURA_METROS = "anchuraEnMetros";
-        final String ATRIBUTO_PESO_KG = "pesoEnKg";
-        final String ATRIBUTO_NUM_ELEMENTOS = "numElementos";
-        final String ATRIBUTO_DESCIPCION = "descripcion";
-        final String MSG_TXF_IVA = "IVA SEGÚN CATEGORÍA.";
+        final String ATRIBUTO_NOMBRE         = "nombre"              ;
+        final String ATRIBUTO_MARCA          = "marca"               ;
+        final String ATRIBUTO_CATEGORIA      = "categoria"           ;
+        final String ATRIBUTO_PRECIO_EUROS   = "precioEnEuros"       ;
+        final String ATRIBUTO_IVA            = "iva"                 ;
+        final String ATRIBUTO_ALTURA_METROS  = "alturaEnMetros"      ;
+        final String ATRIBUTO_ANCHURA_METROS = "anchuraEnMetros"     ;
+        final String ATRIBUTO_PESO_KG        = "pesoEnKg"            ;
+        final String ATRIBUTO_NUM_ELEMENTOS  = "numElementos"        ;
+        final String ATRIBUTO_DESCIPCION     = "descripcion"         ;
+        final String MSG_TXF_IVA             = "IVA SEGÚN CATEGORÍA.";
 
-        String[] categoriasProducto = {Categoria.ALIMENTACION.name(), Categoria.DROGUERIA.name(), Categoria.COSMETICA.name()}; // Lista categorías utilizables:
-        productos = FXCollections.observableArrayList(); // Lista de productos a representar:
+        String[] categoriasProducto = {Categoria.ALIMENTACION.name(), Categoria.DROGUERIA.name(), Categoria.COSMETICA.name()};
+        productos = FXCollections.observableArrayList();
 
-        // Añadimos todas las opciones de la lista "categoriasProducto".
+        // Ajustes de representación:
         txfIva.setDisable(true);
         txfIva.setText(MSG_TXF_IVA);
+        txfDescripcion.setWrapText(true);
         seleccionCategoriaProducto.getItems().addAll(categoriasProducto);
 
-        // Aquí representaremos en cada columna de la tabla cada dato correspondiente:
-        colNombre.setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_NOMBRE));
-        colMarca.setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_MARCA));
-        colCategoria.setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_CATEGORIA));
-        colPrecio.setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_PRECIO_EUROS));
-        colIva.setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_IVA));
-        colAltura.setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_ALTURA_METROS));
-        colAnchura.setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_ANCHURA_METROS));
-        colPeso.setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_PESO_KG));
-        colElementos.setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_NUM_ELEMENTOS));
-        colDescripcion.setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_DESCIPCION));
+        // Asignamos el valor de cada columna a un atributo.
+        colNombre     .setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_NOMBRE        ));
+        colMarca      .setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_MARCA         ));
+        colCategoria  .setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_CATEGORIA     ));
+        colPrecio     .setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_PRECIO_EUROS  ));
+        colIva        .setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_IVA           ));
+        colAltura     .setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_ALTURA_METROS ));
+        colAnchura    .setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_ANCHURA_METROS));
+        colPeso       .setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_PESO_KG       ));
+        colElementos  .setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_NUM_ELEMENTOS ));
+        colDescripcion.setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_DESCIPCION    ));
     }
 
     @FXML
     void abrirVistaDetallesPrecioVenta(MouseEvent event) throws IOException {
-        // Obtengo el producto que ha seleccionado el usuario para generar los detalles:
         Producto productoSeleccionado = tablaProducto.getFocusModel().getFocusedItem();
+
         if (productoSeleccionado != null){
             SupermercadoController.setProductoSeleccionado(productoSeleccionado);
             supermercadoController.cambiarVista(RutaVista.VISTA_VISUALIZACION_PRECIO_PRODUCTO.getRuta());
@@ -161,56 +160,59 @@ public class GestionProductoViewController implements Initializable, IViewContro
 
     @FXML
     void borrarProducto(MouseEvent event) {
-        Producto seleccionado = tablaProducto.getFocusModel().getFocusedItem();
-        productos.remove(seleccionado);
-        tablaProducto.setItems(productos);
+        Producto productoSeleccionado = tablaProducto.getFocusModel().getFocusedItem();
+
+        if (productoSeleccionado != null){
+            productos.remove(productoSeleccionado);
+            tablaProducto.setItems(productos);
+        }
     }
 
     @FXML
     void darAltaProducto(MouseEvent event) {
-        final String MSG_AVISO_CATEGORIA = "Tienes que especificar una categoría.";
+        final String MSG_ALERTA_CAMPOS = "Todos los campos deben estar rellenados (exepto descripción).";
+        final String MSG_ALERTA_DUPLICADO = "Este producto ya existe.";
+        final String MSG_ALERTA_TIPO_DATO = "Hay bloques numéricos en los que has introducido no numéricos. Recuerda que los decimales son con '.' y no con ','.";
         final int ENTERO_PARA_REPRESENTAR_IVA = 100;
         final String SIMBOLO_PORCENTAJE = " %";
 
         // Obtendremos los datos introducidos por el usuario:
-        String nombreProducto = txfNombre.getText();
-        String marcaProducto = txfMarca.getText();
-        String categoriaProducto = seleccionCategoriaProducto.getSelectionModel().getSelectedItem();
-        Double precioEurosProducto = Double.valueOf(txfPrecioEuros.getText());
-        Double alturaMetrosProducto = Double.valueOf(txfAlturaMetros.getText());
-        Double anchuraMetrosProducto = Double.valueOf(txfAnchuraMetros.getText());
-        Double pesoKgProducto = Double.valueOf(txfPesoKg.getText());
-        int cantidadElementosProducto = Integer.parseInt(txfNumElementos.getText());
-        String descripcionProducto = txfDescripcion.getText();
+        try{
+            String nombreProducto = txfNombre.getText();
+            String marcaProducto = txfMarca.getText();
+            String categoriaProducto = seleccionCategoriaProducto.getSelectionModel().getSelectedItem();
+            Double precioEurosProducto = Double.valueOf(txfPrecioEuros.getText());
+            Double alturaMetrosProducto = Double.valueOf(txfAlturaMetros.getText());
+            Double anchuraMetrosProducto = Double.valueOf(txfAnchuraMetros.getText());
+            Double pesoKgProducto = Double.valueOf(txfPesoKg.getText());
+            int cantidadElementosProducto = Integer.parseInt(txfNumElementos.getText());
+            String descripcionProducto = txfDescripcion.getText();
 
-        // Añadiremos un producto lista de producto:
-        Producto miProducto = null;
-        if (Categoria.ALIMENTACION.name() == categoriaProducto){
-            miProducto = new Alimentacion(nombreProducto, marcaProducto, categoriaProducto, precioEurosProducto, alturaMetrosProducto, anchuraMetrosProducto, pesoKgProducto, cantidadElementosProducto, descripcionProducto);
-            productos.add(miProducto);
-        } else if (Categoria.DROGUERIA.name() == categoriaProducto){
-            miProducto = new Drogueria(nombreProducto, marcaProducto, categoriaProducto, precioEurosProducto, alturaMetrosProducto, anchuraMetrosProducto, pesoKgProducto, cantidadElementosProducto, descripcionProducto);
-            productos.add(miProducto);
-        } else if (Categoria.COSMETICA.name() == categoriaProducto){
-            miProducto = new Cosmetica(nombreProducto, marcaProducto, categoriaProducto, precioEurosProducto, alturaMetrosProducto, anchuraMetrosProducto, pesoKgProducto, cantidadElementosProducto, descripcionProducto);
-            productos.add(miProducto);
-        } else{
-            mostrarAviso(MSG_AVISO_CATEGORIA, AlertType.ERROR);
+            Producto unProducto = ProductoFactory.crearProducto(nombreProducto, marcaProducto, categoriaProducto, precioEurosProducto, alturaMetrosProducto, anchuraMetrosProducto, pesoKgProducto, cantidadElementosProducto, descripcionProducto);
+
+            if (unProducto != null){
+                txfIva.setText(String.valueOf(unProducto.getIva()*ENTERO_PARA_REPRESENTAR_IVA)+SIMBOLO_PORCENTAJE);
+
+                if (productos.contains(unProducto)){
+                    mostrarAviso(MSG_ALERTA_DUPLICADO, AlertType.ERROR);
+                }else{
+                    productos.add(unProducto);
+                    tablaProducto.setItems(productos);
+                }
+            }else{
+                mostrarAviso(MSG_ALERTA_CAMPOS, AlertType.ERROR);
+            }
+
+        }catch(NumberFormatException excepcion){
+            mostrarAviso(MSG_ALERTA_TIPO_DATO, AlertType.ERROR);
         }
-
-        if (miProducto != null){
-            txfIva.setText(String.valueOf(miProducto.getIva()*ENTERO_PARA_REPRESENTAR_IVA)+SIMBOLO_PORCENTAJE);
-        }
-
-        // Representaremos en la tabla la lista de productos:
-        tablaProducto.setItems(productos);
     }
 
     @FXML
     void imprimirEtiqueta(MouseEvent event) {
-        // Obtengo el producto que ha seleccionado el usuario para imprimirlo:
-        Producto seleccionado = tablaProducto.getFocusModel().getFocusedItem();
-        seleccionado.calcularPrecioAltura(); // Esta línea es sólo para que no salga warning.
+        Producto productoSeleccionado = tablaProducto.getFocusModel().getFocusedItem();
+
+        productoSeleccionado.calcularPrecioAltura(); // Esta línea es sólo para que no salga warning.
     }
 
     @FXML

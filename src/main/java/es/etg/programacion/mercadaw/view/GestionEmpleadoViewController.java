@@ -2,6 +2,7 @@ package es.etg.programacion.mercadaw.view;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import es.etg.programacion.mercadaw.controller.SupermercadoController;
@@ -67,6 +68,7 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
     final String CATEGORIA_CAJERO = Trabajador.CAJERO.name();
     final String CATEGORIA_ENCARGADO = Trabajador.ENCARGADO.name();
     final String CATEGORIA_OTRO = Trabajador.OTRO.name();
+    final String MSG_ALERTA_FALLO_CONEXION = "Algo ha fallado durante la conexión a base de datos.";
 
     private SupermercadoController supermercadoController = null;
 
@@ -84,6 +86,7 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
 
         String[] categoriasEmpleado = {CATEGORIA_REPONEDOR, CATEGORIA_CAJERO, CATEGORIA_ENCARGADO, CATEGORIA_OTRO};
         empleados = FXCollections.observableArrayList();
+
         // Con la siguiente línea añadimos todas las opciones de la lista "tipoEmpleados".
         seleccionCategoriaEmpleado.getItems().addAll(categoriasEmpleado);
 
@@ -92,13 +95,34 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
         colNombre.setCellValueFactory(new PropertyValueFactory<Empleado, String>(ATRIBUTO_NOMBRE));
         colApellido.setCellValueFactory(new PropertyValueFactory<Empleado, String>(ATRIBUTO_APELLIDO));
         colCategoria.setCellValueFactory(new PropertyValueFactory<Empleado, String>(ATRIBUTO_CATEGORIA));
+
+        // Leemos los datos de la base de datos:
+        try{
+            List<Empleado> empleadosBaseDatos = SupermercadoController.obtenerListaEmpleados();
+
+            empleados.addAll(empleadosBaseDatos);
+            tablaEmpleado.setItems(empleados);
+        }catch(Exception excepcion){
+            mostrarAviso(MSG_ALERTA_FALLO_CONEXION, AlertType.ERROR);
+        }
     }
 
     @FXML
     void borrarEmpleado(MouseEvent event) {
-        Empleado seleccionado = tablaEmpleado.getFocusModel().getFocusedItem();
-        empleados.remove(seleccionado);
-        tablaEmpleado.setItems(empleados);
+        Empleado empleadoSeleccionado = tablaEmpleado.getFocusModel().getFocusedItem();
+
+        // Comprobamos que se haya seleccionado un empleado.
+        if (empleadoSeleccionado != null){
+            try{
+                SupermercadoController.eliminarEmpleado(empleadoSeleccionado);
+                empleados.remove(empleadoSeleccionado);
+    
+                tablaEmpleado.setItems(empleados);
+            }catch(Exception excepcion){
+                System.out.println(excepcion);
+                mostrarAviso(MSG_ALERTA_FALLO_CONEXION, AlertType.ERROR);
+            }
+        }
     }
 
     @FXML
@@ -114,12 +138,21 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
         // Aquí tendremos una lista con los trabajadores creados por el usuario:
         Empleado unEmpleado = EmpleadoFactory.crearEmpleado(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
 
+        // Comprobamos que se ha creado un empleado correctamente.
         if (unEmpleado != null){
+            // Comprobamos que no sea un empleado duplicado.
             if (empleados.contains(unEmpleado)){
                 mostrarAviso(MSG_ALERTA_DUPLICADO, AlertType.ERROR);
             }else{
-                empleados.add(unEmpleado);
-                tablaEmpleado.setItems(empleados);
+                try{
+                    SupermercadoController.anadirEmpleado(unEmpleado);
+                    empleados.add(unEmpleado);
+
+                    tablaEmpleado.setItems(empleados);
+                }catch(Exception excepcion){
+                    System.out.println(excepcion);
+                    mostrarAviso(MSG_ALERTA_FALLO_CONEXION, AlertType.ERROR);
+                }
             }
         }else{
             mostrarAviso(MSG_ALERTA_CAMPOS, AlertType.ERROR);

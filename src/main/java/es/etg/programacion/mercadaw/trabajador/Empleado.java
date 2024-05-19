@@ -8,7 +8,7 @@ import es.etg.programacion.mercadaw.util.Documento;
 public class Empleado implements Documento  {
 
     public final double STANDARD = 1000;
-    private static int id = 21;
+    private static int id = 1;
     private String nombre;
     private String apellido;
     private String categoria;

@@ -62,6 +62,8 @@ public class Empleado implements Documento  {
         this.salario = salario;
     }
 
+    //Utilizamos el map para almacenar el contenido del empleado y especificamente el LinkedHash para que salga en el orden indicado
+
     @Override
     public LinkedHashMap<String, String> getContenido() {
         LinkedHashMap<String,String>  empleados = new LinkedHashMap<>();

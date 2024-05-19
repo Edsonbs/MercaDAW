@@ -26,7 +26,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
-public class GestionProductoViewController implements Initializable{
+public class GestionProductoViewController implements Initializable, IViewController{
 
     @FXML
     private Button btnBorrarProducto;
@@ -107,6 +107,12 @@ public class GestionProductoViewController implements Initializable{
     private TextField txfPrecioEuros;
 
     private ObservableList <Producto> productos;
+    private SupermercadoController supermercadoController;
+
+    @Override
+    public void setSupermercadoController(SupermercadoController controller) {
+        this.supermercadoController = controller;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -148,9 +154,11 @@ public class GestionProductoViewController implements Initializable{
         final String RUTA_VISTA_VISUALIZAR_PRECIO_PRODUCTO = "view/visualizarPrecioVentaProducto";
 
         // Obtengo el producto que ha seleccionado el usuario para generar los detalles:
-        Producto seleccionado = tablaProducto.getFocusModel().getFocusedItem();
-        seleccionado.calcularPrecioAltura(); // Esta línea es sólo para que no salga warning.
-        SupermercadoController.setRoot(RUTA_VISTA_VISUALIZAR_PRECIO_PRODUCTO);
+        Producto productoSeleccionado = tablaProducto.getFocusModel().getFocusedItem();
+        if (productoSeleccionado != null){
+            SupermercadoController.setProductoSeleccionado(productoSeleccionado);
+            supermercadoController.cambiarVista(RUTA_VISTA_VISUALIZAR_PRECIO_PRODUCTO);
+        }
     }
 
     @FXML
@@ -210,7 +218,7 @@ public class GestionProductoViewController implements Initializable{
     @FXML
     void volverVistaAnterior(MouseEvent event) throws IOException {
         final String RUTA_VISTA_INICIO = "view/inicioView";
-        SupermercadoController.setRoot(RUTA_VISTA_INICIO);
+        supermercadoController.cambiarVista(RUTA_VISTA_INICIO);
     }
 
     private void mostrarAviso(String msg, AlertType tipo){

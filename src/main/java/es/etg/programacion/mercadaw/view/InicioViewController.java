@@ -11,7 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
-public class InicioViewController {
+public class InicioViewController implements IViewController {
 
     @FXML
     private Button btnCalcularNominaTrabajador;
@@ -22,18 +22,25 @@ public class InicioViewController {
     @FXML
     private Button btnGestionarProductos;
 
+    private SupermercadoController supermercadoController = null;
+
+    @Override
+    public void setSupermercadoController(SupermercadoController controller) {
+        this.supermercadoController = controller;
+    }
+
     @FXML
     void abrirVistaGestionEmpleados(MouseEvent event) throws IOException {
         final String RUTA_VISTA_GESTION_EMPLEADOS = "view/gestionEmpleadoView";
 
-        SupermercadoController.setRoot(RUTA_VISTA_GESTION_EMPLEADOS);
+        supermercadoController.cambiarVista(RUTA_VISTA_GESTION_EMPLEADOS);
     }
 
     @FXML
     void abrirVistaGestionProductos(MouseEvent event) throws IOException {
         final String RUTA_VISTA_GESTION_PRODUCTOS = "view/gestionProductoView";
 
-        SupermercadoController.setRoot(RUTA_VISTA_GESTION_PRODUCTOS);
+        supermercadoController.cambiarVista(RUTA_VISTA_GESTION_PRODUCTOS);
     }
 
     @FXML

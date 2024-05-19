@@ -25,7 +25,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
-public class GestionEmpleadoViewController implements Initializable{
+public class GestionEmpleadoViewController implements Initializable, IViewController{
 
     @FXML
     private Button btnBorrarEmpleado1;
@@ -70,9 +70,16 @@ public class GestionEmpleadoViewController implements Initializable{
     final String CATEGORIA_ENCARGADO = Trabajador.ENCARGADO.name();
     final String CATEGORIA_OTRO = Trabajador.OTRO.name();
 
+    private SupermercadoController supermercadoController = null;
+
+    @Override
+    public void setSupermercadoController(SupermercadoController controller) {
+        this.supermercadoController = controller;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        final String ATRIBUTO_ID = "id";
+        final String ATRIBUTO_ID = "idUsuario";
         final String ATRIBUTO_NOMBRE = "nombre";
         final String ATRIBUTO_APELLIDO = "apellido";
         final String ATRIBUTO_CATEGORIA = "categoria";
@@ -141,7 +148,7 @@ public class GestionEmpleadoViewController implements Initializable{
     void volverVistaAnterior(MouseEvent event) throws IOException {
         final String RUTA_VISTA_INICIO = "view/inicioView";
 
-        SupermercadoController.setRoot(RUTA_VISTA_INICIO);
+        supermercadoController.cambiarVista(RUTA_VISTA_INICIO);
     }
 
     private void mostrarAviso(String msg, AlertType tipo){

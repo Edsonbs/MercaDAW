@@ -9,9 +9,6 @@ import es.etg.programacion.mercadaw.controller.SupermercadoController;
  */
 public class App {
     public static void main(String[] args) {
-        // Controlador:
-        SupermercadoController controller = new SupermercadoController();
-
         Application.launch(SupermercadoController.class, args);
     }
 

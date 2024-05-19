@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import es.etg.programacion.mercadaw.controller.SupermercadoController;
 import es.etg.programacion.mercadaw.trabajador.Cajero;
 import es.etg.programacion.mercadaw.trabajador.Empleado;
+import es.etg.programacion.mercadaw.trabajador.EmpleadoFactory;
 import es.etg.programacion.mercadaw.trabajador.Encargado;
 import es.etg.programacion.mercadaw.trabajador.Reponedor;
 import es.etg.programacion.mercadaw.trabajador.Trabajador;
@@ -105,7 +106,8 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
 
     @FXML
     void darAltaEmpleado(MouseEvent event) {
-        final String MSG_AVISO_CATEGORIA = "Tienes que especificar una categoría.";
+        final String MSG_ALERTA_CAMPOS = "Todos los campos deben estar rellenados.";
+        final String MSG_ALERTA_DUPLICADO = "Este empleado ya existe.";
 
         // Con la siguiente línea obtendremos los datos introducidos por el usuario:
         String nombreEmpleado = txfNombre.getText();
@@ -113,25 +115,18 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
         String categoriaEmpleado = seleccionCategoriaEmpleado.getSelectionModel().getSelectedItem();
 
         // Aquí tendremos una lista con los trabajadores creados por el usuario:
-        Empleado miEmpleado = null;
-        if (CATEGORIA_REPONEDOR == categoriaEmpleado){
-            miEmpleado = new Reponedor(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
-            empleados.add(miEmpleado);
-        } else if (CATEGORIA_CAJERO == categoriaEmpleado){
-            miEmpleado = new Cajero(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
-            empleados.add(miEmpleado);
-        } else if (CATEGORIA_ENCARGADO == categoriaEmpleado){
-            miEmpleado = new Encargado(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
-            empleados.add(miEmpleado);
-        } else if (CATEGORIA_OTRO == categoriaEmpleado){
-            miEmpleado = new Empleado(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
-            empleados.add(miEmpleado);
-        } else{
-            mostrarAviso(MSG_AVISO_CATEGORIA, AlertType.ERROR);
-        }
+        Empleado unEmpleado = EmpleadoFactory.crearEmpleado(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
 
-        // Con la siguiente línea añadiremos a la tabla los nuevos trabajadores:
-        tablaEmpleado.setItems(empleados);
+        if (unEmpleado != null){
+            if (empleados.contains(unEmpleado)){
+                mostrarAviso(MSG_ALERTA_DUPLICADO, AlertType.ERROR);
+            }else{
+                empleados.add(unEmpleado);
+                tablaEmpleado.setItems(empleados);
+            }
+        }else{
+            mostrarAviso(MSG_ALERTA_CAMPOS, AlertType.ERROR);
+        }
     }
 
     @FXML
@@ -146,9 +141,7 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
 
     @FXML
     void volverVistaAnterior(MouseEvent event) throws IOException {
-        final String RUTA_VISTA_INICIO = "view/inicioView";
-
-        supermercadoController.cambiarVista(RUTA_VISTA_INICIO);
+        supermercadoController.cambiarVista(RutaVista.VISTA_INICIO.getRuta());
     }
 
     private void mostrarAviso(String msg, AlertType tipo){

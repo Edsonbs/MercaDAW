@@ -9,14 +9,17 @@ public class EmpleadoFactory {
 
         Empleado miEmpleado = null;
 
-        if (CATEGORIA_REPONEDOR == categoriaEmpleado){
-            miEmpleado = new Reponedor(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
-        }else if (CATEGORIA_CAJERO == categoriaEmpleado){
-            miEmpleado = new Cajero(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
-        }else if (CATEGORIA_ENCARGADO == categoriaEmpleado){
-            miEmpleado = new Encargado(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
-        }else if (CATEGORIA_OTRO == categoriaEmpleado){
-            miEmpleado = new Empleado(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
+        // Comprobaremos que no nos lleguen datos vacíos.
+        if (!(nombreEmpleado.isBlank() || apellidoEmpleado.isBlank() || categoriaEmpleado.isBlank())){
+            if (CATEGORIA_REPONEDOR == categoriaEmpleado){
+                miEmpleado = new Reponedor(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
+            }else if (CATEGORIA_CAJERO == categoriaEmpleado){
+                miEmpleado = new Cajero(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
+            }else if (CATEGORIA_ENCARGADO == categoriaEmpleado){
+                miEmpleado = new Encargado(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
+            }else if (CATEGORIA_OTRO == categoriaEmpleado){
+                miEmpleado = new Empleado(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
+            }
         }
 
         return miEmpleado;

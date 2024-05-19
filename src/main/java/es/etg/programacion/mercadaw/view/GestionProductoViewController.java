@@ -2,15 +2,11 @@ package es.etg.programacion.mercadaw.view;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import es.etg.programacion.mercadaw.controller.SupermercadoController;
 import es.etg.programacion.mercadaw.producto.Categoria;
 import es.etg.programacion.mercadaw.producto.Producto;
-import es.etg.programacion.mercadaw.producto.ProductoFactory;
-import es.etg.programacion.mercadaw.util.printer.Impresora;
-import es.etg.programacion.mercadaw.util.writer.WriterMarkdown;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -151,9 +147,7 @@ public class GestionProductoViewController implements Initializable, IViewContro
         colDescripcion.setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_DESCIPCION    ));
 
         try{
-            List<Producto> productosBaseDatos = SupermercadoController.obtenerListaProductos();
-
-            productos.addAll(productosBaseDatos);
+            productos.setAll(SupermercadoController.getProductos());
             tablaProducto.setItems(productos);
         }catch(Exception excepcion){
             mostrarAviso(MensajeAlerta.MSG_ALERTA_FALLO_CONEXION.getMensaje(), AlertType.ERROR);
@@ -176,12 +170,11 @@ public class GestionProductoViewController implements Initializable, IViewContro
 
         if (productoSeleccionado != null){
             try{
-                SupermercadoController.eliminarProducto(productoSeleccionado);
-                productos.remove(productoSeleccionado);
-    
+                SupermercadoController.darBajaProducto(productoSeleccionado);
+                productos.setAll(SupermercadoController.getProductos());
+
                 tablaProducto.setItems(productos);
             }catch(Exception excepcion){
-                System.out.println(excepcion);
                 mostrarAviso(MensajeAlerta.MSG_ALERTA_FALLO_CONEXION.getMensaje(), AlertType.ERROR);
             }
         }
@@ -205,7 +198,7 @@ public class GestionProductoViewController implements Initializable, IViewContro
             int cantidadElementosProducto = Integer.parseInt(txfNumElementos.getText());
             String descripcionProducto = txfDescripcion.getText();
 
-            Producto unProducto = ProductoFactory.crearProducto(nombreProducto, marcaProducto, categoriaProducto, precioEurosProducto, alturaMetrosProducto, anchuraMetrosProducto, pesoKgProducto, cantidadElementosProducto, descripcionProducto);
+            Producto unProducto = SupermercadoController.crearProducto(nombreProducto, marcaProducto, categoriaProducto, precioEurosProducto, alturaMetrosProducto, anchuraMetrosProducto, pesoKgProducto, cantidadElementosProducto, descripcionProducto);
 
             // Comprobaremos que el usuario no haya dejado ningún campo vacío (salvo Descripción).
             if (unProducto != null){
@@ -217,9 +210,8 @@ public class GestionProductoViewController implements Initializable, IViewContro
                 }else{
                     // Usamos el controlador para eliminar el producto seleccionado de la base de datos.
                     try{
-                        SupermercadoController.anadirProducto(unProducto);
-                        productos.add(unProducto);
-
+                        SupermercadoController.darAltaProducto(unProducto);
+                        productos.setAll(SupermercadoController.getProductos());
                         tablaProducto.setItems(productos);
                     }catch(Exception excepcion){
                         mostrarAviso(MensajeAlerta.MSG_ALERTA_FALLO_CONEXION.getMensaje(), AlertType.ERROR);
@@ -239,12 +231,7 @@ public class GestionProductoViewController implements Initializable, IViewContro
 
         if (productoSeleccionado != null){
             try{
-                final String ESTRUCTURA_NOMBRE = "Etiqueta_%s_%s";
-                WriterMarkdown creador = new WriterMarkdown();
-                Impresora impresora = new Impresora();
-
-                creador.escribirEtiqueta(productoSeleccionado);
-                impresora.imprimir(ESTRUCTURA_NOMBRE.formatted(productoSeleccionado.getNombre(), productoSeleccionado.getMarca()));
+                SupermercadoController.imprimirEtiqueta(productoSeleccionado);
                 mostrarAviso(MensajeAlerta.MSG_ALERTA_EXITOSO.getMensaje(), AlertType.INFORMATION);
             }catch(IOException excepcion){
                 mostrarAviso(MensajeAlerta.MSG_ALERTA_FALLO_ETIQUETA.getMensaje(), AlertType.ERROR);

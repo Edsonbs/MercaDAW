@@ -2,15 +2,11 @@ package es.etg.programacion.mercadaw.view;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import es.etg.programacion.mercadaw.controller.SupermercadoController;
 import es.etg.programacion.mercadaw.trabajador.Empleado;
-import es.etg.programacion.mercadaw.trabajador.EmpleadoFactory;
 import es.etg.programacion.mercadaw.trabajador.Trabajador;
-import es.etg.programacion.mercadaw.util.printer.Impresora;
-import es.etg.programacion.mercadaw.util.writer.WriterMarkdown;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -99,9 +95,7 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
 
         // Leemos los datos de la base de datos:
         try{
-            List<Empleado> empleadosBaseDatos = SupermercadoController.obtenerListaEmpleados();
-
-            empleados.addAll(empleadosBaseDatos);
+            empleados.setAll(SupermercadoController.getEmpleados());
             tablaEmpleado.setItems(empleados);
         }catch(Exception excepcion){
             mostrarAviso(MensajeAlerta.MSG_ALERTA_FALLO_CONEXION.getMensaje(), AlertType.ERROR);
@@ -115,9 +109,9 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
         // Comprobamos que se haya seleccionado un empleado.
         if (empleadoSeleccionado != null){
             try{
-                SupermercadoController.eliminarEmpleado(empleadoSeleccionado);
-                empleados.remove(empleadoSeleccionado);
-    
+                SupermercadoController.darBajaEmpleado(empleadoSeleccionado);
+
+                empleados.setAll(SupermercadoController.getEmpleados());
                 tablaEmpleado.setItems(empleados);
             }catch(Exception excepcion){
                 mostrarAviso(MensajeAlerta.MSG_ALERTA_FALLO_CONEXION.getMensaje(), AlertType.ERROR);
@@ -133,7 +127,7 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
         String categoriaEmpleado = seleccionCategoriaEmpleado.getSelectionModel().getSelectedItem();
 
         // Aquí tendremos una lista con los trabajadores creados por el usuario:
-        Empleado unEmpleado = EmpleadoFactory.crearEmpleado(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
+        Empleado unEmpleado = SupermercadoController.crearEmpleado(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
 
         // Comprobamos que se ha creado un empleado correctamente.
         if (unEmpleado != null){
@@ -142,9 +136,8 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
                 mostrarAviso(MensajeAlerta.MSG_ALERTA_DUPLICADO.getMensaje(), AlertType.ERROR);
             }else{
                 try{
-                    SupermercadoController.anadirEmpleado(unEmpleado);
-                    empleados.add(unEmpleado);
-
+                    SupermercadoController.darAltaEmpleado(unEmpleado);
+                    empleados.setAll(SupermercadoController.getEmpleados());
                     tablaEmpleado.setItems(empleados);
                 }catch(Exception excepcion){
                     mostrarAviso(MensajeAlerta.MSG_ALERTA_FALLO_CONEXION.getMensaje(), AlertType.ERROR);
@@ -161,12 +154,7 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
         Empleado empleadoSeleccionado = tablaEmpleado.getFocusModel().getFocusedItem();
         if (empleadoSeleccionado != null){
             try{
-                final String ESTRUCTURA_NOMBRE = "Nómina_%s_%s";
-                WriterMarkdown creador = new WriterMarkdown();
-                Impresora impresora = new Impresora();
-
-                creador.escribir(empleadoSeleccionado.calcularNomina());
-                impresora.imprimir(ESTRUCTURA_NOMBRE.formatted(empleadoSeleccionado.getNombre(), empleadoSeleccionado.getApellido()));
+                SupermercadoController.generarNomina(empleadoSeleccionado);
                 mostrarAviso(MensajeAlerta.MSG_ALERTA_EXITOSO.getMensaje(), AlertType.INFORMATION);
             }catch(IOException excepcion){
                 mostrarAviso(MensajeAlerta.MSG_ALERTA_FALLO_NOMINA.getMensaje(), AlertType.ERROR);

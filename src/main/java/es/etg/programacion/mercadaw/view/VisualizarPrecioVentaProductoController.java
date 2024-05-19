@@ -7,9 +7,6 @@ import java.util.ResourceBundle;
 
 import es.etg.programacion.mercadaw.controller.SupermercadoController;
 import es.etg.programacion.mercadaw.producto.Producto;
-import es.etg.programacion.mercadaw.trabajador.Empleado;
-import es.etg.programacion.mercadaw.util.printer.Impresora;
-import es.etg.programacion.mercadaw.util.writer.WriterMarkdown;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -128,12 +125,7 @@ public class VisualizarPrecioVentaProductoController implements Initializable, I
         Producto productoSeleccionado = SupermercadoController.getProductoSeleccionado();
         if (productoSeleccionado != null){
             try{
-                final String ESTRUCTURA_NOMBRE = "Info_Producto_%s_%s";
-                WriterMarkdown creador = new WriterMarkdown();
-                Impresora impresora = new Impresora();
-
-                creador.escribir(productoSeleccionado);
-                impresora.imprimir(ESTRUCTURA_NOMBRE.formatted(productoSeleccionado.getNombre(), productoSeleccionado.getMarca()));
+                SupermercadoController.imprimirEtiquetaDetallada(productoSeleccionado);
                 mostrarAviso(MensajeAlerta.MSG_ALERTA_EXITOSO.getMensaje(), AlertType.INFORMATION);
             }catch(IOException excepcion){
                 mostrarAviso(MensajeAlerta.MSG_ALERTA_FALLO_ETIQUETA.getMensaje(), AlertType.ERROR);
@@ -143,9 +135,7 @@ public class VisualizarPrecioVentaProductoController implements Initializable, I
 
     @FXML
     void volverVistaAnterior(MouseEvent event) throws IOException {
-        final String RUTA_VISTA_GESTION_PRODUCTO = "view/gestionProductoView";
-
-        supermercadoController.cambiarVista(RUTA_VISTA_GESTION_PRODUCTO);
+        supermercadoController.cambiarVista(RutaVista.VISTA_GESTION_PRODUCTO.getRuta());
     }
 
     private String formatearPrecioAString(double numero){

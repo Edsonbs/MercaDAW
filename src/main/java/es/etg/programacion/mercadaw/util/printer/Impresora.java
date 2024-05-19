@@ -23,6 +23,5 @@ public class Impresora {
         }catch (InterruptedException e){
             return "La exportación se ha interrumpido";
         }
- 
     }
 }

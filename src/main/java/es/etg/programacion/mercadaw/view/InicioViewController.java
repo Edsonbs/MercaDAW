@@ -22,11 +22,23 @@ public class InicioViewController implements IViewController {
         this.supermercadoController = controller;
     }
 
+    /**
+     * Este método abre una vista en la que se gestionarán los empleados.
+     * Este método se ejecuta cuando el usuario pulsa el botón destinado a ello.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void abrirVistaGestionEmpleados(MouseEvent event) throws IOException {
         supermercadoController.cambiarVista(RutaVista.VISTA_GESTION_EMPLEADO.getRuta());
     }
 
+    /**
+     * Este método abre una ventana para gestionar productos.
+     * Este método se ejecuta cuando el usuario pulsa el botón destinado a ello.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void abrirVistaGestionProductos(MouseEvent event) throws IOException {
         supermercadoController.cambiarVista(RutaVista.VISTA_GESTION_PRODUCTO.getRuta());

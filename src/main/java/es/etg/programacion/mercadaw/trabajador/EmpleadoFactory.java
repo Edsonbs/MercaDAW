@@ -1,6 +1,13 @@
 package es.etg.programacion.mercadaw.trabajador;
 
 public class EmpleadoFactory {
+    /**
+     * Devuelve un objeto del tipo empleado. Según la categoría se generará un tipo específico u otro.
+     * @param nombreEmpleado
+     * @param apellidoEmpleado
+     * @param categoriaEmpleado
+     * @return Empleado
+     */
     public static Empleado crearEmpleado(String nombreEmpleado, String apellidoEmpleado, String categoriaEmpleado){
         final String CATEGORIA_REPONEDOR = Trabajador.REPONEDOR.name();
         final String CATEGORIA_CAJERO = Trabajador.CAJERO.name();

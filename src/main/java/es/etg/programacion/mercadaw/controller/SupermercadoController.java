@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 
 public class SupermercadoController extends Application {
     private Stage stagePrincipal;
+    // Aquí guardaremos el producto con el que trabajará la vista visualizarPrecioVentaProducto:
     private static Producto productoSeleccionado;
     private static List<Empleado> empleados = new ArrayList<>();
     private static List<Producto> productos = new ArrayList<>();
@@ -33,18 +34,43 @@ public class SupermercadoController extends Application {
         SupermercadoController.productoSeleccionado = productoSeleccionado;
     }
 
+    /**
+     * Método para crear un objeto del tipo Empleado.
+     * @param nombreEmpleado
+     * @param apellidoEmpleado
+     * @param categoriaEmpleado
+     * @return Empleado
+     */
     public static Empleado crearEmpleado(String nombreEmpleado, String apellidoEmpleado, String categoriaEmpleado) {
         Empleado unEmpleado = EmpleadoFactory.crearEmpleado(nombreEmpleado, apellidoEmpleado, categoriaEmpleado);
 
         return unEmpleado;
     }
 
+    /**
+     * Método para crear un ojeto del tipo Producto.
+     * @param nombreProducto
+     * @param marcaProducto
+     * @param categoriaProducto
+     * @param precioEurosProducto
+     * @param alturaMetrosProducto
+     * @param anchuraMetrosProducto
+     * @param pesoKgProducto
+     * @param cantidadElementosProducto
+     * @param descripcionProducto
+     * @return Producto
+     */
     public static Producto crearProducto(String nombreProducto, String marcaProducto, String categoriaProducto, double precioEurosProducto, double alturaMetrosProducto, double anchuraMetrosProducto, double pesoKgProducto, int cantidadElementosProducto, String descripcionProducto){
         Producto unProducto = ProductoFactory.crearProducto(nombreProducto, marcaProducto, categoriaProducto, precioEurosProducto, alturaMetrosProducto, anchuraMetrosProducto, pesoKgProducto, cantidadElementosProducto, descripcionProducto);
         
         return unProducto;
     }
 
+    /**
+     * Método para añadir un objeto del tipo Empleado a la base de datos y a la lista empleados.
+     * @param unEmpleado
+     * @throws Exception
+     */
     public static void darAltaEmpleado(Empleado unEmpleado) throws Exception{
         MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
 
@@ -52,6 +78,11 @@ public class SupermercadoController extends Application {
         empleados.add(unEmpleado);
     }
 
+    /**
+     * Método para añadir un objeto del tipo Producto a la base de datos y a la lista productos.
+     * @param unProducto
+     * @throws Exception
+     */
     public static void darAltaProducto(Producto unProducto) throws Exception{
         MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
 
@@ -59,6 +90,11 @@ public class SupermercadoController extends Application {
         productos.add(unProducto);
     }
 
+    /**
+     * Elimina un objeto del tipo Empleado de la base de datos y de la lista empleados.
+     * @param unEmpleado
+     * @throws Exception
+     */
     public static void darBajaEmpleado(Empleado unEmpleado) throws Exception{
         MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
 
@@ -66,6 +102,11 @@ public class SupermercadoController extends Application {
         empleados.remove(unEmpleado);
     }
 
+    /**
+     * Elimina un objeto del tipo Producto de la base de datos y de la lista de productos.
+     * @param unProducto
+     * @throws Exception
+     */
     public static void darBajaProducto(Producto unProducto) throws Exception{
         MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
 
@@ -90,6 +131,11 @@ public class SupermercadoController extends Application {
     }
 
     // Base de datos:
+    /**
+     * Devuelve la lista de empleados que hay en la base de datos.
+     * @return List<Empleado>
+     * @throws Exception
+     */
     public static List<Empleado> obtenerListaEmpleadosBaseDatos() throws Exception{
         MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
 
@@ -98,18 +144,33 @@ public class SupermercadoController extends Application {
         return empleados;
     }
 
+    /**
+     * Añade un empleado a la base de datos.
+     * @param unEmpleado
+     * @throws Exception
+     */
     public static void anadirEmpleadoBaseDatos(Empleado unEmpleado) throws Exception{
         MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
 
         baseDatos.anadir(unEmpleado);
     }
 
+    /**
+     * Elimina un empleado de la base de datos.
+     * @param unEmpleado
+     * @throws Exception
+     */
     public static void eliminarEmpleadoBaseDatos(Empleado unEmpleado) throws Exception{
         MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
 
         baseDatos.eliminar(unEmpleado);
     }
 
+    /**
+     * Devuelve una lista con los productos de la base de datos.
+     * @return
+     * @throws Exception
+     */
     public static List<Producto> obtenerListaProductosBaseDatos() throws Exception{
         MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
 
@@ -118,12 +179,22 @@ public class SupermercadoController extends Application {
         return productos;
     }
 
+    /**
+     * Añade un producto a la base de datos.
+     * @param unProducto
+     * @throws Exception
+     */
     public static void anadirProductoBaseDatos(Producto unProducto) throws Exception{
         MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
 
         baseDatos.anadir(unProducto);
     }
 
+    /**
+     * Borra un producto de la base de datos.
+     * @param unProducto
+     * @throws Exception
+     */
     public static void eliminarProductoBaseDatos(Producto unProducto) throws Exception{
         MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
 
@@ -131,6 +202,12 @@ public class SupermercadoController extends Application {
     }
 
     // Funciones de las vistas:
+    /**
+     * Método para generar la nómina de un empleado.
+     * Crear un fichero.md y lo utiliza para hacer un fichero.pdf.
+     * @param unEmpleado
+     * @throws IOException
+     */
     public static void generarNomina(Empleado unEmpleado) throws IOException{
         final String ESTRUCTURA_NOMBRE = "Nómina_%s_%s";
 
@@ -143,6 +220,12 @@ public class SupermercadoController extends Application {
         impresora.imprimir(nombre);
     }
 
+    /**
+     * Método para imprimir la etiqueta de un producto.
+     * Crear un fichero.md y lo utiliza para hacer un fichero.pdf.
+     * @param unProducto
+     * @throws IOException
+     */
     public static void imprimirEtiqueta(Producto unProducto) throws IOException{
         final String ESTRUCTURA_NOMBRE = "Etiqueta_%s_%s";
 
@@ -153,6 +236,11 @@ public class SupermercadoController extends Application {
         impresora.imprimir(ESTRUCTURA_NOMBRE.formatted(unProducto.getNombre(), unProducto.getMarca()));
     }
     
+    /**
+     * Genera un fichero.md que es usado para generar un fichero.pdf con toda la información de un producto.
+     * @param unProducto
+     * @throws IOException
+     */
     public static void imprimirEtiquetaDetallada(Producto unProducto) throws IOException{
         final String ESTRUCTURA_NOMBRE = "Info_Producto_%s_%s";
 
@@ -175,6 +263,12 @@ public class SupermercadoController extends Application {
         stage.show();
     }
 
+    /**
+     * Método para cargar la vista de un fichero.fxml que estará mostrando actualmente.
+     * @param fxml
+     * @return Scene
+     * @throws IOException
+     */
     private Scene cargarVista(String fxml) throws IOException {
         final String EXTENSION_FXML = ".fxml";
 
@@ -189,6 +283,11 @@ public class SupermercadoController extends Application {
         return scene;
     }
 
+    /**
+     * Método para cambiar de vista.
+     * @param fxml
+     * @throws IOException
+     */
     public void cambiarVista(String fxml) throws IOException {
         Scene nuevaEscena = cargarVista(fxml);
         stagePrincipal.setScene(nuevaEscena);

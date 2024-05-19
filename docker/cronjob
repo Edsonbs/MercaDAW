@@ -1,1 +1,0 @@
-5 * * * * cd /home/usuario/Desktop/proyecto/MercaDAW/docker && bash scriptCopiaSeguridad.sh

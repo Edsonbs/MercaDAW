@@ -46,8 +46,7 @@ En este diagrama muestra como funciona nuestra carga de datos del proyecto, todo
 Este diagrama es el mas largo, y el que mas nos ha costado, pero hemos llegado a su solucion tras mucho trabajo, se compone de las carpetas mercado, trabajador, producto y DAO donde estaran dentro sus diferentes clases, interfaces y enumeraciones, tambien podemos observar arriba del todo que esta conectada a la base de datos MariaDB.  
 
 ## SISTEMAS INFORMATICOS
-
-
+EL SCRIPT SERÁ EXPLICADO EN UNA TAREA QUE NOS HA ABIERTO EVA EN EL AULA VIRTUAL
 
 ## PROGRAMACION
 
@@ -56,9 +55,15 @@ Para la codificacion, hemos implementado nuestros diagramas, dividiendo en carpe
 En producto hemos hecho la clase con sus hijas y una enumeracion con cada una de sus categorias, aparte una factoria que los creara. Tambien su interfaz donde calculara los diferentes importes de cada producto.
 En empleado tmb hemos creado la clase con su herencia correspondiente y su enumeracion con cada cargo, tambien su factoria para añadir empleados y calculara su correspondientenomina con la interfaz Doumento.
 ## FOL
-<<<<<<< HEAD
 
 Para la parte de FOL hemos creado 2 clases una donde estara la Nomina con los datos de los calculos y el nombre de los empleados y en la otra las Deducciones es decir los porcentajes del FOGASA, IRPF, BCCC, DESEMPLEO Y MEI.
 
 Al hacer los calculos aparecera en la aplicacion el empleado con su correspondiente nomina.
 ## BASE DE DATOS
+
+La base de datos que hemos utilizado es Mariadb, la cual ha sido docketizada. Hemos creado un script que se encarga de:
+- lanzar el docker de mariadb e iniciarlo, el cual crea a su vez la base de datos (MercaDAW).
+- insertar datos en la base de datos a través de un fichero (ficheroCargaDatos.sql).
+- crear copia de seguridad instalando crontab en el contenedor e iniciar sus servicios, el cual en este caso es obtener los datos de la base de datos y volcarlos en un fichero llamado copiaSeguridad.sql (situado en carpeta "docker" del proyecto). Respecto a la tarea de crontab, se realiza cada 1 minuto.
+
+Los métodos creados respecto a base de datos son de listado productos-empleados, de adición y de eliminación de estos, los cuales han sido probados con Junit (Y DEBUGEADOS UNO A UNO). 

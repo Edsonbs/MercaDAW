@@ -146,11 +146,11 @@ public class MercadoMariadbDAOImp implements MercadoDAO{
     @Override
     public int eliminar(Producto producto) throws SQLException{
         int numRegistrosActualizados = 0;
-        final String SQL = "DELETE FROM productos where nombre = ? and marca = ?";
+        final String SQL = "DELETE FROM productos where nombre = ? AND marca = ?";
 
         PreparedStatement ps = conn.prepareStatement(SQL);
         ps.setString(1, producto.getNombre());
-        ps.setString(1, producto.getMarca());
+        ps.setString(2, producto.getMarca());
 
 
         numRegistrosActualizados = ps.executeUpdate();

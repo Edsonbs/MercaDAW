@@ -3,6 +3,7 @@ import java.util.LinkedHashMap;
 
 import es.etg.programacion.mercadaw.util.Documento;
 
+
 public abstract class Producto implements Documento, IProducto {
     public final static double PORCENTAJE_5 = 0.05;
     public final static double PORCENTAJE_10 = 0.10;
@@ -107,6 +108,11 @@ public abstract class Producto implements Documento, IProducto {
 
         return PLANTILLA_STRING.formatted(nombre, descripcion, marca, categoria);
     }
+    
+    /**
+     * En este método utilizamos un LinkedHashMap para que el contenido de los productos se generen ordenados en una lista
+     * y estos aparezcan de forma correcta a la hora de crear el contenido del documento PDF
+     */
     @Override
     public LinkedHashMap<String, String> getContenido(){
        LinkedHashMap<String, String> productos = new LinkedHashMap<>();

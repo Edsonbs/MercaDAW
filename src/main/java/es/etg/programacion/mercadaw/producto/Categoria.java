@@ -1,5 +1,6 @@
 package es.etg.programacion.mercadaw.producto;
 
+
 public enum Categoria {
     ALIMENTACION(0.04),
     DROGUERIA(0.10),

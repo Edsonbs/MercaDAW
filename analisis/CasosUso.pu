@@ -19,10 +19,10 @@ t -- gp
 gp <|-- prod
 gp <|-- emple
 t -- ed
-ed ..> edat: extends
+ed <.. edat: extends
 t -- ie
-c ..>edat: extends
-ie ..>edat: extends
+c <.. edat: extends
+ie <.. edat: extends
 
 
 

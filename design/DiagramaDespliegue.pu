@@ -14,7 +14,7 @@ node "PC Usuario" <<device>>   {
         node "MariaDB" as db
     }
     
-artifact "cargaDatos.sql" as cargdat !!
+artifact "cargaDatos.sql" as cargdat 
 
 }
 

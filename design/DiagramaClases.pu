@@ -199,57 +199,7 @@ package es.etg.programacion.mercadaw{
     MercadoDAO <|.. MercadoMariadbDAOImp
     MercadoDAO <|.. MercadoMockDAOImp
     }
-    package controller{
-        class SupermercadoController{
-            -VISTA_INICIAL: String = "view/inicioView"
-            -stagePrincipal: Stage
-            +{static} productoSeleccionado: Producto
-            -cargarVista(fxml String): Scene
-            +cambiarVista(fxml String): void
-        }
-    }
-
-    package view{
-        class GestionEmpleadoViewController{
-            +CATEGORIA_REPONEDOR = Trabajador.REPONEDOR.name();
-            +CATEGORIA_CAJERO = Trabajador.CAJERO.name();
-            +CATEGORIA_ENCARGADO = Trabajador.ENCARGADO.name();
-            +CATEGORIA_OTRO = Trabajador.OTRO.name();
-            -empleados: ObservableList<Empleado>
-            -supermercadoController: SupermercadoController = null
-            -mostrarAviso(msg String)
-        }
-
-        class GestionProductoViewController{
-            -mostrarAviso(msg String)
-        }
-
-        class InicioViewController{
-            -supermercadoController: SupermercadoController = null
-        }
-        
-        enum RutaVista{
-            +VISTA_INICIO("view/inicioView"),
-            +VISTA_GESTION_EMPLEADO("view/gestionEmpleadoView"),
-            +VISTA_GESTION_PRODUCTO("view/gestionProductoView"),
-            +VISTA_VISUALIZACION_PRECIO_PRODUCTO("view/visualizarPrecioVentaProducto");
-
-            -ruta: String
-        }
-
-        interface IViewController{
-            +setSupermercadoController(controller SupermercadoController)
-        }
-
-        class VisualizarPrecioVentaProductoController{
-            -formatearPrecioAString(numero double): String
-            -convertirNumeroAString(numero Number): String
-        }
-    IViewController <|.. VisualizarPrecioVentaProductoController
-    IViewController <|.. GestionEmpleadoViewController
-    IViewController <|.. GestionProductoViewController
-    IViewController <|.. InicioViewController
-    }
+    
 }
 component "org.mariadb.jdbc"<<jdbc driver>> 
 

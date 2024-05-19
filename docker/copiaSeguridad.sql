@@ -184,14 +184,26 @@ CREATE TABLE `empleados` (
 LOCK TABLES `empleados` WRITE;
 /*!40000 ALTER TABLE `empleados` DISABLE KEYS */;
 INSERT INTO `empleados` VALUES
+(1,'Juan','Perez','REPONEDOR'),
+(2,'Ana','Garcia','REPONEDOR'),
+(3,'Luis','Rodriguez','REPONEDOR'),
+(4,'Maria','Lopez','REPONEDOR'),
+(5,'Carlos','Hernandez','REPONEDOR'),
+(6,'Elena','Martinez','CAJERO'),
+(7,'Miguel','Gonzalez','CAJERO'),
+(8,'Lucia','Fernandez','CAJERO'),
+(9,'Pablo','Gomez','ENCARGADO'),
+(10,'Sofia','Diaz','ENCARGADO'),
+(11,'David','Alvarez','OTRO'),
+(12,'Laura','Moreno','OTRO'),
+(13,'Sergio','Muñoz','OTRO'),
+(14,'Raquel','Jimenez','OTRO'),
+(15,'Jorge','Ruiz','OTRO'),
+(16,'Sara','Sanchez','OTRO'),
 (17,'Adrian','Ramirez','OTRO'),
 (18,'Paula','Torres','OTRO'),
 (19,'Alberto','Flores','OTRO'),
-(20,'Isabel','Navarro','OTRO'),
-(21,'ejemplo','ejemplo','CAJERO'),
-(22,'ejemploasdsd','ejemploasda','CAJERO'),
-(24,'fasf','asfaf','OTRO'),
-(25,'sfcasf','asfasf','CAJERO');
+(20,'Isabel','Navarro','OTRO');
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -225,11 +237,66 @@ CREATE TABLE `productos` (
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
 INSERT INTO `productos` VALUES
+(1,'Leche Entera','Puleva','ALIMENTACION',0.89,0.04,0.20,0.10,1.00,1,'Leche entera 1L'),
+(2,'Pan Integral','Bimbo','ALIMENTACION',1.50,0.04,0.10,0.20,0.50,1,'Pan integral 500g'),
+(3,'Arroz','SOS','ALIMENTACION',2.00,0.04,0.30,0.10,1.00,1,'Arroz 1kg'),
+(4,'Pasta','Gallo','ALIMENTACION',1.20,0.04,0.20,0.10,1.00,1,'Pasta 1kg'),
+(5,'Aceite de Oliva','Carbonell','ALIMENTACION',5.00,0.04,0.40,0.10,1.00,1,'Aceite de oliva 1L'),
+(6,'Tomate Frito','Orlando','ALIMENTACION',1.00,0.04,0.15,0.10,0.50,1,'Tomate frito 500g'),
+(7,'Azúcar','Azucarera','ALIMENTACION',0.80,0.04,0.20,0.10,1.00,1,'Azúcar 1kg'),
+(8,'Sal','Sal Costa','ALIMENTACION',0.40,0.04,0.10,0.10,0.50,1,'Sal 1kg'),
+(9,'Café','Nescafé','ALIMENTACION',3.00,0.04,0.20,0.10,0.50,1,'Café 500g'),
+(10,'Lechuga','Florette','ALIMENTACION',1.00,0.04,0.30,0.20,0.50,1,'Lechuga fresca'),
+(11,'Manzanas','Pink Lady','ALIMENTACION',2.50,0.04,0.15,0.15,1.00,6,'Manzanas 1kg'),
+(12,'Zumo de Naranja','Don Simón','ALIMENTACION',2.00,0.04,0.30,0.10,1.00,1,'Zumo de naranja 1L'),
+(13,'Yogur Natural','Danone','ALIMENTACION',2.00,0.04,0.10,0.10,0.50,8,'Yogur natural 8x125g'),
+(14,'Queso Rallado','El Caserío','ALIMENTACION',2.50,0.04,0.10,0.10,0.20,1,'Queso rallado 200g'),
+(15,'Cereales','Kelloggs','ALIMENTACION',3.50,0.04,0.30,0.10,0.50,1,'Cereales 500g'),
+(16,'Huevos','Coren','ALIMENTACION',1.50,0.04,0.10,0.10,0.50,12,'Huevos 12 unidades'),
+(17,'Mantequilla','Central Lechera Asturiana','ALIMENTACION',1.80,0.04,0.10,0.10,0.25,1,'Mantequilla 250g'),
+(18,'Cerveza','Mahou','ALIMENTACION',0.60,0.04,0.15,0.10,0.50,1,'Cerveza 330ml'),
+(19,'Agua Mineral','Font Vella','ALIMENTACION',0.50,0.04,0.30,0.10,1.00,1,'Agua mineral 1.5L'),
+(20,'Vino Tinto','Rioja','ALIMENTACION',5.00,0.04,0.30,0.10,1.00,1,'Vino tinto 750ml'),
+(21,'Champú','HyS','COSMETICA',3.50,0.21,0.25,0.10,0.50,1,'Champú revitalizante 500ml'),
+(22,'Gel de Ducha','Dove','COSMETICA',2.50,0.21,0.30,0.10,0.50,1,'Gel de ducha 500ml'),
+(23,'Crema Hidratante','Nivea','COSMETICA',4.00,0.21,0.20,0.10,0.50,1,'Crema hidratante 200ml'),
+(24,'Desodorante','Rexona','COSMETICA',2.00,0.21,0.20,0.10,0.50,1,'Desodorante 150ml'),
+(25,'Pasta de Dientes','Colgate','COSMETICA',1.50,0.21,0.15,0.10,0.50,1,'Pasta de dientes 100ml'),
+(26,'Jabón Facial','La Toja','COSMETICA',3.00,0.21,0.10,0.10,0.50,1,'Jabón facial 150g'),
+(27,'Lápiz Labial','Maybelline','COSMETICA',5.00,0.21,0.05,0.05,0.20,1,'Lápiz labial rojo'),
+(28,'Perfume','Chanel','COSMETICA',20.00,0.21,0.10,0.05,0.20,1,'Perfume 50ml'),
+(29,'Maquillaje','Loréal','COSMETICA',10.00,0.21,0.10,0.05,0.20,1,'Maquillaje 30ml'),
+(30,'Crema Solar','Nivea Sun','COSMETICA',8.00,0.21,0.20,0.10,0.50,1,'Crema solar 200ml'),
+(31,'Jabón de Manos','Dove','COSMETICA',1.50,0.21,0.15,0.10,0.50,1,'Jabón de manos 250ml'),
+(32,'Mascarilla Facial','Garnier','COSMETICA',2.50,0.21,0.05,0.05,0.20,1,'Mascarilla facial'),
+(33,'Loción Corporal','Vaseline','COSMETICA',5.00,0.21,0.20,0.10,0.50,1,'Loción corporal 400ml'),
+(34,'Crema Antiarrugas','Olay','COSMETICA',10.00,0.21,0.05,0.05,0.20,1,'Crema antiarrugas 50ml'),
+(35,'Desmaquillante','Garnier','COSMETICA',3.00,0.21,0.10,0.10,0.50,1,'Desmaquillante 200ml'),
+(36,'Acondicionador','Pantene','COSMETICA',4.00,0.21,0.25,0.10,0.50,1,'Acondicionador 250ml'),
+(37,'Tónico Facial','Clinique','COSMETICA',12.00,0.21,0.15,0.10,0.50,1,'Tónico facial 200ml'),
+(38,'Champú Anticaspa','HyS','COSMETICA',4.00,0.21,0.25,0.10,0.50,1,'Champú anticaspa 400ml'),
+(39,'Esmalte de Uñas','Essie','COSMETICA',9.00,0.21,0.05,0.05,0.10,1,'Esmalte de uñas 15ml'),
+(40,'Serum Facial','The Ordinary','COSMETICA',7.00,0.21,0.05,0.05,0.10,1,'Serum facial 30ml'),
+(41,'Detergente Líquido','Ariel','DROGUERIA',5.00,0.10,0.40,0.20,2.00,1,'Detergente líquido 2L'),
+(42,'Suavizante','Mimosín','DROGUERIA',3.00,0.10,0.30,0.20,2.00,1,'Suavizante 1.5L'),
+(43,'Lavavajillas','Fairy','DROGUERIA',2.50,0.10,0.20,0.10,1.00,1,'Lavavajillas 750ml'),
+(44,'Lejía','Conejo','DROGUERIA',1.00,0.10,0.30,0.10,1.00,1,'Lejía 1L'),
+(45,'Multiusos','KH-7','DROGUERIA',3.00,0.10,0.20,0.10,1.00,1,'Multiusos 750ml'),
+(46,'Ambientador','Air Wick','DROGUERIA',4.00,0.10,0.20,0.10,0.50,1,'Ambientador 250ml'),
+(47,'Desinfectante','Sanytol','DROGUERIA',3.50,0.10,0.20,0.10,1.00,1,'Desinfectante 1L'),
+(48,'Limpiacristales','Cristasol','DROGUERIA',2.00,0.10,0.20,0.10,1.00,1,'Limpiacristales 750ml'),
+(49,'Papel Higiénico','Scottex','DROGUERIA',4.00,0.10,0.40,0.20,0.50,12,'Papel higiénico 12 rollos'),
+(50,'Toallitas','Dodot','DROGUERIA',3.00,0.10,0.30,0.20,1.00,64,'Toallitas húmedas 64 unidades'),
+(51,'Esponja','Spontex','DROGUERIA',1.50,0.10,0.10,0.10,0.10,1,'Esponja de cocina'),
+(52,'Fregasuelos','Asevi','DROGUERIA',2.50,0.10,0.30,0.10,1.00,1,'Fregasuelos 1L'),
+(53,'Cepillo','Vileda','DROGUERIA',5.00,0.10,0.40,0.20,1.00,1,'Cepillo de barrer'),
+(54,'Recambio de Mopa','Swiffer','DROGUERIA',4.00,0.10,0.20,0.10,1.00,10,'Recambio de mopa 10 unidades'),
+(55,'Bolsa de Basura','Albal','DROGUERIA',3.00,0.10,0.30,0.20,1.00,20,'Bolsa de basura 20 unidades'),
+(56,'Desatascador','Tiret','DROGUERIA',5.00,0.10,0.40,0.20,1.00,1,'Desatascador 1L'),
+(57,'Quitamanchas','Vanish','DROGUERIA',4.50,0.10,0.30,0.20,1.00,1,'Quitamanchas 750ml'),
 (58,'Blanqueador','Neutrex','DROGUERIA',2.00,0.10,0.30,0.10,1.00,1,'Blanqueador 1L'),
 (59,'Insecticida','Bloom','DROGUERIA',3.50,0.10,0.20,0.10,1.00,1,'Insecticida 400ml'),
-(60,'Limpiador WC','Harpic','DROGUERIA',2.50,0.10,0.20,0.10,1.00,1,'Limpiador WC 750ml'),
-(61,'asdasdfasd','asdasfsf','DROGUERIA',1.00,0.10,1.00,1.00,1.00,1,'asfsfasf'),
-(62,'asdasdfasddfasfa','asdasfsf','DROGUERIA',1.00,0.10,1.00,1.00,1.00,1,'1');
+(60,'Limpiador WC','Harpic','DROGUERIA',2.50,0.10,0.20,0.10,1.00,1,'Limpiador WC 750ml');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -314,4 +381,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-19 19:35:01
+-- Dump completed on 2024-05-19 20:01:02

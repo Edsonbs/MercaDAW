@@ -54,3 +54,4 @@ Este diagrama es el mas largo, y el que mas nos ha costado, pero hemos llegado a
 Para la codificacion, hemos implementado nuestros diagramas, dividiendo en carpetas partes del codigo (Trabajador, Producto, Mercado, Util, DAO), han habido varios problemas en distintas partes del codigo, sobretodo con compatibilidad, en la forma que se efectuaban los datos, ya que uno ponia la salida de una forma y entraban por otra.
 ## FOL
 ## BASE DE DATOS
+

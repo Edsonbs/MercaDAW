@@ -1,4 +1,4 @@
--- He eliminado la tabla Supermercado que habia puesto en el entidad-relacion porque no le veo sentido crearla puesto que no vamos a guardar nada sobre ella
+-- He eliminado la tabla "Supermercado" que habia puesto en el entidad-relacion porque no le veo sentido crearla puesto que no vamos a guardar nada sobre ella, al igual que la tabla "stock" 
 CREATE TABLE empleados (
     id                   INT(5) NOT NULL,
     nombre               VARCHAR(50),

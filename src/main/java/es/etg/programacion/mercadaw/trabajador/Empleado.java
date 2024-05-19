@@ -7,13 +7,12 @@ import es.etg.programacion.mercadaw.util.Documento;
 
 public class Empleado implements Documento  {
 
-    public final double STANDARD = 1000;
     private static int id = 1;
     private String nombre;
     private String apellido;
     private String categoria;
     private int idUsuario;
-    protected double salario = STANDARD;
+    protected double salario = Trabajador.OTRO.getSalario();
     
     public Empleado(String nombre, String apellido, String categoria) {
         this.nombre = nombre;
@@ -23,7 +22,7 @@ public class Empleado implements Documento  {
         id++;
     }
     public double getSTANDARD() {
-        return STANDARD;
+        return Trabajador.OTRO.getSalario();
     }
     public static int getId() {
         return id;

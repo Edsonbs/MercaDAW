@@ -9,6 +9,8 @@ import es.etg.programacion.mercadaw.controller.SupermercadoController;
 import es.etg.programacion.mercadaw.trabajador.Empleado;
 import es.etg.programacion.mercadaw.trabajador.EmpleadoFactory;
 import es.etg.programacion.mercadaw.trabajador.Trabajador;
+import es.etg.programacion.mercadaw.util.printer.Impresora;
+import es.etg.programacion.mercadaw.util.writer.WriterMarkdown;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -69,6 +71,7 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
     final String CATEGORIA_ENCARGADO = Trabajador.ENCARGADO.name();
     final String CATEGORIA_OTRO = Trabajador.OTRO.name();
     final String MSG_ALERTA_FALLO_CONEXION = "Algo ha fallado durante la conexión a base de datos.";
+    final String MSG_ALERTA_FALLO_NOMINA = "Algo ha fallado durante la creación de la nómina.";
 
     private SupermercadoController supermercadoController = null;
 
@@ -160,9 +163,18 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
     @FXML
     void generarNomina(MouseEvent event) {
         // Con estas líneas obtendré el objeto que haya seleccionado el usuario con el click en la tabla:
-        Empleado seleccionado = tablaEmpleado.getFocusModel().getFocusedItem();
-        if (seleccionado != null){
-            // Siempre que el usuario haya seleccionado algo, se realizará la función indicada.
+        Empleado empleadoSeleccionado = tablaEmpleado.getFocusModel().getFocusedItem();
+        if (empleadoSeleccionado != null){
+            try{
+                final String ESTRUCTURA_NOMBRE = "Nómina_%s_%s";
+                WriterMarkdown creador = new WriterMarkdown();
+                Impresora impresora = new Impresora();
+
+                creador.escribir(empleadoSeleccionado.calcularNomina());
+                impresora.imprimir(ESTRUCTURA_NOMBRE.formatted(empleadoSeleccionado.getNombre(), empleadoSeleccionado.getApellido()));
+            }catch(IOException excepcion){
+                mostrarAviso(MSG_ALERTA_FALLO_NOMINA, AlertType.ERROR);
+            }
         }
     }
 

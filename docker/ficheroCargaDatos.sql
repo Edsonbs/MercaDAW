@@ -25,18 +25,6 @@ CREATE TABLE productos (
 
 ALTER TABLE productos ADD CONSTRAINT productos_pk PRIMARY KEY (id);
 
-
-CREATE TABLE stock (
-    productos_id INT(5) NOT NULL,
-    cantidad     INT(10)
-);
-
-ALTER TABLE stock ADD CONSTRAINT stock_productos_pk PRIMARY KEY (productos_id);
-ALTER TABLE stock ADD CONSTRAINT stock_productos_fk FOREIGN KEY (productos_id) REFERENCES productos (id);
-ALTER TABLE stock  ADD CONSTRAINT stock_productos_fk  FOREIGN KEY (productos_id) REFERENCES productos (id) ON DELETE CASCADE;
-
-
-
 CREATE TABLE clientes (
     id                   INT(5) NOT NULL,
     codigo_postal        INT(5),
@@ -168,67 +156,6 @@ INSERT INTO clientes (id, codigo_postal, correo_electronico) VALUES (23, 28004, 
 INSERT INTO clientes (id, codigo_postal, correo_electronico) VALUES (24, 28004, 'rosa.gomez24@example.com');
 INSERT INTO clientes (id, codigo_postal, correo_electronico) VALUES (25, 28005, 'alberto.ruiz25@example.com');
 
-INSERT INTO stock (productos_id, cantidad) VALUES (1, 1);
-INSERT INTO stock (productos_id, cantidad) VALUES (2, 6);
-INSERT INTO stock (productos_id, cantidad) VALUES (3, 30);
-INSERT INTO stock (productos_id, cantidad) VALUES (4, 41);
-INSERT INTO stock (productos_id, cantidad) VALUES (5, 15);
-INSERT INTO stock (productos_id, cantidad) VALUES (6, 26);
-INSERT INTO stock (productos_id, cantidad) VALUES (7, 47);
-INSERT INTO stock (productos_id, cantidad) VALUES (8, 58);
-INSERT INTO stock (productos_id, cantidad) VALUES (9, 9);
-INSERT INTO stock (productos_id, cantidad) VALUES (10, 10);
-INSERT INTO stock (productos_id, cantidad) VALUES (11, 1);
-INSERT INTO stock (productos_id, cantidad) VALUES (12, 22);
-INSERT INTO stock (productos_id, cantidad) VALUES (13, 13);
-INSERT INTO stock (productos_id, cantidad) VALUES (14, 14);
-INSERT INTO stock (productos_id, cantidad) VALUES (15, 15);
-INSERT INTO stock (productos_id, cantidad) VALUES (16, 16);
-INSERT INTO stock (productos_id, cantidad) VALUES (17, 17);
-INSERT INTO stock (productos_id, cantidad) VALUES (18, 18);
-INSERT INTO stock (productos_id, cantidad) VALUES (19, 39);
-INSERT INTO stock (productos_id, cantidad) VALUES (20, 20);
-INSERT INTO stock (productos_id, cantidad) VALUES (21, 21);
-INSERT INTO stock (productos_id, cantidad) VALUES (22, 22);
-INSERT INTO stock (productos_id, cantidad) VALUES (23, 23);
-INSERT INTO stock (productos_id, cantidad) VALUES (24, 24);
-INSERT INTO stock (productos_id, cantidad) VALUES (25, 25);
-INSERT INTO stock (productos_id, cantidad) VALUES (26, 26);
-INSERT INTO stock (productos_id, cantidad) VALUES (27, 57);
-INSERT INTO stock (productos_id, cantidad) VALUES (28, 28);
-INSERT INTO stock (productos_id, cantidad) VALUES (29, 26);
-INSERT INTO stock (productos_id, cantidad) VALUES (30, 30);
-INSERT INTO stock (productos_id, cantidad) VALUES (31, 31);
-INSERT INTO stock (productos_id, cantidad) VALUES (32, 32);
-INSERT INTO stock (productos_id, cantidad) VALUES (33, 13);
-INSERT INTO stock (productos_id, cantidad) VALUES (34, 34);
-INSERT INTO stock (productos_id, cantidad) VALUES (35, 35);
-INSERT INTO stock (productos_id, cantidad) VALUES (36, 36);
-INSERT INTO stock (productos_id, cantidad) VALUES (37, 35);
-INSERT INTO stock (productos_id, cantidad) VALUES (38, 38);
-INSERT INTO stock (productos_id, cantidad) VALUES (39, 39);
-INSERT INTO stock (productos_id, cantidad) VALUES (40, 40);
-INSERT INTO stock (productos_id, cantidad) VALUES (41, 41);
-INSERT INTO stock (productos_id, cantidad) VALUES (42, 42);
-INSERT INTO stock (productos_id, cantidad) VALUES (43, 43);
-INSERT INTO stock (productos_id, cantidad) VALUES (44, 44);
-INSERT INTO stock (productos_id, cantidad) VALUES (45, 15);
-INSERT INTO stock (productos_id, cantidad) VALUES (46, 46);
-INSERT INTO stock (productos_id, cantidad) VALUES (47, 47);
-INSERT INTO stock (productos_id, cantidad) VALUES (48, 48);
-INSERT INTO stock (productos_id, cantidad) VALUES (49, 42);
-INSERT INTO stock (productos_id, cantidad) VALUES (50, 50);
-INSERT INTO stock (productos_id, cantidad) VALUES (51, 1);
-INSERT INTO stock (productos_id, cantidad) VALUES (52, 2);
-INSERT INTO stock (productos_id, cantidad) VALUES (53, 3);
-INSERT INTO stock (productos_id, cantidad) VALUES (54, 42);
-INSERT INTO stock (productos_id, cantidad) VALUES (55, 35);
-INSERT INTO stock (productos_id, cantidad) VALUES (56, 56);
-INSERT INTO stock (productos_id, cantidad) VALUES (57, 77);
-INSERT INTO stock (productos_id, cantidad) VALUES (58, 18);
-INSERT INTO stock (productos_id, cantidad) VALUES (59, 39);
-INSERT INTO stock (productos_id, cantidad) VALUES (60, 10);
-
 CREATE OR REPLACE VIEW EMPLEADOS_VIEW AS 
 SELECT ID, NOMBRE, APELLIDOS, CATEGORIA
 FROM empleados;
@@ -240,10 +167,6 @@ FROM clientes;
 CREATE OR REPLACE VIEW PRODUCTOS_VIEW AS 
 SELECT ID, NOMBRE, MARCA, CATEGORIA, PRECIO_EN_EUROS, IVA, ALTURA_EN_METROS, ANCHURA_EN_METROS, PESO_EN_KG, NUMERO_ELEMENTOS, DESCRIPCION
 FROM productos;
-
-CREATE OR REPLACE VIEW STOCK_VIEW AS
-SELECT PRODUCTOS_ID, CANTIDAD
-FROM stock;
 
 CREATE OR REPLACE VIEW COMPRA_VIEW AS
 SELECT CLIENTES_ID, PRODUCTOS_ID, ID_COMPRA, CANTIDAD, FECHA_COMPRA

@@ -102,7 +102,9 @@ public abstract class Producto implements Documento, IProducto {
     }
     @Override
     public String toString() {
-        return "Nombre: "+getNombre()+" Descripcion: "+getDescripcion()+" Marca: "+getMarca()+" Categoria: "+getCategoria();
+        final String PLANTILLA_STRING = "* Nombre: %s\n* Descripción: %s\n* Marca: %s\n* Categoría: %s";
+
+        return PLANTILLA_STRING.formatted(nombre, descripcion, marca, categoria);
     }
     @Override
     public LinkedHashMap<String, String> getContenido(){

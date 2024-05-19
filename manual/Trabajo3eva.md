@@ -52,6 +52,13 @@ Este diagrama es el mas largo, y el que mas nos ha costado, pero hemos llegado a
 ## PROGRAMACION
 
 Para la codificacion, hemos implementado nuestros diagramas, dividiendo en carpetas partes del codigo (Trabajador, Producto, Mercado, Util, DAO), han habido varios problemas en distintas partes del codigo, sobretodo con compatibilidad, en la forma que se efectuaban los datos, ya que uno ponia la salida de una forma y entraban por otra.
-## FOL
-## BASE DE DATOS
 
+En producto hemos hecho la clase con sus hijas y una enumeracion con cada una de sus categorias, aparte una factoria que los creara. Tambien su interfaz donde calculara los diferentes importes de cada producto.
+En empleado tmb hemos creado la clase con su herencia correspondiente y su enumeracion con cada cargo, tambien su factoria para añadir empleados y calculara su correspondientenomina con la interfaz Doumento.
+## FOL
+<<<<<<< HEAD
+
+Para la parte de FOL hemos creado 2 clases una donde estara la Nomina con los datos de los calculos y el nombre de los empleados y en la otra las Deducciones es decir los porcentajes del FOGASA, IRPF, BCCC, DESEMPLEO Y MEI.
+
+Al hacer los calculos aparecera en la aplicacion el empleado con su correspondiente nomina.
+## BASE DE DATOS

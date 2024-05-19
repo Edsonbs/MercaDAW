@@ -12,7 +12,10 @@ import java.util.List;
 import es.etg.programacion.mercadaw.producto.Producto;
 import es.etg.programacion.mercadaw.trabajador.Empleado;
 import es.etg.programacion.mercadaw.util.Documento;
-
+/**
+ * Genera un Markdown con la informacion de clases que implementen Documento, 
+ * tambien puede transformar listas que implementen Documento a Listas de Documento
+ */
 public class WriterMarkdown {
         private static File fichero = new File("Exportacion.md"); 
     /**

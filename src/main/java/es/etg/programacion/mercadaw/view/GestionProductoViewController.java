@@ -181,6 +181,7 @@ public class GestionProductoViewController implements Initializable, IViewContro
     
                 tablaProducto.setItems(productos);
             }catch(Exception excepcion){
+                System.out.println(excepcion);
                 mostrarAviso(MSG_ALERTA_FALLO_CONEXION, AlertType.ERROR);
             }
         }
@@ -224,7 +225,6 @@ public class GestionProductoViewController implements Initializable, IViewContro
 
                         tablaProducto.setItems(productos);
                     }catch(Exception excepcion){
-                        System.out.println(excepcion);
                         mostrarAviso(MSG_ALERTA_FALLO_CONEXION, AlertType.ERROR);
                     }
                 }

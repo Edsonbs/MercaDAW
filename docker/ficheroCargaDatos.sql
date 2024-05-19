@@ -33,7 +33,7 @@ CREATE TABLE stock (
 
 ALTER TABLE stock ADD CONSTRAINT stock_productos_pk PRIMARY KEY (productos_id);
 ALTER TABLE stock ADD CONSTRAINT stock_productos_fk FOREIGN KEY (productos_id) REFERENCES productos (id);
-ALTER TABLE stock  ADD CONSTRAINT stock_productos_fk FOREIGN KEY (productos_id) REFERENCES productos (id) ON DELETE CASCADE;
+ALTER TABLE stock  ADD CONSTRAINT stock_productos_fk  FOREIGN KEY (productos_id) REFERENCES productos (id) ON DELETE CASCADE;
 
 
 

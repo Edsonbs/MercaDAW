@@ -94,11 +94,11 @@ public class VisualizarPrecioVentaProductoController implements Initializable, I
         txfMarca.setText(productoSeleccionado.getMarca());
         txfPrecio.setText(String.valueOf(productoSeleccionado.getPrecioEnEuros()));
         txfPrecioVenta.setText(String.valueOf(productoSeleccionado.getPrecioVenta()));
-        // txfRecargoPeso aún necesita un método para obtener este dato.
-        // txfRecargoAltura aún necesita un método para obtener este dato.
-        // txfRecargoAnchura aún necesita un método para obtener este dato.
-        // txfRecargoNumPiezas aún necesita un método para obtener este dato.
-        // txfPrecioTotal aún necesita un método para obtener este dato.
+        txfRecargoPeso.setText(String.valueOf(productoSeleccionado.calcularPrecioPeso()));
+        txfRecargoAltura.setText(String.valueOf(productoSeleccionado.calcularPrecioAltura()));
+        txfRecargoAnchura.setText(String.valueOf(productoSeleccionado.calcularPrecioAnchura()));
+        txfRecargoNumPiezas.setText(String.valueOf(productoSeleccionado.calcularPrecioNumElementos()));
+        txfPrecioTotal.setText(String.valueOf(productoSeleccionado.calcularPrecioTotal() + productoSeleccionado.calcularPrecioDolar()));
         txfIva.setText(String.valueOf(productoSeleccionado.getIva()));
         txfAlturaMetros.setText(String.valueOf(productoSeleccionado.getAlturaEnMetros()));
         txfAnchuraMetros.setText(String.valueOf(productoSeleccionado.getAnchuraEnMetros()));

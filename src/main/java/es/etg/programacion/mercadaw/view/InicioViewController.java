@@ -31,16 +31,12 @@ public class InicioViewController implements IViewController {
 
     @FXML
     void abrirVistaGestionEmpleados(MouseEvent event) throws IOException {
-        final String RUTA_VISTA_GESTION_EMPLEADOS = "view/gestionEmpleadoView";
-
-        supermercadoController.cambiarVista(RUTA_VISTA_GESTION_EMPLEADOS);
+        supermercadoController.cambiarVista(RutaVista.VISTA_GESTION_EMPLEADO.getRuta());
     }
 
     @FXML
     void abrirVistaGestionProductos(MouseEvent event) throws IOException {
-        final String RUTA_VISTA_GESTION_PRODUCTOS = "view/gestionProductoView";
-
-        supermercadoController.cambiarVista(RUTA_VISTA_GESTION_PRODUCTOS);
+        supermercadoController.cambiarVista(RutaVista.VISTA_GESTION_PRODUCTO.getRuta());
     }
 
     @FXML
@@ -49,7 +45,9 @@ public class InicioViewController implements IViewController {
         Window window = ((Node) (event.getSource())).getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showOpenDialog(window);
-        file.getName(); // Esta línea es sólo para que no salga en warning este método.
+        if (file != null){
+            file.getName(); // Esta línea es sólo para que no salga en warning este método.
+        }
         event.consume();
     }
 

@@ -151,13 +151,11 @@ public class GestionProductoViewController implements Initializable, IViewContro
 
     @FXML
     void abrirVistaDetallesPrecioVenta(MouseEvent event) throws IOException {
-        final String RUTA_VISTA_VISUALIZAR_PRECIO_PRODUCTO = "view/visualizarPrecioVentaProducto";
-
         // Obtengo el producto que ha seleccionado el usuario para generar los detalles:
         Producto productoSeleccionado = tablaProducto.getFocusModel().getFocusedItem();
         if (productoSeleccionado != null){
             SupermercadoController.setProductoSeleccionado(productoSeleccionado);
-            supermercadoController.cambiarVista(RUTA_VISTA_VISUALIZAR_PRECIO_PRODUCTO);
+            supermercadoController.cambiarVista(RutaVista.VISTA_VISUALIZACION_PRECIO_PRODUCTO.getRuta());
         }
     }
 
@@ -217,8 +215,7 @@ public class GestionProductoViewController implements Initializable, IViewContro
 
     @FXML
     void volverVistaAnterior(MouseEvent event) throws IOException {
-        final String RUTA_VISTA_INICIO = "view/inicioView";
-        supermercadoController.cambiarVista(RUTA_VISTA_INICIO);
+        supermercadoController.cambiarVista(RutaVista.VISTA_INICIO.getRuta());
     }
 
     private void mostrarAviso(String msg, AlertType tipo){

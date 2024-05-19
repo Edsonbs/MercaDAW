@@ -146,9 +146,7 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
 
     @FXML
     void volverVistaAnterior(MouseEvent event) throws IOException {
-        final String RUTA_VISTA_INICIO = "view/inicioView";
-
-        supermercadoController.cambiarVista(RUTA_VISTA_INICIO);
+        supermercadoController.cambiarVista(RutaVista.VISTA_INICIO.getRuta());
     }
 
     private void mostrarAviso(String msg, AlertType tipo){

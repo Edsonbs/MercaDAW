@@ -8,7 +8,7 @@ public enum Trabajador {
 
     private double salario;
 
-    Trabajador(double salario) {
+    private Trabajador(double salario) {
         this.salario= salario;
     }
 
@@ -16,7 +16,4 @@ public enum Trabajador {
         return salario;
     }
 
-    public void setSalario(double salario) {
-        this.salario = salario;
-    }
 }

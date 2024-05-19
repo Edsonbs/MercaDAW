@@ -15,7 +15,4 @@ public enum Categoria {
         return iva;
     }
 
-    public void setIva(double iva) {
-        this.iva = iva;
-    }
 }

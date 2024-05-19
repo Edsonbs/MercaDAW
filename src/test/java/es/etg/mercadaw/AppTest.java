@@ -2,7 +2,6 @@ package es.etg.mercadaw;
 
 import org.junit.jupiter.api.Test;
 
-import es.etg.programacion.mercadaw.App;
 import es.etg.programacion.mercadaw.producto.Alimentacion;
 import es.etg.programacion.mercadaw.producto.Drogueria;
 import es.etg.programacion.mercadaw.producto.Producto;

@@ -19,16 +19,27 @@ import es.etg.programacion.mercadaw.trabajador.Encargado;
 import es.etg.programacion.mercadaw.trabajador.Reponedor;
 import es.etg.programacion.mercadaw.trabajador.Trabajador;
 
+
 public class MercadoMariadbDAOImp implements MercadoDAO{
     private Connection conn;
     private final String URL = "jdbc:mariadb://localhost:3306/%s?user=%s&password=%s";
     private final String DATABASE_NAME = "MercaDAW";
     private final String DATABASE_USER = "root";
     private final String DATABASE_PASS = "secret";
+
+    /**Esto es el constructor y la logica para obtener la conexion a la base de datos
+     * @throws Exception
+     */
     public MercadoMariadbDAOImp() throws Exception{
         conn = DriverManager.getConnection(String.format(URL, DATABASE_NAME, DATABASE_USER, DATABASE_PASS));
         }
     
+    /**
+  * Pide a la base de datos los alumnos y los guardo en una lista, la cual devuelvo.
+  *
+  * @throws SQLException Si no llega a devolvernos la lista de empleados o hay problema de conexion peta
+
+  */
     @Override
     public List<Empleado> listarEmpleados() throws SQLException{
 
@@ -65,6 +76,14 @@ public class MercadoMariadbDAOImp implements MercadoDAO{
         ps.close();
         return empleados;
     }
+
+     /**
+  * Pide a la base de datos los productos y los guardo en una lista, la cual devuelvo.
+  *
+  * @throws SQLException Si no llega a devolvernos la lista de alumnos o hay problema de conexion peta
+
+
+  */
     @Override
     public List<Producto> listarProductos() throws SQLException{
         final String query = "SELECT nombre, marca, categoria, precio_en_euros, iva, altura_en_metros, anchura_en_metros, peso_en_kg, numero_elementos, descripcion FROM PRODUCTOS_VIEW";
@@ -102,6 +121,14 @@ public class MercadoMariadbDAOImp implements MercadoDAO{
         return productos;
     }
 
+     /**
+  * Añade un producto a la base de datos, obteniendo los datos del producto a través de sus atributos.
+
+  * @return Devuelve el numero de registros actualizados
+  * @throws SQLException Si no llega a añadir producto a la base de datos o hay problema de conexion peta
+  * @param producto Un objeto de tipo producto
+
+  */
     @Override
     public int anadir(Producto producto) throws SQLException{
         int numRegistrosActualizados = 0;
@@ -126,6 +153,14 @@ public class MercadoMariadbDAOImp implements MercadoDAO{
         return numRegistrosActualizados;
     }
 
+      /**
+  * Añade un empleado a la base de datos, obteniendo los datos del empleado a través de sus atributos.
+
+  * @return Devuelve el numero de registros actualizados
+  * @throws SQLException Si no llega a insertarnos el empleado o hay problema de conexion peta
+  * @param empleado Un objeto de tipo empleado
+
+  */
     @Override
     public int anadir(Empleado empleado) throws SQLException{
         int numRegistrosActualizados = 0;
@@ -143,6 +178,14 @@ public class MercadoMariadbDAOImp implements MercadoDAO{
         return numRegistrosActualizados;
     }
 
+        /**
+  * Elimina un producto de la base de datos, obteniendo un numero de registros actualizado de vuelta.
+
+  * @return Devuelve el numero de registros actualizados
+  * @throws SQLException Si no llega a eliminar el producto o hay problema de conexion peta
+  * @param producto Un objeto de tipo producto
+
+  */
     @Override
     public int eliminar(Producto producto) throws SQLException{
         int numRegistrosActualizados = 0;
@@ -159,6 +202,14 @@ public class MercadoMariadbDAOImp implements MercadoDAO{
         return numRegistrosActualizados;
     }
 
+        /**
+  * Elimina un empleado de la base de datos, obteniendo un numero de registros actualizado de vuelta.
+
+  * @return Devuelve el numero de registros actualizados
+  * @throws SQLException Si no llega a eliminar el producto o hay problema de conexion peta
+  * @param producto Un objeto de tipo empleado
+
+  */
     @Override
     public int eliminar(Empleado empleado) throws SQLException{
         int numRegistrosActualizados = 0;

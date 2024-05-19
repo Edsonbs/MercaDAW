@@ -1,0 +1,11 @@
+FROM mariadb
+
+# esto es para instalar cron en el contenedor
+RUN apt-get update && apt-get install -y cron
+
+# esto lo pongo para poder comprobar manualmente con la shell del contenedor que la "tarea" de crontab está en el docker
+RUN apt-get install nano
+
+
+
+

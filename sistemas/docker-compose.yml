@@ -1,0 +1,24 @@
+#Este archivo sirve para generar el contenedor, cogiendo los datos que hay en el .env . Cabe destacar que el contenedor se inicia siempre automáticamente, y que tenemos la carpeta "sql" la cual es un "reflejo" de la carpeta "docker" de nuestro proyecto
+version: '3.1'
+
+services:
+
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306' 
+    env_file:
+      - ".env"
+    volumes:
+      - .:/sql
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_USER=${MARIADB_USER}
+      - MARIADB_DATABASE=${MARIADB_DATABASE}
+      - MARIADB_PASSWORD=${MARIADB_PASSWORD}
+      - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}

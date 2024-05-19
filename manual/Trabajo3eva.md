@@ -56,8 +56,13 @@ Para la codificacion, hemos implementado nuestros diagramas, dividiendo en carpe
 En producto hemos hecho la clase con sus hijas y una enumeracion con cada una de sus categorias, aparte una factoria que los creara. Tambien su interfaz donde calculara los diferentes importes de cada producto.
 En empleado tmb hemos creado la clase con su herencia correspondiente y su enumeracion con cada cargo, tambien su factoria para añadir empleados y calculara su correspondientenomina con la interfaz Doumento.
 ## FOL
+<<<<<<< HEAD
 
 Para la parte de FOL hemos creado 2 clases una donde estara la Nomina con los datos de los calculos y el nombre de los empleados y en la otra las Deducciones es decir los porcentajes del FOGASA, IRPF, BCCC, DESEMPLEO Y MEI.
 
 Al hacer los calculos aparecera en la aplicacion el empleado con su correspondiente nomina.
 ## BASE DE DATOS
+=======
+## BASE DE DATOS
+
+>>>>>>> 8d68c5ef2daa6b6b5e584c2bc932b1da2b21bc99

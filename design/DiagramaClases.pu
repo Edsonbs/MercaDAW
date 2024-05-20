@@ -94,6 +94,7 @@ package es.etg.programacion.mercadaw{
                 -salarioAnualBruto: double
                 -costeLaboral: double
                 -indemnizacion: double
+
                 +calcularCosteLaboral(): double
                 +calcularSalarioNeto(): double
                 +sumarDeduccionesEmpresa(): double
@@ -145,33 +146,20 @@ package es.etg.programacion.mercadaw{
             +getTitulo():String
             +getPie():String
         }
-    package print{
-        class Impresora{
-            +imprimir(fichero:String)
+        package print{
+            class Impresora{
+                +imprimir(fichero:String)
+            }
         }
-    }
-    package writer{
-        class WriterMarkDown{
-            +transformarProductos(productos List<Productos>): List<Documento>
-            +transformarEmpleados(productos List<Empleados>): List<Documento>
-            +escribir(doc:Documento)
-            +escribirEtiqueta(Producto)
-            +escribir(docs:List<Documento>)
+        package writer{
+            class WriterMarkDown{
+                +transformarProductos(productos List<Productos>): List<Documento>
+                +transformarEmpleados(productos List<Empleados>): List<Documento>
+                +escribir(doc:Documento)
+                +escribirEtiqueta(Producto)
+                +escribir(docs:List<Documento>)
+            }
         }
-    }
-    package reader{
-        interface Lector{
-            +leer(fichero:String)
-        }
-        class LectorXML{
-            +leer(fichero:String)
-        }
-        class LectorSQL{
-            +leer(fichero:String)
-        }
-            Lector <|.. LectorXML
-            Lector <|.. LectorSQL
-    }
     Documento <|.. Producto
     Documento <|.. Empleado
     }

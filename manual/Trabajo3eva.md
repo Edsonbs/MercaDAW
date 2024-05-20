@@ -7,23 +7,23 @@
 
 Este diagrama ha sido realizado mediante los siguientes requisitos funcionales y no funcionales:
 
-<b>Requisitos funcionales:</b>   
-    - Dar de alta producto.  
-    - Dar de alta empleados.  
-    - Visualizar datos de productos.  
-    - Visualizar listado de empleados.  
-    - Imprimir etiqueta de un producto.  
-    - Calcular nómina de trabajadores.  
-    -Exportar datos.   
+**Requisitos funcionales:**  
+- Dar de alta producto.  
+- Dar de alta empleados.  
+- Visualizar datos de productos.  
+- Visualizar listado de empleados.  
+- Imprimir etiqueta de un producto.  
+- Calcular nómina de trabajadores.  
+Exportar datos.   
 
-<b>Requisitos no funcionales:</b>  
-    -El sistema se iniciará con la carga de datos desde un fichero a la base de datos(productos y trabajadores).  
-    -El alta de productos y empleados se guardará desde java en la base de datos.  
-    -El listado de empleados se cargará desde la base de datos a nuestro sistema.  
-    -Precio de venta obtenido en euros/dólares.  
-    -El cálculo de nóminas generará un fichero con las nóminas de los trabajadores.  
-    -La copia de seguridad debe realizarse con un script que copie los datos a un fichero y lo mueva a la carpeta    -"backups".  
-    -Los datos exportados pueden pasarse a formato excel, pdf, etc.  
+**Requisitos no funcionales:** 
+  - El sistema se iniciará con la carga de datos desde un fichero a la base de datos(productos y trabajadores).  
+  - El alta de productos y empleados se guardará desde java en la base de datos.  
+  - El listado de empleados se cargará desde la base de datos a nuestro sistema.  
+  - Precio de venta obtenido en euros/dólares.  
+  - El cálculo de nóminas generará un fichero con las nóminas de los trabajadores.  
+  - La copia de seguridad debe realizarse con un script que copie los datos a un fichero y lo mueva a la carpeta    -"backups".  
+  - Los datos exportados pueden pasarse a formato excel, pdf, etc.  
 
 Con todo esto hemos llegado a la solucion correspondiente que se va a usar para el proyecto.
 
@@ -41,7 +41,8 @@ En este diagrama muestra como funciona nuestra carga de datos del proyecto, todo
 ### DIAGRAMA DE CLASES
 ![DIAGRAMA DE CLASES MERCADO Y TRABAJADOR](imagenes/DiagramaDeClasesMercadoYTrabajador.png)  
 ![DIAGRAMA DE CLASES PRODUCTO](imagenes/DiagramaDeClasesProducto.png)  
-![DIAGRAMA DE CLASES DAO Y UTIL](imagenes/DiagramaDeClasesDaoYUtil.png)  
+![DIAGRAMA DE CLASES DAO](imagenes/DiagramaClasesDao.png)  
+![DIAGRAMA DE CLASES UTIL](imagenes/DiagramaClasesUtil.png) 
 
 Este diagrama es el mas largo, y el que mas nos ha costado, pero hemos llegado a su solucion tras mucho trabajo, se compone de las carpetas mercado, trabajador, producto y DAO donde estaran dentro sus diferentes clases, interfaces y enumeraciones, tambien podemos observar arriba del todo que esta conectada a la base de datos MariaDB.  
 

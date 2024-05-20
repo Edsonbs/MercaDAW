@@ -1,15 +1,9 @@
-<<<<<<< Updated upstream
-Etiqueta de DATOS DEL PRODUCTO
+Nomina de Trabajador
 ---
-* Nombre: Insecticida
-* Descripción: Insecticida 400ml
-* Marca: Bloom
-* Categoría: DROGUERIA
-=======
-Lista de DATOS DEL EMPLEADO
----
-* Id: 1 Nombre: José Apellido: Piñon Puesto: CAJERO Salario: 1000.0 
-* Id: 2 Nombre: Maria Apellido: Pérez Puesto: ESTANDAR Salario: 1000.0 
-* Id: 3 Nombre: Rodrigo Apellido: Martinez Puesto: ENCARGADO Salario: 1000.0 
+* Nombre del Empleado: David, Alvarez
+* Salario Anual: 14000,00€
+* Total devengado: 1166,67€
+* Salario Neto: 927,85€
+* Coste Laboral: 355,60€
 
->>>>>>> Stashed changes
+La Indemnizacion que recibiría el Trabajador sería de 1534,25€

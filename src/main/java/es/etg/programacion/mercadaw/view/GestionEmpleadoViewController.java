@@ -61,6 +61,12 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
     private TextField txfNombre;
 
     private ObservableList<Empleado> empleados;
+
+    final String CATEGORIA_REPONEDOR = Trabajador.REPONEDOR.name();
+    final String CATEGORIA_CAJERO = Trabajador.CAJERO.name();
+    final String CATEGORIA_ENCARGADO = Trabajador.ENCARGADO.name();
+    final String CATEGORIA_OTRO = Trabajador.OTRO.name();
+
     private SupermercadoController supermercadoController = null;
 
     @Override
@@ -75,10 +81,7 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
         final String ATRIBUTO_APELLIDO  = "apellido" ;
         final String ATRIBUTO_CATEGORIA = "categoria";
 
-        String[] categoriasEmpleado = {Trabajador.REPONEDOR.name(),
-                                       Trabajador.CAJERO.name(),
-                                       Trabajador.ENCARGADO.name(),
-                                       Trabajador.OTRO.name()};
+        String[] categoriasEmpleado = {CATEGORIA_REPONEDOR, CATEGORIA_CAJERO, CATEGORIA_ENCARGADO, CATEGORIA_OTRO};
         empleados = FXCollections.observableArrayList();
 
         // Con la siguiente línea añadimos todas las opciones de la categoría.
@@ -91,7 +94,7 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
         colCategoria.setCellValueFactory(new PropertyValueFactory<Empleado, String>(ATRIBUTO_CATEGORIA));
 
         try{
-            empleados.setAll(SupermercadoController.getEmpleados());
+            empleados.setAll(SupermercadoController.obtenerEmpleados());
             tablaEmpleado.setItems(empleados);
         }catch(Exception excepcion){
             mostrarAviso(MensajeAlerta.MSG_ALERTA_FALLO_CONEXION.getMensaje(), AlertType.ERROR);
@@ -112,7 +115,8 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
         if (empleadoSeleccionado != null){
             try{
                 SupermercadoController.darBajaEmpleado(empleadoSeleccionado);
-                empleados.setAll(SupermercadoController.getEmpleados());
+
+                empleados.setAll(SupermercadoController.obtenerEmpleados());
                 tablaEmpleado.setItems(empleados);
                 mostrarAviso(MSG_OPERACION_EXITOSA.formatted(empleadoSeleccionado.getNombre(), empleadoSeleccionado.getApellido()), AlertType.INFORMATION);
             }catch(Exception excepcion){
@@ -129,7 +133,6 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
     @FXML
     void darAltaEmpleado(MouseEvent event) {
         final String MSG_OPERACION_EXITOSA = "Se ha creado el empleado %s %s correctamente.";
-
         String nombreEmpleado = txfNombre.getText();
         String apellidoEmpleado = txfApellido.getText();
         String categoriaEmpleado = seleccionCategoriaEmpleado.getSelectionModel().getSelectedItem();
@@ -142,7 +145,7 @@ public class GestionEmpleadoViewController implements Initializable, IViewContro
             }else{
                 try{
                     SupermercadoController.darAltaEmpleado(unEmpleado);
-                    empleados.setAll(SupermercadoController.getEmpleados());
+                    empleados.setAll(SupermercadoController.obtenerEmpleados());
                     tablaEmpleado.setItems(empleados);
                     mostrarAviso(MSG_OPERACION_EXITOSA.formatted(unEmpleado.getNombre(), unEmpleado.getApellido()), AlertType.INFORMATION);
                 }catch(Exception excepcion){

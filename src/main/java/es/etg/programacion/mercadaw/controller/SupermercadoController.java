@@ -1,11 +1,10 @@
 package es.etg.programacion.mercadaw.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import es.etg.programacion.mercadaw.App;
-import es.etg.programacion.mercadaw.dao.MercadoMariadbDAOImp;
+import es.etg.programacion.mercadaw.mercado.Supermercado;
 import es.etg.programacion.mercadaw.producto.Producto;
 import es.etg.programacion.mercadaw.producto.ProductoFactory;
 import es.etg.programacion.mercadaw.trabajador.Empleado;
@@ -13,7 +12,6 @@ import es.etg.programacion.mercadaw.trabajador.EmpleadoFactory;
 import es.etg.programacion.mercadaw.util.printer.Impresora;
 import es.etg.programacion.mercadaw.util.writer.WriterMarkdown;
 import es.etg.programacion.mercadaw.view.IViewController;
-import es.etg.programacion.mercadaw.view.RutaVista;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,11 +19,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class SupermercadoController extends Application {
+    private static final String PROVINCIA = "Madrid";
+    private static final String MUNICIPIO = "Parla";
+    private static final String NOMBRE = "MercaDAW";
+
+    private static Supermercado mercaDaw = new Supermercado(PROVINCIA, MUNICIPIO, NOMBRE);
     private Stage stagePrincipal;
     // Aquí guardaremos el producto con el que trabajará la vista visualizarPrecioVentaProducto:
     private static Producto productoSeleccionado;
-    private static List<Empleado> empleados = new ArrayList<>();
-    private static List<Producto> productos = new ArrayList<>();
 
     public static Producto getProductoSeleccionado() {
         return productoSeleccionado;
@@ -73,10 +74,7 @@ public class SupermercadoController extends Application {
      * @throws Exception
      */
     public static void darAltaEmpleado(Empleado unEmpleado) throws Exception{
-        MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
-
-        baseDatos.anadir(unEmpleado);
-        empleados.add(unEmpleado);
+        mercaDaw.darAlta(unEmpleado);
     }
 
     /**
@@ -85,10 +83,7 @@ public class SupermercadoController extends Application {
      * @throws Exception
      */
     public static void darAltaProducto(Producto unProducto) throws Exception{
-        MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
-
-        baseDatos.anadir(unProducto);
-        productos.add(unProducto);
+        mercaDaw.darAlta(unProducto);
     }
 
     /**
@@ -97,10 +92,7 @@ public class SupermercadoController extends Application {
      * @throws Exception
      */
     public static void darBajaEmpleado(Empleado unEmpleado) throws Exception{
-        MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
-
-        baseDatos.eliminar(unEmpleado);
-        empleados.remove(unEmpleado);
+        mercaDaw.darBaja(unEmpleado);
     }
 
     /**
@@ -109,97 +101,15 @@ public class SupermercadoController extends Application {
      * @throws Exception
      */
     public static void darBajaProducto(Producto unProducto) throws Exception{
-        MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
-
-        baseDatos.eliminar(unProducto);
-        productos.remove(unProducto);
+        mercaDaw.darBaja(unProducto);
     }
 
-    public static List<Empleado> getEmpleados() {
-        return empleados;
+    public static List<Empleado> obtenerEmpleados() {
+        return mercaDaw.getEmpleados();
     }
 
-    public static void setEmpleados(List<Empleado> empleados) {
-        SupermercadoController.empleados = empleados;
-    }
-
-    public static List<Producto> getProductos() {
-        return productos;
-    }
-
-    public static void setProductos(List<Producto> productos) {
-        SupermercadoController.productos = productos;
-    }
-
-    // Base de datos:
-    /**
-     * Devuelve la lista de empleados que hay en la base de datos.
-     * @return List<Empleado>
-     * @throws Exception
-     */
-    public static List<Empleado> obtenerListaEmpleadosBaseDatos() throws Exception{
-        MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
-
-        List<Empleado> empleados = baseDatos.listarEmpleados();
-
-        return empleados;
-    }
-
-    /**
-     * Añade un empleado a la base de datos.
-     * @param unEmpleado
-     * @throws Exception
-     */
-    public static void anadirEmpleadoBaseDatos(Empleado unEmpleado) throws Exception{
-        MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
-
-        baseDatos.anadir(unEmpleado);
-    }
-
-    /**
-     * Elimina un empleado de la base de datos.
-     * @param unEmpleado
-     * @throws Exception
-     */
-    public static void eliminarEmpleadoBaseDatos(Empleado unEmpleado) throws Exception{
-        MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
-
-        baseDatos.eliminar(unEmpleado);
-    }
-
-    /**
-     * Devuelve una lista con los productos de la base de datos.
-     * @return
-     * @throws Exception
-     */
-    public static List<Producto> obtenerListaProductosBaseDatos() throws Exception{
-        MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
-
-        List<Producto> productos = baseDatos.listarProductos();
-
-        return productos;
-    }
-
-    /**
-     * Añade un producto a la base de datos.
-     * @param unProducto
-     * @throws Exception
-     */
-    public static void anadirProductoBaseDatos(Producto unProducto) throws Exception{
-        MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
-
-        baseDatos.anadir(unProducto);
-    }
-
-    /**
-     * Borra un producto de la base de datos.
-     * @param unProducto
-     * @throws Exception
-     */
-    public static void eliminarProductoBaseDatos(Producto unProducto) throws Exception{
-        MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
-
-        baseDatos.eliminar(unProducto);
+    public static List<Producto> obtenerProductos() {
+        return mercaDaw.getProductos();
     }
 
     // Funciones de las vistas:
@@ -243,7 +153,7 @@ public class SupermercadoController extends Application {
      * @throws IOException
      */
     public static void imprimirEtiquetaDetallada(Producto unProducto) throws IOException{
-        final String ESTRUCTURA_NOMBRE = "Info_Producto_%s_%s";
+        final String ESTRUCTURA_NOMBRE = "Etiqueta_Detallada_%s_%s";
 
         WriterMarkdown creador = new WriterMarkdown();
         Impresora impresora = new Impresora();
@@ -255,11 +165,11 @@ public class SupermercadoController extends Application {
     // Inicio y Vistas:
     @Override
     public void start(Stage stage) throws Exception {
+        final String RUTA_INICIO = "view/inicioView";
         stagePrincipal = stage;
-        empleados = obtenerListaEmpleadosBaseDatos();
-        productos = obtenerListaProductosBaseDatos();
 
-        stage.setScene(cargarVista(RutaVista.VISTA_INICIO.getRuta()));
+        mercaDaw.cargarDatosIniciales();
+        stage.setScene(cargarVista(RUTA_INICIO));
         stage.show();
     }
 
@@ -274,8 +184,9 @@ public class SupermercadoController extends Application {
 
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + EXTENSION_FXML));
         Parent root = (Parent) fxmlLoader.load();
-        IViewController viewController = fxmlLoader.<IViewController>getController();
 
+        //Obtengo el controlador de la vista para pasarle una referencia al controlador - MVC:
+        IViewController viewController = fxmlLoader.<IViewController>getController();
         viewController.setSupermercadoController(this);
         Scene scene = new Scene(root);
 
@@ -289,7 +200,6 @@ public class SupermercadoController extends Application {
      */
     public void cambiarVista(String fxml) throws IOException {
         Scene nuevaEscena = cargarVista(fxml);
-
         stagePrincipal.setScene(nuevaEscena);
     }
 }

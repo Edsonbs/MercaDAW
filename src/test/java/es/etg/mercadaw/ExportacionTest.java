@@ -25,7 +25,7 @@ public class ExportacionTest{
     private static Nomina nom = emp2.calcularNomina();
     private static WriterMarkdown mk = new WriterMarkdown();
     @BeforeAll
-    public static void inicializar(){
+    public static void inicializar() throws Exception{
     sd.darAlta(emp);
     sd.darAlta(emp2);
     sd.darAlta(emp3);

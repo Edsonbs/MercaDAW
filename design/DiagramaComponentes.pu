@@ -14,7 +14,7 @@ package view{
 }
 
 package controller{
-    component MercaDawController as mdc
+    component SupermercadoController as mdc
 }
 
 package model{
@@ -34,6 +34,7 @@ package model{
 
 mdc ..> gestion : use
 MercaDaw ..> dao : use
+mdc ..> lectorif: use
 
     inicioController ..> inicioView: use
     gestionProdController ..> gestionProdView: use
@@ -45,6 +46,6 @@ MercaDaw ..> dao : use
     gestionEmpController ..> mdc: use
     inicioController ..> mdc: use
 
-dao ..> lectorif
+
 
 @enduml

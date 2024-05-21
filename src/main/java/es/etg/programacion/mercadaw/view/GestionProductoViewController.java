@@ -125,9 +125,7 @@ public class GestionProductoViewController implements Initializable, IViewContro
         final String ATRIBUTO_DESCIPCION     = "descripcion"         ;
         final String MSG_TXF_IVA             = "IVA SEGÚN CATEGORÍA.";
 
-        String[] categoriasProducto = {Categoria.ALIMENTACION.name(),
-                                       Categoria.DROGUERIA.name(),
-                                       Categoria.COSMETICA.name()};
+        String[] categoriasProducto = {Categoria.ALIMENTACION.name(), Categoria.DROGUERIA.name(), Categoria.COSMETICA.name()};
         productos = FXCollections.observableArrayList();
 
         // Ajustes de representación:
@@ -148,7 +146,7 @@ public class GestionProductoViewController implements Initializable, IViewContro
         colDescripcion.setCellValueFactory(new PropertyValueFactory<Producto, String>(ATRIBUTO_DESCIPCION    ));
 
         try{
-            productos.setAll(SupermercadoController.getProductos());
+            productos.setAll(SupermercadoController.obtenerProductos());
             tablaProducto.setItems(productos);
         }catch(Exception excepcion){
             mostrarAviso(MensajeAlerta.MSG_ALERTA_FALLO_CONEXION.getMensaje(), AlertType.ERROR);
@@ -185,7 +183,7 @@ public class GestionProductoViewController implements Initializable, IViewContro
         if (productoSeleccionado != null){
             try{
                 SupermercadoController.darBajaProducto(productoSeleccionado);
-                productos.setAll(SupermercadoController.getProductos());
+                productos.setAll(SupermercadoController.obtenerProductos());
                 tablaProducto.setItems(productos);
                 mostrarAviso(MSG_OPERACION_EXITOSA.formatted(productoSeleccionado.getNombre(), productoSeleccionado.getMarca()), AlertType.INFORMATION);
             }catch(Exception excepcion){
@@ -216,15 +214,7 @@ public class GestionProductoViewController implements Initializable, IViewContro
             int cantidadElementosProducto = Integer.parseInt(txfNumElementos.getText());
             String descripcionProducto = txfDescripcion.getText();
 
-            Producto unProducto = SupermercadoController.crearProducto(nombreProducto,
-                                                                       marcaProducto,
-                                                                       categoriaProducto,
-                                                                       precioEurosProducto,
-                                                                       alturaMetrosProducto,
-                                                                       anchuraMetrosProducto,
-                                                                       pesoKgProducto,
-                                                                       cantidadElementosProducto,
-                                                                       descripcionProducto);
+            Producto unProducto = SupermercadoController.crearProducto(nombreProducto, marcaProducto, categoriaProducto, precioEurosProducto, alturaMetrosProducto, anchuraMetrosProducto, pesoKgProducto, cantidadElementosProducto, descripcionProducto);
 
             if (unProducto != null){
                 txfIva.setText(String.valueOf(unProducto.getIva()*ENTERO_PARA_REPRESENTAR_IVA)+SIMBOLO_PORCENTAJE);
@@ -233,7 +223,7 @@ public class GestionProductoViewController implements Initializable, IViewContro
                 }else{
                     try{
                         SupermercadoController.darAltaProducto(unProducto);
-                        productos.setAll(SupermercadoController.getProductos());
+                        productos.setAll(SupermercadoController.obtenerProductos());
                         tablaProducto.setItems(productos);
                         mostrarAviso(MSG_OPERACION_EXITOSA.formatted(unProducto.getNombre(), unProducto.getMarca()), AlertType.INFORMATION);
                     }catch(Exception excepcion){

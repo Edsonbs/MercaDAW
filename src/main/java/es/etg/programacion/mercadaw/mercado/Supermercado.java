@@ -79,51 +79,6 @@ public class Supermercado implements Gestionable {
         productos.remove(producto);
     }
 
-    /**
-     * Método para añadir un empleado a la base de datos y a la lista de empleados.
-     * @param unEmpleado
-     * @throws Exception
-     */
-    public void anadirEmpleadoBaseDatos(Empleado unEmpleado) throws Exception{
-        MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
-
-        baseDatos.anadir(unEmpleado);
-        empleados.add(unEmpleado);
-    }
-    /**
-     * Método para añadir un producto a la base de datos y a la lista de productos.
-     * @param unProducto
-     * @throws Exception
-     */
-    public void anadirProductoBaseDatos(Producto unProducto) throws Exception{
-        MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
-
-        baseDatos.anadir(unProducto);
-        productos.add(unProducto);
-    }
-
-    /**
-     * Método para eliminar un empleado de la base de datos y de la lista de empleados.
-     * @param unEmpleado
-     * @throws Exception
-     */
-    public void eliminarEmpleadoBaseDatos(Empleado unEmpleado) throws Exception{
-        MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
-
-        baseDatos.eliminar(unEmpleado);
-        empleados.remove(unEmpleado);
-    }
-    /**
-     * Método para eliminar un producto de la base de datos y de la lista de productos.
-     * @param unProducto
-     * @throws Exception
-     */
-    public void eliminarProductoBaseDatos(Producto unProducto) throws Exception{
-        MercadoMariadbDAOImp baseDatos = new MercadoMariadbDAOImp();
-
-        baseDatos.eliminar(unProducto);
-        productos.remove(unProducto);
-    }
 
     @Override
     public void cargarDatosIniciales() throws Exception {

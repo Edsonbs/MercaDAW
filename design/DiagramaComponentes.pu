@@ -5,47 +5,41 @@ package view{
     component InicioViewController <<java>> as inicioController
     component GestionProductoViewController <<java>> as gestionProdController
     component GestionEmpleadoViewController <<java>> as gestionEmpController
-    component VisualizarPrecioVentaProductoController <<java>> as visualizarPrecioVentaProdController
 
     component inicioView <<FXML file>> as inicioView
     component gestionProductoView <<FXML file>> as gestionProdView
     component gestionEmpleadoView <<FXML file>> as gestionEmpView
-    component visualizarPrecioVentaProducto <<FXML file>> as visualizarPrecioVentaProdView
 }
 
 package controller{
-    component SupermercadoController as mdc
+    component MercaDawController as mdc
 }
 
 package model{
     component MercaDaw
     component Dao 
-    component LectorImp
+    component Util
 
     () "MercadoDAO" as dao
     () "Gestionable" as gestion
-    () "Lector" as lectorif
 
     MercaDaw -() gestion
     Dao -() dao
-    LectorImp -() lectorif
 
 }
 
 mdc ..> gestion : use
-MercaDaw ..> dao : use
-mdc ..> lectorif: use
+
 
     inicioController ..> inicioView: use
     gestionProdController ..> gestionProdView: use
     gestionEmpController ..> gestionEmpView: use
-    visualizarPrecioVentaProdController ..> visualizarPrecioVentaProdView: use
 
-    visualizarPrecioVentaProdController ..> mdc:use
     gestionProdController ..> mdc: use
     gestionEmpController ..> mdc: use
     inicioController ..> mdc: use
 
-
+gestion ..> dao
+gestion ..> Util
 
 @enduml

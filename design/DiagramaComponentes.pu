@@ -5,10 +5,12 @@ package view{
     component InicioViewController <<java>> as inicioController
     component GestionProductoViewController <<java>> as gestionProdController
     component GestionEmpleadoViewController <<java>> as gestionEmpController
+    component VisualizarPrecioVentaProductoController <<java>> as visualizarPrecioVentaProdController
 
     component inicioView <<FXML file>> as inicioView
     component gestionProductoView <<FXML file>> as gestionProdView
     component gestionEmpleadoView <<FXML file>> as gestionEmpView
+    component visualizarPrecioVentaProducto <<FXML file>> as visualizarPrecioVentaProdView
 }
 
 package controller{
@@ -36,7 +38,9 @@ MercaDaw ..> dao : use
     inicioController ..> inicioView: use
     gestionProdController ..> gestionProdView: use
     gestionEmpController ..> gestionEmpView: use
+    visualizarPrecioVentaProdController ..> visualizarPrecioVentaProdView: use
 
+    visualizarPrecioVentaProdController ..> mdc:use
     gestionProdController ..> mdc: use
     gestionEmpController ..> mdc: use
     inicioController ..> mdc: use

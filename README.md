@@ -19,22 +19,26 @@ Equipo:
 - Creada carpeta "sistemas" para **EVA**, en la cual tiene todos los archivos del script y relacionados. NO FUNCIONA EL SCRIPT EN ESA CARPETA, SOLO ESTÁ AHÍ POR SEPARARLO.
 - Creada la interfaz visual a través de varias vistas y pestañas, ambas combinadas.
 - Probados los métodos susceptibles de errores con Junit.
+- Hemos exportado un informe del resultado de los test con `mvn surefire-report:report`
 
 # PASOS A SEGUIR PARA EJECUTAR EL PROGRAMA:
 
 1. Antes de ejecutar el programa debes situarte en la carpeta "docker" del proyecto a través de la terminal:
+
    ```bash
    # Desde la raiz:
    cd docker
    ```
 
 2. Una vez ahí, ejecutar:
+
    ```bash
    ./scripInsercionDatos.sh
    ```
    Este script te crea el docker y lo inicia, inserta en la base datos los datos de `ficheroCargaDatos.sql` y te genera una "tarea" con **crontab** en el propio contenedor, el cual coge los datos de la base de datos y los escribe cada minuto en el fichero `copiaSeguridad.sql`. Todos estos archivos se encuentran dentro del repositorio "docker". 
 
 3. Tras esto ejecutar en la terminal:
+
    ```bash
    # Si aún no te has movido de la carpeta "docker":
    cd ..

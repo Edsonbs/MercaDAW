@@ -203,7 +203,10 @@ INSERT INTO `empleados` VALUES
 (17,'Adrian','Ramirez','OTRO'),
 (18,'Paula','Torres','OTRO'),
 (19,'Alberto','Flores','OTRO'),
-(20,'Isabel','Navarro','OTRO');
+(20,'Isabel','Navarro','OTRO'),
+(43,'José','Piñon','CAJERO'),
+(44,'Maria','Pérez','ESTANDAR'),
+(45,'Rodrigo','Martinez','ENCARGADO');
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -297,10 +300,7 @@ INSERT INTO `productos` VALUES
 (58,'Blanqueador','Neutrex','DROGUERIA',2.00,0.10,0.30,0.10,1.00,1,'Blanqueador 1L'),
 (59,'Insecticida','Bloom','DROGUERIA',3.50,0.10,0.20,0.10,1.00,1,'Insecticida 400ml'),
 (60,'Limpiador WC','Harpic','DROGUERIA',2.50,0.10,0.20,0.10,1.00,1,'Limpiador WC 750ml'),
-(61,'1','1','ALIMENTACION',1.00,0.04,1.00,1.00,1.00,1,'1fqws'),
-(62,'asd','asd','COSMETICA',1.00,0.21,1.00,1.00,1.00,1,'1'),
-(63,'asddsa','asd','COSMETICA',1.00,0.21,1.00,1.00,1.00,1,'1'),
-(64,'adsa','asdasd','COSMETICA',12.00,0.21,13.00,23.00,123.00,2,'dfasf');
+(123,'Producto','MarcaDAW','Cosmetica',2.00,0.21,0.30,0.20,0.20,1,'Descripcion breve');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -385,4 +385,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-21 20:08:01
+-- Dump completed on 2024-05-21 20:29:01

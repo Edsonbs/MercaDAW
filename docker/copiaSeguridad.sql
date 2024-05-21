@@ -189,6 +189,7 @@ INSERT INTO `empleados` VALUES
 (3,'Luis','Rodriguez','REPONEDOR'),
 (4,'Maria','Lopez','REPONEDOR'),
 (5,'Carlos','Hernandez','REPONEDOR'),
+(6,'Elena','Martinez','CAJERO'),
 (7,'Miguel','Gonzalez','CAJERO'),
 (8,'Lucia','Fernandez','CAJERO'),
 (9,'Pablo','Gomez','ENCARGADO'),
@@ -203,7 +204,10 @@ INSERT INTO `empleados` VALUES
 (18,'Paula','Torres','OTRO'),
 (19,'Alberto','Flores','OTRO'),
 (20,'Isabel','Navarro','OTRO'),
-(21,'jhohuhu','hiuwfhweiuf','ENCARGADO');
+(21,'1','1','ENCARGADO'),
+(22,'1','1','REPONEDOR'),
+(24,'1','1','OTRO'),
+(25,'1','1','CAJERO');
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -237,7 +241,6 @@ CREATE TABLE `productos` (
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
 INSERT INTO `productos` VALUES
-(1,'Leche Entera','Puleva','ALIMENTACION',0.89,0.04,0.20,0.10,1.00,1,'Leche entera 1L'),
 (2,'Pan Integral','Bimbo','ALIMENTACION',1.50,0.04,0.10,0.20,0.50,1,'Pan integral 500g'),
 (3,'Arroz','SOS','ALIMENTACION',2.00,0.04,0.30,0.10,1.00,1,'Arroz 1kg'),
 (4,'Pasta','Gallo','ALIMENTACION',1.20,0.04,0.20,0.10,1.00,1,'Pasta 1kg'),
@@ -290,7 +293,6 @@ INSERT INTO `productos` VALUES
 (51,'Esponja','Spontex','DROGUERIA',1.50,0.10,0.10,0.10,0.10,1,'Esponja de cocina'),
 (52,'Fregasuelos','Asevi','DROGUERIA',2.50,0.10,0.30,0.10,1.00,1,'Fregasuelos 1L'),
 (53,'Cepillo','Vileda','DROGUERIA',5.00,0.10,0.40,0.20,1.00,1,'Cepillo de barrer'),
-(54,'Recambio de Mopa','Swiffer','DROGUERIA',4.00,0.10,0.20,0.10,1.00,10,'Recambio de mopa 10 unidades'),
 (55,'Bolsa de Basura','Albal','DROGUERIA',3.00,0.10,0.30,0.20,1.00,20,'Bolsa de basura 20 unidades'),
 (56,'Desatascador','Tiret','DROGUERIA',5.00,0.10,0.40,0.20,1.00,1,'Desatascador 1L'),
 (57,'Quitamanchas','Vanish','DROGUERIA',4.50,0.10,0.30,0.20,1.00,1,'Quitamanchas 750ml'),
@@ -381,4 +383,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-21 13:20:01
+-- Dump completed on 2024-05-21 19:35:01

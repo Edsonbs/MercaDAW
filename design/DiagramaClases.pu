@@ -8,8 +8,7 @@ package es.etg.programacion.mercadaw{
             -provincia: String
             -municipio: String
             -nombre: String
-            -productos: ListArray<Productos>
-            -empleados: ListArray<Empleados>
+ 
         }       
 
         class Cliente{
@@ -22,6 +21,9 @@ package es.etg.programacion.mercadaw{
         interface Gestionable{
             +darAlta(empleado Empleado)
             +darAlta(producto Producto)
+            +darBaja(Empleado empleado)
+            +darBaja(Producto producto)
+            +cargarDatosIniciales()
         }
 
         Supermercado o-- Cliente

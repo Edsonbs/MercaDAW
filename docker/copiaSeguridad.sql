@@ -189,7 +189,6 @@ INSERT INTO `empleados` VALUES
 (3,'Luis','Rodriguez','REPONEDOR'),
 (4,'Maria','Lopez','REPONEDOR'),
 (5,'Carlos','Hernandez','REPONEDOR'),
-(6,'Elena','Martinez','CAJERO'),
 (7,'Miguel','Gonzalez','CAJERO'),
 (8,'Lucia','Fernandez','CAJERO'),
 (9,'Pablo','Gomez','ENCARGADO'),
@@ -203,7 +202,8 @@ INSERT INTO `empleados` VALUES
 (17,'Adrian','Ramirez','OTRO'),
 (18,'Paula','Torres','OTRO'),
 (19,'Alberto','Flores','OTRO'),
-(20,'Isabel','Navarro','OTRO');
+(20,'Isabel','Navarro','OTRO'),
+(21,'jhohuhu','hiuwfhweiuf','ENCARGADO');
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -381,4 +381,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-20 15:53:01
+-- Dump completed on 2024-05-21 13:20:01

@@ -1,9 +1,9 @@
 Nomina de Trabajador
 ---
-* Nombre del Empleado: David, Alvarez
-* Salario Anual: 14000,00€
-* Total devengado: 1166,67€
-* Salario Neto: 927,85€
-* Coste Laboral: 355,60€
+* Nombre del Empleado: Juan, Perez
+* Salario Anual: 16800,00€
+* Total devengado: 1400,00€
+* Salario Neto: 1113,42€
+* Coste Laboral: 426,72€
 
-La Indemnizacion que recibiría el Trabajador sería de 1534,25€
+La Indemnizacion que recibiría el Trabajador sería de 1841,10€

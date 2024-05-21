@@ -13,6 +13,7 @@ import es.etg.programacion.mercadaw.trabajador.EmpleadoFactory;
 import es.etg.programacion.mercadaw.util.printer.Impresora;
 import es.etg.programacion.mercadaw.util.writer.WriterMarkdown;
 import es.etg.programacion.mercadaw.view.IViewController;
+import es.etg.programacion.mercadaw.view.RutaVista;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -254,12 +255,11 @@ public class SupermercadoController extends Application {
     // Inicio y Vistas:
     @Override
     public void start(Stage stage) throws Exception {
-        final String RUTA_INICIO = "view/inicioView";
         stagePrincipal = stage;
-
         empleados = obtenerListaEmpleadosBaseDatos();
         productos = obtenerListaProductosBaseDatos();
-        stage.setScene(cargarVista(RUTA_INICIO));
+
+        stage.setScene(cargarVista(RutaVista.VISTA_INICIO.getRuta()));
         stage.show();
     }
 
@@ -274,9 +274,8 @@ public class SupermercadoController extends Application {
 
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + EXTENSION_FXML));
         Parent root = (Parent) fxmlLoader.load();
-
-        //Obtengo el controlador de la vista para pasarle una referencia al controlador - MVC:
         IViewController viewController = fxmlLoader.<IViewController>getController();
+
         viewController.setSupermercadoController(this);
         Scene scene = new Scene(root);
 
@@ -290,6 +289,7 @@ public class SupermercadoController extends Application {
      */
     public void cambiarVista(String fxml) throws IOException {
         Scene nuevaEscena = cargarVista(fxml);
+
         stagePrincipal.setScene(nuevaEscena);
     }
 }

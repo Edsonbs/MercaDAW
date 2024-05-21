@@ -203,11 +203,7 @@ INSERT INTO `empleados` VALUES
 (17,'Adrian','Ramirez','OTRO'),
 (18,'Paula','Torres','OTRO'),
 (19,'Alberto','Flores','OTRO'),
-(20,'Isabel','Navarro','OTRO'),
-(21,'1','1','ENCARGADO'),
-(22,'1','1','REPONEDOR'),
-(24,'1','1','OTRO'),
-(25,'1','1','CAJERO');
+(20,'Isabel','Navarro','OTRO');
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -241,6 +237,7 @@ CREATE TABLE `productos` (
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
 INSERT INTO `productos` VALUES
+(1,'Leche Entera','Puleva','ALIMENTACION',0.89,0.04,0.20,0.10,1.00,1,'Leche entera 1L'),
 (2,'Pan Integral','Bimbo','ALIMENTACION',1.50,0.04,0.10,0.20,0.50,1,'Pan integral 500g'),
 (3,'Arroz','SOS','ALIMENTACION',2.00,0.04,0.30,0.10,1.00,1,'Arroz 1kg'),
 (4,'Pasta','Gallo','ALIMENTACION',1.20,0.04,0.20,0.10,1.00,1,'Pasta 1kg'),
@@ -293,12 +290,17 @@ INSERT INTO `productos` VALUES
 (51,'Esponja','Spontex','DROGUERIA',1.50,0.10,0.10,0.10,0.10,1,'Esponja de cocina'),
 (52,'Fregasuelos','Asevi','DROGUERIA',2.50,0.10,0.30,0.10,1.00,1,'Fregasuelos 1L'),
 (53,'Cepillo','Vileda','DROGUERIA',5.00,0.10,0.40,0.20,1.00,1,'Cepillo de barrer'),
+(54,'Recambio de Mopa','Swiffer','DROGUERIA',4.00,0.10,0.20,0.10,1.00,10,'Recambio de mopa 10 unidades'),
 (55,'Bolsa de Basura','Albal','DROGUERIA',3.00,0.10,0.30,0.20,1.00,20,'Bolsa de basura 20 unidades'),
 (56,'Desatascador','Tiret','DROGUERIA',5.00,0.10,0.40,0.20,1.00,1,'Desatascador 1L'),
 (57,'Quitamanchas','Vanish','DROGUERIA',4.50,0.10,0.30,0.20,1.00,1,'Quitamanchas 750ml'),
 (58,'Blanqueador','Neutrex','DROGUERIA',2.00,0.10,0.30,0.10,1.00,1,'Blanqueador 1L'),
 (59,'Insecticida','Bloom','DROGUERIA',3.50,0.10,0.20,0.10,1.00,1,'Insecticida 400ml'),
-(60,'Limpiador WC','Harpic','DROGUERIA',2.50,0.10,0.20,0.10,1.00,1,'Limpiador WC 750ml');
+(60,'Limpiador WC','Harpic','DROGUERIA',2.50,0.10,0.20,0.10,1.00,1,'Limpiador WC 750ml'),
+(61,'1','1','ALIMENTACION',1.00,0.04,1.00,1.00,1.00,1,'1fqws'),
+(62,'asd','asd','COSMETICA',1.00,0.21,1.00,1.00,1.00,1,'1'),
+(63,'asddsa','asd','COSMETICA',1.00,0.21,1.00,1.00,1.00,1,'1'),
+(64,'adsa','asdasd','COSMETICA',12.00,0.21,13.00,23.00,123.00,2,'dfasf');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -383,4 +385,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-21 19:36:01
+-- Dump completed on 2024-05-21 20:08:01
